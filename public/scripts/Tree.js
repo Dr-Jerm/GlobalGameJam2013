@@ -1,4 +1,4 @@
-function Tree(_x, _z, _rot)
+function Tree(game, _x, _z, _rot)
 {
 
 	this.pos = (_x, 0, _z);

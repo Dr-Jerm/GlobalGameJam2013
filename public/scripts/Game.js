@@ -96,6 +96,7 @@ function Game()
 
          } );
 
+         Tree(game, 3, 3, 0);
        
         var geometry2 = new THREE.CubeGeometry( 200, 200, 200 );
       	var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
