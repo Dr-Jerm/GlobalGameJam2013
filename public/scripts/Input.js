@@ -49,10 +49,12 @@ function Input()
 		}
 		if (this.moveFunctions["forward"]) { 
 	    	console.log( "forward" );
+	    	game.player.pos.z += 1;
 	   
 		}
 		if (this.moveFunctions["back"]) { 
 	    	console.log( "back" );
+	    	game.player.pos.z -= 1;
 	   
 		}
 		if (this.moveFunctions["shoot"]) { 
@@ -65,6 +67,10 @@ function Input()
 	   
 		}
 
+
+	}
+
+	this.Update = function(){
 
 	}
 

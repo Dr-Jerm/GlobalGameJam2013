@@ -83,11 +83,12 @@ function Game()
         // Test geo to get stuff onscreen.
         var loader = new THREE.JSONLoader();
 
-         loader.load( '../art_assets/tree.js', function( geometry, materials){
-         	var texture = THREE.ImageUtils.loadTexture("../art_assets/Tree_texture_v4.png");
+         loader.load( '../art_assets/tree-with-branches-v1.js', function( geometry, materials){
+         	var texture = THREE.ImageUtils.loadTexture("../art_assets/Tree_texture_v5.png");
          	var material = new THREE.MeshBasicMaterial( { map: texture} );
 			var mesh = new THREE.Mesh( geometry, material );
 			mesh.scale.set(.2,.2,.2);
+			mesh.position.y = 30;
 			this.scene.add(mesh);
 
          }.bind(this) );
