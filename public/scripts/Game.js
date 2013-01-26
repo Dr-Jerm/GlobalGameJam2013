@@ -90,8 +90,8 @@ function Game()
          	var texture = THREE.ImageUtils.loadTexture("../art_assets/tree1.jpg");
          	var material = new THREE.MeshBasicMaterial( { map: texture} );
 			var mesh = new THREE.Mesh( geometry, material );
-			//mesh.scale.set(.2,.2,.2);
-			//mesh.position.y = 30;
+			mesh.scale.set(.2,.2,.2);
+			mesh.position.y = 30;
 			this.scene.add(mesh);
 
          }.bind(this) );
