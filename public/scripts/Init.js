@@ -1,4 +1,5 @@
 var game;
+var socket;
 
 firstLoad = function(){
 
@@ -7,6 +8,7 @@ firstLoad = function(){
         	'We suggest Chrome or Firefox!')
     }
 
+    socket = io.connect("http:localhost:8080")
 
 	game = new Game();
 	game.init();
