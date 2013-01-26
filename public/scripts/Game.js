@@ -27,8 +27,10 @@ function Game()
 
         this.scene = new THREE.Scene();
 
+
+        // Test geo to get stuff onscreen.
       	var geometry = new THREE.CubeGeometry( 200, 200, 200 );
-      	var material = new THREE.MeshBasicMaterial( { color: 0xffffff} );
+      	var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
       	var mesh = new THREE.Mesh( geometry, material );
       	this.scene.add( mesh );
 

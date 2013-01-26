@@ -10,4 +10,13 @@ firstLoad = function(){
 
 	game = new Game();
 	game.init();
+
+	tick();
+}
+
+
+tick = function(){
+	requestAnimationFrame(tick);
+
+	game.update();
 }
