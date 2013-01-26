@@ -31,10 +31,25 @@ function Game()
 
 
         // Test geo to get stuff onscreen.
-      	var geometry = new THREE.CubeGeometry( 200, 200, 200 );
-      	var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
-      	var mesh = new THREE.Mesh( geometry, material );
-      	this.scene.add( mesh );
+        var geometry = new THREE.OBJLoader();
+        geometry.addEventListener( 'load', function ( event ) {
+
+          var object = event.content;
+
+          object.traverse( function ( child ) {
+            if(child instanceof THREE.Mesh) {
+              child.material.color = 0xc9c9c9;
+            }
+
+          } );
+          object.position.y = - 80;
+          scene.add( object );
+        });
+        geometry.load( '../art_assets/column.obj' );
+
+      	//var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
+      	//var mesh = new THREE.Mesh( geometry, material );
+      	//this.scene.add( mesh );
 
         //test function, remove
         
