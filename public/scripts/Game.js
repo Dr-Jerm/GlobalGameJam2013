@@ -14,6 +14,10 @@ function Game()
   this.treeList = new Array();
 
 
+  //TIME
+  this.clock = new THREE.Clock();
+  this.delta = this.clock;
+
   //WORLD INFO:
   var worldWidth = 256, worldDepth = 256,
 			worldHalfWidth = worldWidth / 2, worldHalfDepth = worldDepth / 2;
@@ -64,7 +68,7 @@ function Game()
 
 		}
 		var groundTexture = THREE.ImageUtils.loadTexture("../art_assets/concrete-tile.png");
-		var groundMaterial = new THREE.MeshLambertMaterial( { color: 0xffffff, shading: THREE.FlatShading} );
+		var groundMaterial = new THREE.MeshLambertMaterial( { color: 0xffffff} );
 		geometry.computeFaceNormals();
 		this.ground =  new THREE.Mesh( geometry, groundMaterial );
 		this.scene.add(this.ground);
@@ -108,6 +112,7 @@ function Game()
 
   this.Update = function()
   {
+  	this.delta = this.clock.getDelta();
   	this.input.Update();
     PulseSwitch();
     this.player.Update();
@@ -128,9 +133,9 @@ function Game()
     //<   switch logic here  >
 
     
-    if(this.isPulse && !this.wasPulse)// begin pulse  
+    if(this.isPulse && !this.wasPulse)// begin pulse  for
     {
-      for(var s in this.shadowList)
+      for (var s in this.shadowList)
       {
         this.shadowList[s].Move(); 
       }

@@ -16,7 +16,7 @@ firstLoad = function(){
 	stats = new Stats();
 	stats.domElement.style.position = 'absolute';
 	stats.domElement.style.top = '0px';
-	container.appendChild( stats.domElement );
+	document.body.appendChild( stats.domElement );
 
 	tick();
 }
