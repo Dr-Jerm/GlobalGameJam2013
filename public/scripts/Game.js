@@ -45,7 +45,7 @@ function Game()
             }
 
           } );
-          scene.add( object );
+          //scene.add( object );
         });
         geometry.load( '../art_assets/column.obj' );
 

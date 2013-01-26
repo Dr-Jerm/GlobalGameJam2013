@@ -1,9 +1,78 @@
 function Input()
 {
+	//---------------------- Magic pointer lock controls here ----------------
+	var havePointerLock = 'pointerLockElement' in document || 'mozPointerLockElement' in document || 'webkitPointerLockElement' in document;
+
+	if ( havePointerLock ) {
+		var element = document.body;
+		var pointerlockchange = function ( event ) {
+			if ( document.pointerLockElement === element || document.mozPointerLockElement === element || document.webkitPointerLockElement === element ) {
+				controls.enabled = true;
+				//blocker.style.display = 'none';
+				} else {
+				controls.enabled = false;
+				//blocker.style.display = '-webkit-box';
+				//blocker.style.display = '-moz-box';
+				//blocker.style.display = 'box';
+				//instructions.style.display = '';
+				}
+			}
+			var pointerlockerror = function ( event ) {
+			//instructions.style.display = '';
+			}
+
+			// Hook pointer lock state change events
+			document.addEventListener( 'pointerlockchange', pointerlockchange, false );
+			document.addEventListener( 'mozpointerlockchange', pointerlockchange, false );
+			document.addEventListener( 'webkitpointerlockchange', pointerlockchange, false );
+
+			document.addEventListener( 'pointerlockerror', pointerlockerror, false );
+			document.addEventListener( 'mozpointerlockerror', pointerlockerror, false );
+			document.addEventListener( 'webkitpointerlockerror', pointerlockerror, false );
+
+			document.addEventListener( 'click', function ( event ) {
+
+			//instructions.style.display = 'none';
+
+			// Ask the browser to lock the pointer
+			element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
+
+			if ( /Firefox/i.test( navigator.userAgent ) ) {
+				var fullscreenchange = function ( event ) {
+					if ( document.fullscreenElement === element || document.mozFullscreenElement === element || document.mozFullScreenElement === element ) {
+
+						document.removeEventListener( 'fullscreenchange', fullscreenchange );
+						document.removeEventListener( 'mozfullscreenchange', fullscreenchange );
+						element.requestPointerLock();
+					}
+
+				}
+
+				document.addEventListener( 'fullscreenchange', fullscreenchange, false );
+				document.addEventListener( 'mozfullscreenchange', fullscreenchange, false );
+
+				element.requestFullscreen = element.requestFullscreen || element.mozRequestFullscreen || element.mozRequestFullScreen || element.webkitRequestFullscreen;
+
+				element.requestFullscreen();
+
+			} else {
+
+				element.requestPointerLock();
+			}
+
+		}, false );
+
+	} else {
+		nstructions.innerHTML = 'Your browser doesn\'t seem to support Pointer Lock API';
+	}
+	//----------------------------------------------------------------------
+
+	//controls = new PointerLockControls( game.camera);
+    //game.scene.add( controls.getObject() );
+
 
 	this.keyList = new Array();
 	this.moveFunctions = new Array();
-
 
 	$(document).keydown(function(e){
 	    // if (e.keyCode == 37) { 
@@ -23,6 +92,15 @@ function Input()
     	this.keyList["mouse"+event.which] = true;
     	this.checkInput();
 	}.bind(this));
+
+	$(document).mousemove(function(e){
+    	
+	    console.log( "mouse " + e.pageX + " " + e.pageY);
+	
+
+	}.bind(this));
+
+
 
 	this.checkInput = function()
 	{
