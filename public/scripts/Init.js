@@ -1,8 +1,9 @@
-var game;
-var socket;
-var stats;
 
-firstLoad = function(){
+	var game;
+	var socket;
+	var stats;
+
+function firstLoad(){
 
 	if(!Detector.webgl){
         alert('This game requires a modern browser/graphics card with WebGL enabled.\n'+

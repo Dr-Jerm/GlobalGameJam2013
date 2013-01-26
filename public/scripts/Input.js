@@ -1,5 +1,9 @@
 function Input()
 {
+	
+	this.controlsEnabled = false; 
+	this.testString = "Nope";
+
 	//---------------------- Magic pointer lock controls here ----------------
 	var havePointerLock = 'pointerLockElement' in document || 'mozPointerLockElement' in document || 'webkitPointerLockElement' in document;
 
@@ -7,10 +11,12 @@ function Input()
 		var element = document.body;
 		var pointerlockchange = function ( event ) {
 			if ( document.pointerLockElement === element || document.mozPointerLockElement === element || document.webkitPointerLockElement === element ) {
-				controls.enabled = true;
+				controlsEnabled = true; 
+				//controls.enabled = true;
 				//blocker.style.display = 'none';
 				} else {
-				controls.enabled = false;
+				controlsEnabled = false; 
+				//controls.enabled = false;
 				//blocker.style.display = '-webkit-box';
 				//blocker.style.display = '-moz-box';
 				//blocker.style.display = 'box';
@@ -63,13 +69,109 @@ function Input()
 		}, false );
 
 	} else {
-		nstructions.innerHTML = 'Your browser doesn\'t seem to support Pointer Lock API';
+		nstructions.innerHTML = 'Your browser doesn\'t seem to support Pointer Lock API. GET A BETTER BROWSER YOU FOSSIL';
 	}
 	//----------------------------------------------------------------------
 
-	//controls = new PointerLockControls( game.camera);
-    //game.scene.add( controls.getObject() );
+	this.moveForward = false;
+	this.moveLeft = false; 
+	this.moveBackward = false;
+	this.moveRight = false;
 
+	this.mouseMovementX = 0;
+	this.mouseMovementY = 0;
+
+	this.shoot = false;
+	this.reload = false; 
+
+	var onMouseMove = function ( event ) {
+
+        //if ( scope.enabled === false ) return;
+
+        this.mouseMovementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
+        this.mouseMovementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
+
+       //console.log( "mouse " + movementX + " " + movementY);
+        //yawObject.rotation.y -= movementX * 0.002;
+        //pitchObject.rotation.x -= movementY * 0.002;
+
+        //pitchObject.rotation.x = Math.max( - PI_2, Math.min( PI_2, pitchObject.rotation.x ) );
+    };
+
+    var onKeyDown = function ( event ) {
+
+    	console.log("keyDown");
+        switch ( event.keyCode ) {
+
+            case 38: // up
+            case 87: // w
+                this.moveForward = true;
+                this.testString = "FFUUUKE YOO";
+              
+                break;
+
+            case 37: // left
+            case 65: // a
+                this.moveLeft = true; 
+                break;
+
+            case 40: // down
+            case 83: // s
+                this.moveBackward = true;
+                break;
+
+            case 39: // right
+            case 68: // d
+                this.moveRight = true;
+                break;
+
+            // case 32: // space
+            //     if ( canJump === true ){
+            //         velocity.y = jumpVelocity;
+            //     }
+            //     canJump = false;
+            //     break;
+        }
+         console.log("foward = " + this.moveForward);
+    };
+
+    var onKeyUp = function ( event ) {
+
+        switch( event.keyCode ) {
+
+            case 38: // up
+            case 87: // w
+                this.moveForward = false;
+
+                break;
+
+            case 37: // left
+            case 65: // a
+               this.moveLeft = false;
+                break;
+
+            case 40: // down
+            case 83: // a
+                this.moveBackward = false;
+                break;
+
+            case 39: // right
+            case 68: // d
+                this.moveRight = false;
+                break;
+ 			
+        }
+        console.log("foward = " + this.moveForward);
+    };
+
+    document.addEventListener( 'mousemove', onMouseMove, false );
+    document.addEventListener( 'keydown', onKeyDown, false );
+    document.addEventListener( 'keyup', onKeyUp, false );
+
+	/*
+
+
+Read more: RISE AGAINST - HISTORIA CALAMITATUM LYRICS 
 
 	this.keyList = new Array();
 	this.moveFunctions = new Array();
@@ -95,10 +197,14 @@ function Input()
 
 	$(document).mousemove(function(e){
     	
-	    console.log( "mouse " + e.pageX + " " + e.pageY);
+	    //var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
+       // var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
+
+	    console.log( "mouse " + e.movementX + " " + e.movementY);
 	
 
 	}.bind(this));
+
 
 
 
@@ -151,5 +257,5 @@ function Input()
 	this.Update = function(){
 
 	}
-
+	*/
 }

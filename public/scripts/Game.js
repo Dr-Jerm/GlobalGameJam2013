@@ -1,8 +1,8 @@
 function Game()
 {
 
-  
-  this.input = new Input(); 
+  this.testString = "Nope";
+  this.inputControls = new Input(); 
 
   this.isPulse = false; 
   this.wasPulse = false; 
@@ -111,7 +111,7 @@ function Game()
   this.Update = function()
   {
   	this.delta = this.clock.getDelta();
-  	this.input.Update();
+  	//this.input.Update();
     PulseSwitch();
     this.player.Update();
     this.CameraUpdate();
@@ -121,7 +121,7 @@ function Game()
 
   this.CameraUpdate = function(){
   	this.camera.position.x = this.player.pos.x;
-  	this.camera.position.y = this.player.pos.y + 20;
+  	this.camera.position.y = this.player.pos.y + this.player.eyeHeight;
   	this.camera.position.z = this.player.pos.z;
   }
 
