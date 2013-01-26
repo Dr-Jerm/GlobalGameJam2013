@@ -1,7 +1,4 @@
 
-	var game;
-	var socket;
-	var stats;
 
 function firstLoad(){
 
@@ -12,20 +9,21 @@ function firstLoad(){
 
     socket = io.connect("http:localhost:8080")
 
-	game = new Game();
-	game.init();
-	stats = new Stats();
-	stats.domElement.style.position = 'absolute';
-	stats.domElement.style.top = '0px';
+	this.game = new Game();
+	this.game.init();
+	this.stats = new Stats();
+	this.stats.domElement.style.position = 'absolute';
+	this.stats.domElement.style.top = '0px';
 	document.body.appendChild( stats.domElement );
 
-	tick();
+	this.tick = function(game){
+		requestAnimationFrame(tick);
+		this.game.Update();
+		stats.update();
+	}
+
+
+	this.tick(game);
 }
 
 
-tick = function(){
-	requestAnimationFrame(tick);
-
-	game.Update();
-	stats.update();
-}

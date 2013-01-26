@@ -1,7 +1,7 @@
 function Game()
 {
 
-  this.testString = "Nope";
+  this.testString = "Here I am";
   this.inputControls = new Input(); 
 
   this.isPulse = false; 
@@ -9,7 +9,7 @@ function Game()
 
   this.assets = new Assets();
 
-  this.player = new Player(); 
+  this.player = new Player(this); 
   this.shadowList = new Array();
   this.treeList = new Array();
 
