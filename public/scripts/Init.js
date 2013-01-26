@@ -18,5 +18,5 @@ firstLoad = function(){
 tick = function(){
 	requestAnimationFrame(tick);
 
-	game.update();
+	game.Update();
 }

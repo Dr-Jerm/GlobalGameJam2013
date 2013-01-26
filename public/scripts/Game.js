@@ -1,8 +1,8 @@
 function Game()
 {
 
-  this.isPulse; 
-  this.wasPulse; 
+  this.isPulse = false; 
+  this.wasPulse = false; 
 
   this.player = new Player(); 
   this.shadowList = new Array();
@@ -35,33 +35,41 @@ function Game()
       	this.scene.add( mesh );
 
         //test function, remove
-        this.renderer.render(this.scene,this.camera);
+        
 
   } 
 
+
+  this.Render = function(){
+  	this.renderer.render(this.scene,this.camera);
+  }
 
   this.Update = function()
   {
 
     PulseSwitch();
     this.player.Update();
+    this.Render();
+
+    this.camera.rotation.z += .001
   }
 
 
-  var PulseSwitch = function(); 
+
+  var PulseSwitch = function()
   {
 
     //<   switch logic here  >
 
     
-    if(isPulse && !wasPulse)// begin pulse  
+    if(this.isPulse && !this.wasPulse)// begin pulse  
     {
       for(var s in this.shadowList)
       {
         this.shadowList[s].Move(); 
       }
     }
-    if(!isPulse && wasPulse)// end pulse  
+    if(!this.isPulse && this.wasPulse)// end pulse  
     {
      
     }
