@@ -45,7 +45,7 @@ function Game()
           object.position.y = - 80;
           scene.add( object );
         });
-        geometry.load( '../art_assets/column.obj' );
+        geometry.load( '../art_assets/column' );
 
       	//var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
       	//var mesh = new THREE.Mesh( geometry, material );
