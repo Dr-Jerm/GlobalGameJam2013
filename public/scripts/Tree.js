@@ -31,7 +31,7 @@ function Tree(_x, _z, _rot)
 		mesh.position.x = this.pos.x;
 		mesh.position.y = this.pos.y;
 		mesh.position.z = this.pos.z;
-		this.scene.add(mesh);
+		game.scene.add(mesh);
 
-    }.bind(this) );
+    } );
 }

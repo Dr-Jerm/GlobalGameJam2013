@@ -92,9 +92,9 @@ function Game()
 			var mesh = new THREE.Mesh( geometry, material );
 			mesh.scale.set(.2,.2,.2);
       mesh.position.y = 0;
-			this.scene.add(mesh);
+			game.scene.add(mesh);
 
-         }.bind(this) );
+         } );
 
        
         var geometry2 = new THREE.CubeGeometry( 200, 200, 200 );
