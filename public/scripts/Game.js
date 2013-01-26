@@ -24,9 +24,10 @@ function Game()
       document.body.appendChild( this.renderer.domElement );
 
 
-      this.camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 2000 );
+      this.camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 5000 );
         this.camera.position.z = 400;
         this.camera.position.y = 20;
+  
 
         this.projector = new THREE.Projector();
 
@@ -41,20 +42,20 @@ function Game()
 
           object.traverse( function ( child ) {
             if(child instanceof THREE.Mesh) {
-              child.material.color = 0xc9c9c9;
-              child.scale.set(1000,1000,1000);
+              child.material =  new THREE.MeshBasicMaterial( { color: 0xffffff, side: THREE.DoubleSide} );
+
             }
 
           } );
           this.scene.add( object );
         }.bind(this));
-        geometry.load( '../art_assets/ground-plane.obj' );
 
-      	//var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
-      	//var mesh = new THREE.Mesh( geometry, material );
-      	//this.scene.add( mesh );
+        geometry.load( '../art_assets/nanosuit2.obj' );
+        var geometry2 = new THREE.CubeGeometry( 200, 200, 200 );
+      	var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
+      	var mesh = new THREE.Mesh( geometry2, material );
+      	this.scene.add( mesh );
 
-        //test function, remove
         
 
   } 
