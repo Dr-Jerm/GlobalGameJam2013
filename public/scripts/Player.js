@@ -33,7 +33,7 @@ function Player()
 	this.Update = function()
 	{
 		//FIX THIS!!??? why is theirs fast??? -> http://alteredqualia.com/three/examples/webgl_geometry_triangulate_quads.html
-		if(game.clock.getElapsedTime % 3 === 0)
+		//if(game.clock.getElapsedTime % 3 === 0)
 			this.UpdateRay();
 		this.UpdateInput(); 
 		this.Move();
@@ -118,7 +118,7 @@ function Player()
 	this.UpdateRay = function(){
 		this.ray.ray.origin = this.pos;
 
-		this.ray.ray.origin.y = game.camera.position.y;
+		this.ray.ray.origin.y = game.camera.position.y +100;
 
 		var intersects = this.ray.intersectObject( game.ground );
 
