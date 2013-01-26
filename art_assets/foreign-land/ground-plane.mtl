@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 26.01.2013 03:49:24
+# File Created: 26.01.2013 05:35:01
 
 newmtl 02___ground_concrete_tile
 	Ns 10.0000
@@ -12,5 +12,5 @@ newmtl 02___ground_concrete_tile
 	Kd 0.5882 0.5882 0.5882
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka C:\Users\Whetzel.250\Documents\GitHub\GlobalGameJam2013\art assets\foreign-land\concrete-tile.png
-	map_Kd C:\Users\Whetzel.250\Documents\GitHub\GlobalGameJam2013\art assets\foreign-land\concrete-tile.png
+	map_Ka C:\Users\Whetzel.250\Documents\GitHub\GlobalGameJam2013\art_assets\foreign-land\concrete-tile.png
+	map_Kd C:\Users\Whetzel.250\Documents\GitHub\GlobalGameJam2013\art_assets\foreign-land\concrete-tile.png
