@@ -4,6 +4,8 @@ function Game()
   this.isPulse = false; 
   this.wasPulse = false; 
 
+  this.assets = new Assets();
+
   this.player = new Player(); 
   this.shadowList = new Array();
   this.treeList = new Array();
