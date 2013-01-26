@@ -42,10 +42,9 @@ function Game()
             }
 
           } );
-          object.position.y = - 80;
           scene.add( object );
         });
-        geometry.load( '../art_assets/column' );
+        geometry.load( '../art_assets/column.obj' );
 
       	//var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
       	//var mesh = new THREE.Mesh( geometry, material );
