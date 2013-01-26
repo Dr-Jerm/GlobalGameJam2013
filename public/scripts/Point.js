@@ -5,8 +5,8 @@ function Point()
 	z = 0;
 }
 
-function PointDistance( point_A, point_B)
+function PointDistance( _point_A, _point_B)
 {
-	dist = Math.sqrt( Math.sqrt(point_A.x - point_B.x) + Math.sqrt(point_A.y - point_B.y) + Math.sqrt(point_A.z - point_B.z)); 
+	dist = Math.sqrt( Math.sqrt(_point_A.x - _point_B.x) + Math.sqrt(_point_A.y - _point_B.y) + Math.sqrt(_point_A.z - _point_B.z)); 
 	return dist;
 }

@@ -23,10 +23,10 @@ function Player()
 	this.Update = new function()
 	{
 
-		this.UpdateSpeed();
+		this.Move();
 	}
 
-	this.UpdateSpeed = new function()
+	this.Move = new function()
 	{
 		this.speedRad += this.accel;
 		if(this.speedRad > this.maxSpeedRad)
