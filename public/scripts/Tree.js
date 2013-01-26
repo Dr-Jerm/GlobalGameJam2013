@@ -1,11 +1,11 @@
-function Tree(_point, _rot)
+function Tree(_x, _z, _rot)
 {
 
-	this.pos = _point;
+	this.pos = (_x, 0, _z);
 	this.rot = _rot;
 	var index = Math.floor((Math.random()*game.assets.tree_limit)+1);
-	var obj = "art_assets/tree"+index+".mdl.js";
-	var tex = "art_assets/tree"+index+".jpg";
+	var obj = "../art_assets/tree"+index+".mdl.js";
+	var tex = "../art_assets/tree"+index+".jpg";
 
 	var loader = new THREE.JSONLoader();
 
@@ -13,8 +13,7 @@ function Tree(_point, _rot)
         var texture = THREE.ImageUtils.loadTexture(tex);
         var material = new THREE.MeshBasicMaterial( { map: texture} );
 		var mesh = new THREE.Mesh( geometry, material );
-		mesh.scale.set(.2,.2,.2);
-		
+		mesh.scale.set(1,1,1);
 
 		var rayDir = new THREE.Vector3( 0, -1, 0 );
 		this.ray = new THREE.Raycaster(this.pos, rayDir);
