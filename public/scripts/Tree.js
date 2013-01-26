@@ -15,6 +15,10 @@ function Tree(_point, _rot)
 		var mesh = new THREE.Mesh( geometry, material );
 		mesh.scale.set(.2,.2,.2);
 		
+
+		var rayDir = new THREE.Vector3( 0, -1, 0 );
+		this.ray = new THREE.Raycaster(this.pos, rayDir);
+		this.ray.rayDir = rayDir;
 		this.ray.ray.origin = this.pos;
 
 		this.ray.ray.origin.y = game.camera.position.y;
