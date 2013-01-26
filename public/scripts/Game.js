@@ -14,13 +14,14 @@ function Game()
   this.treeList = new Array();
 
 
+
+
   //TIME
   this.clock = new THREE.Clock();
   this.delta = this.clock;
 
   //WORLD INFO:
-  var worldWidth = 256, worldDepth = 256,
-			worldHalfWidth = worldWidth / 2, worldHalfDepth = worldDepth / 2;
+  var worldWidth = 56, worldDepth = 56;
 	this.ground;
 	this.sunLight;
 	this.skyColor = 0xefd1b5;
@@ -59,23 +60,23 @@ function Game()
   		//GROUND PLANE
    		var data = this.generateHeight( worldWidth, worldDepth );
 
-		var geometry = new THREE.PlaneGeometry( 7500, 7500, worldWidth - 1, worldDepth - 1 );
+		var geometry = new THREE.PlaneGeometry( 7000, 7000, worldWidth - 1, worldDepth - 1 );
 		geometry.applyMatrix( new THREE.Matrix4().makeRotationX( - Math.PI / 2 ) );
 
 		for ( var i = 0, l = geometry.vertices.length; i < l; i ++ ) {
 
-			geometry.vertices[ i ].y = data[ i ] ;
+			geometry.vertices[ i ].y = data[ i ] *5;
 
 		}
 		var groundTexture = THREE.ImageUtils.loadTexture("../art_assets/concrete-tile.png");
-		var groundMaterial = new THREE.MeshLambertMaterial( { color: 0xffffff} );
+		var groundMaterial = new THREE.MeshLambertMaterial( { color: 0x483d28} );
 		geometry.computeFaceNormals();
 		this.ground =  new THREE.Mesh( geometry, groundMaterial );
 		this.scene.add(this.ground);
 
 
 		//SUN LIGHT
-		this.light = new THREE.DirectionalLight( 0x829572, 1, 0);
+		this.light = new THREE.DirectionalLight( 0xffffff, 1, 0);
 		this.light.position.y = 300;
 		this.light.rotation.y = Math.PI;
 		this.light.rotation.x = Math.PI/2;
@@ -87,12 +88,12 @@ function Game()
         // Test geo to get stuff onscreen.
         var loader = new THREE.JSONLoader();
 
-         loader.load( '../art_assets/tree-with-branches-v1.js', function( geometry, materials){
-         	var texture = THREE.ImageUtils.loadTexture("../art_assets/Tree_texture_v5.png");
+         loader.load( '../art_assets/tree_002-opt.mdl.js.js', function( geometry, materials){
+         	var texture = THREE.ImageUtils.loadTexture("../art_assets/tree_002_dif.JPG");
          	var material = new THREE.MeshBasicMaterial( { map: texture} );
 			var mesh = new THREE.Mesh( geometry, material );
-			mesh.scale.set(.2,.2,.2);
-			mesh.position.y = 30;
+			//mesh.scale.set(.2,.2,.2);
+			//mesh.position.y = 30;
 			this.scene.add(mesh);
 
          }.bind(this) );
