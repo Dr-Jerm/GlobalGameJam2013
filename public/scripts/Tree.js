@@ -4,8 +4,8 @@ function Tree(_x, _z, _rot)
 	this.pos = (_x, 0, _z);
 	this.rot = _rot;
 	var index = Math.floor((Math.random()*game.assets.tree_limit)+1);
-	var obj = "art_assets/tree"+index+".mdl.js";
-	var tex = "art_assets/tree"+index+".jpg";
+	var obj = "../art_assets/tree"+index+".mdl.js";
+	var tex = "../art_assets/tree"+index+".jpg";
 
 	var loader = new THREE.JSONLoader();
 
