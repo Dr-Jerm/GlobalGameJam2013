@@ -42,12 +42,13 @@ function Game()
           object.traverse( function ( child ) {
             if(child instanceof THREE.Mesh) {
               child.material.color = 0xc9c9c9;
+              child.scale.set(1000,1000,1000);
             }
 
           } );
-          scene.add( object );
-        });
-        geometry.load( '../art_assets/column.obj' );
+          this.scene.add( object );
+        }.bind(this));
+        geometry.load( '../art_assets/ground-plane.obj' );
 
       	//var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
       	//var mesh = new THREE.Mesh( geometry, material );
