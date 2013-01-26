@@ -24,6 +24,8 @@ function firstLoad(){
 
 
 	this.tick(game);
+
+	return true;
 }
 
 
