@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset><contributor><author></author><authoring_tool>FBX COLLADA exporter</authoring_tool><comments></comments></contributor><created>2013-01-26T11:33:11Z</created><keywords></keywords><modified>2013-01-26T11:33:11Z</modified><revision></revision><subject></subject><title></title><unit meter="1.000000" name="centimeter"></unit><up_axis>Y_UP</up_axis></asset>
+  <library_images>
+    <image id="file1-image" name="file1"><init_from>file://C:/Users/Swardson.491/Desktop/tree-assets/textures/Tree_texture_v4.png</init_from></image>
+  </library_images>
+  <library_materials>
+    <material id="tree_bark" name="tree_bark">
+      <instance_effect url="#tree_bark-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="tree_bark-fx" name="tree_bark">
+      <profile_COMMON>
+        <technique sid="standard">
+          <lambert>
+            <emission>
+              <color sid="emission">0.000000  0.000000 0.000000 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0.000000  0.000000 0.000000 1.000000</color>
+            </ambient>
+            <diffuse>
+              <texture texture="file1-image" texcoord="CHANNEL0">
+                <extra>
+                  <technique profile="MAYA">
+                    <wrapU sid="wrapU0">TRUE</wrapU>
+                    <wrapV sid="wrapV0">TRUE</wrapV>
+                    <blend_mode>NONE</blend_mode>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <transparent opaque="RGB_ZERO">
+              <color sid="transparent">0.000000  0.000000 0.000000 1.000000</color>
+            </transparent>
+            <transparency>
+              <float sid="transparency">1.000000</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="pCylinder1-lib" name="pCylinder1Mesh">
+      <mesh>
+        <source id="pCylinder1-POSITION">
+          <float_array id="pCylinder1-POSITION-array" count="36">
+50.000023 -10.000000 -86.602531
+-49.999985 -10.000000 -86.602554
+-100.000000 -10.000000 -0.000015
+-50.000011 -10.000000 86.602539
+49.999996 -10.000000 86.602547
+100.000000 -10.000000 0.000000
+50.000023 1990.000000 -86.602531
+-49.999985 1990.000000 -86.602554
+-100.000000 1990.000000 -0.000015
+-50.000011 1990.000000 86.602539
+49.999996 1990.000000 86.602547
+100.000000 1990.000000 0.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pCylinder1-POSITION-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCylinder1-Normal0">
+          <float_array id="pCylinder1-Normal0-array" count="108">
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+-0.866025 0.000000 -0.500000
+-0.866025 0.000000 -0.500000
+-0.866025 0.000000 -0.500000
+-0.866025 0.000000 -0.500000
+-0.866025 0.000000 -0.500000
+-0.866025 0.000000 -0.500000
+-0.866025 0.000000 0.500000
+-0.866025 0.000000 0.500000
+-0.866025 0.000000 0.500000
+-0.866025 0.000000 0.500000
+-0.866025 0.000000 0.500000
+-0.866025 0.000000 0.500000
+-0.000000 0.000000 1.000000
+-0.000000 0.000000 1.000000
+-0.000000 0.000000 1.000000
+-0.000000 0.000000 1.000000
+-0.000000 0.000000 1.000000
+-0.000000 0.000000 1.000000
+0.866025 0.000000 0.500000
+0.866025 0.000000 0.500000
+0.866025 0.000000 0.500000
+0.866025 0.000000 0.500000
+0.866025 0.000000 0.500000
+0.866025 0.000000 0.500000
+0.866026 0.000000 -0.500000
+0.866026 0.000000 -0.500000
+0.866026 0.000000 -0.500000
+0.866026 0.000000 -0.500000
+0.866026 0.000000 -0.500000
+0.866026 0.000000 -0.500000
+</float_array>
+          <technique_common>
+            <accessor source="#pCylinder1-Normal0-array" count="36" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCylinder1-UV0">
+          <float_array id="pCylinder1-UV0-array" count="28">
+0.442113 -0.000170
+0.470415 -0.000170
+0.498717 -0.000170
+0.527019 -0.000170
+0.555322 -0.000170
+0.583624 -0.000170
+0.611926 -0.000170
+0.442113 1.001110
+0.470415 1.001110
+0.498717 1.001110
+0.527019 1.001110
+0.555322 1.001110
+0.583624 1.001110
+0.611926 1.001110
+</float_array>
+          <technique_common>
+            <accessor source="#pCylinder1-UV0-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCylinder1-VERTEX">
+          <input semantic="POSITION" source="#pCylinder1-POSITION"/>
+        </vertices>
+        <triangles count="12" material="tree_bark"><input semantic="VERTEX" offset="0" source="#pCylinder1-VERTEX"/><input semantic="NORMAL" offset="1" source="#pCylinder1-Normal0"/><input semantic="TEXCOORD" offset="2" set="0" source="#pCylinder1-UV0"/><p> 1 0 1 7 1 8 0 2 0 0 3 0 7 4 8 6 5 7 8 6 9 1 7 1 2 8 2 1 9 1 8 10 9 7 11 8 9 12 10 2 13 2 3 14 3 2 15 2 9 16 10 8 17 9 9 18 10 3 19 3 10 20 11 10 21 11 3 22 3 4 23 4 5 24 5 11 25 12 4 26 4 10 27 11 4 28 4 11 29 12 0 30 6 6 31 13 5 32 5 11 33 12 5 34 5 6 35 13</p></triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="" name="">
+      <node name="pCylinder1" id="pCylinder1" sid="pCylinder1"><matrix sid="matrix">0.010000 0.000000 0.000000 0.000000 0.000000 0.010000 0.000000 0.000000 0.000000 0.000000 0.010000 0.000000 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#pCylinder1-lib"><bind_material><technique_common><instance_material symbol="tree_bark" target="#tree_bark"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node>
+      <extra><technique profile="MAX3D"><frame_rate>24.000000</frame_rate></technique><technique profile="FCOLLADA"><start_time>0.041667</start_time><end_time>2.000000</end_time></technique></extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#"></instance_visual_scene>
+  </scene>
+</COLLADA>
