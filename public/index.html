@@ -36,8 +36,10 @@
                 var menu = new Menu();
                 var mojo = new AssetMojo();
 
-                var texture = mojo.register("../art_assets/tree1.jpg", "image");
-                console.log(texture);
+                // Tests
+                var texture = mojo.register("tree-1", "../art_assets/tree1.jpg", "image");
+                var newtexture = mojo.register("tree-2", "../art_assets/tree1.jpg", "image");
+
         })(jQuery);
 </script>
 

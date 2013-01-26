@@ -1,12 +1,19 @@
 
 Menu = function () {
 
-	this.menu();
+	if(this.skip) {
+		this.complete();	
+	}
+	else {
+		this.menu();
+	}
 
 	return this;
 };
 
 Menu.prototype = {
+	skip: true,
+
 	constructor: Menu,
 	// Initiate loading bar
 	load: function() {
@@ -56,18 +63,38 @@ AssetMojo = function () {
 };
 
 AssetMojo.prototype = {
-	register: function(asset, type) {
+	loader: null,
+
+	constructor: function() {
+		this.loader = new THREE.ImageLoader();
+
+		this.loader.addEventListener('load', function ( event ) {
+			console.log(event);
+		});
+	},
+
+	assets: {},
+
+	register: function(name, asset, type) {
 
 		if(type == "image") {
-			asset = this.registerImage(asset);
+			asset = this.registerImage(name, asset);
 		}
 
 		return asset;
 	},
 
-	registerImage: function (asset) {
+	registerImage: function (name, asset) {
 		console.log("Registering... " + asset);
+
 		var texture = THREE.ImageUtils.loadTexture(asset);
-		return texture;
+
+		if(texture) {
+			this.assets[name] = texture;
+			return texture;
+		}
+		else {
+			return null;
+		}
 	}
 };
