@@ -1,6 +1,9 @@
 function Game()
 {
 
+  
+  this.input = new Input(); 
+
   this.isPulse = false; 
   this.wasPulse = false; 
 
