@@ -14,19 +14,26 @@ function Game()
   this.treeList = new Array();
 
 
+  //WORLD INFO:
+  var worldWidth = 256, worldDepth = 256,
+			worldHalfWidth = worldWidth / 2, worldHalfDepth = worldDepth / 2;
+	this.ground;
+	this.sunLight;
+	this.skyColor = 0xefd1b5;
+
   this.init = function(){
     this.setupThree();
   }
 
   this.setupThree = function(){
-    this.renderer = new THREE.WebGLRenderer( { antialias: true } );
+    this.renderer = new THREE.WebGLRenderer( {clearColor: this.skyColor, antialias: true } );
       this.renderer.setSize( window.innerWidth, window.innerHeight );
       document.body.appendChild( this.renderer.domElement );
 
 
       this.camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 5000 );
         this.camera.position.z = 400;
-        this.camera.position.y = 20;
+        this.camera.position.y = 200;
   
 
         this.projector = new THREE.Projector();
@@ -34,31 +41,64 @@ function Game()
         this.scene = new THREE.Scene();
 
 
+
+        this.SetupWorld();
+
+  } 
+
+  this.SetupWorld = function(){
+
+  		//FOG
+
+  		this.scene.fog = new THREE.FogExp2( this.skyColor, 0.0025 );
+
+  		//GROUND PLANE
+   		var data = this.generateHeight( worldWidth, worldDepth );
+
+		var geometry = new THREE.PlaneGeometry( 7500, 7500, worldWidth - 1, worldDepth - 1 );
+		geometry.applyMatrix( new THREE.Matrix4().makeRotationX( - Math.PI / 2 ) );
+
+		for ( var i = 0, l = geometry.vertices.length; i < l; i ++ ) {
+
+			geometry.vertices[ i ].y = data[ i ] ;
+
+		}
+		var groundTexture = THREE.ImageUtils.loadTexture("../art_assets/concrete-tile.png");
+		var groundMaterial = new THREE.MeshLambertMaterial( { color: 0xffffff, shading: THREE.FlatShading} );
+		geometry.computeFaceNormals();
+		this.ground =  new THREE.Mesh( geometry, groundMaterial );
+		this.scene.add(this.ground);
+
+
+		//SUN LIGHT
+		this.light = new THREE.DirectionalLight( 0x829572, 1, 0);
+		this.light.position.y = 300;
+		this.light.rotation.y = Math.PI;
+		this.light.rotation.x = Math.PI/2;
+
+		this.scene.add(this.light);
+
+
+
         // Test geo to get stuff onscreen.
-        var geometry = new THREE.OBJLoader();
-        geometry.addEventListener( 'load', function ( event ) {
+        var loader = new THREE.JSONLoader();
 
-          var object = event.content;
+         loader.load( '../art_assets/tree.js', function( geometry, materials){
+         	var texture = THREE.ImageUtils.loadTexture("../art_assets/Tree_texture_v4.png");
+         	var material = new THREE.MeshBasicMaterial( { map: texture} );
+			var mesh = new THREE.Mesh( geometry, material );
+			mesh.scale.set(.2,.2,.2);
+			this.scene.add(mesh);
 
-          object.traverse( function ( child ) {
-            if(child instanceof THREE.Mesh) {
-              child.material =  new THREE.MeshBasicMaterial( { color: 0xffffff, side: THREE.DoubleSide} );
+         }.bind(this) );
 
-            }
-
-          } );
-          this.scene.add( object );
-        }.bind(this));
-
-        geometry.load( '../art_assets/nanosuit2.obj' );
+       
         var geometry2 = new THREE.CubeGeometry( 200, 200, 200 );
       	var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
       	var mesh = new THREE.Mesh( geometry2, material );
       	this.scene.add( mesh );
 
-        
-
-  } 
+  }
 
 
   this.Render = function(){
@@ -67,15 +107,19 @@ function Game()
 
   this.Update = function()
   {
-
+  	this.input.Update();
     PulseSwitch();
     this.player.Update();
+    this.CameraUpdate();
     this.Render();
 
-    this.camera.rotation.z += .001
   }
 
-
+  this.CameraUpdate = function(){
+  	this.camera.position.x = this.player.pos.x;
+  	this.camera.position.y = this.player.pos.y + 20;
+  	this.camera.position.z = this.player.pos.z;
+  }
 
   var PulseSwitch = function()
   {
@@ -96,6 +140,35 @@ function Game()
     }
 
   }
+
+  this.generateHeight = function( width, height ) {
+
+				var size = width * height, data = new Float32Array( size ),
+				perlin = new ImprovedNoise(), quality = 1, z = Math.random() * 100;
+
+				for ( var i = 0; i < size; i ++ ) {
+
+					data[ i ] = 0
+
+				}
+
+				for ( var j = 0; j < 4; j ++ ) {
+
+					for ( var i = 0; i < size; i ++ ) {
+
+						var x = i % width, y = ~~ ( i / width );
+						data[ i ] += Math.abs( perlin.noise( x / quality, y / quality, z ) * quality * 1.75 );
+
+
+					}
+
+					quality *= 5;
+
+				}
+
+				return data;
+
+			}
 
 
 
