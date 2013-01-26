@@ -1,7 +1,5 @@
 function Player(game)
 {
-	 
-
 	//--------Movement-----------
 	this.pos = new THREE.Vector3();
 	this.speed = new THREE.Vector3(); 
@@ -45,7 +43,7 @@ function Player(game)
 	{
 		//console.log("player UPDATE");
 		
-		console.log("game.inputControls.moveForward = " + game.inputControls.moveForward);
+		//console.log("game.inputControls.moveForward = " + game.inputControls.moveForward);
 		//console.log(game.testString);
 		
 		if(game.inputControls.moveForward)
