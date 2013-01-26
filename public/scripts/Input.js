@@ -96,18 +96,16 @@ function Input()
         //pitchObject.rotation.x -= movementY * 0.002;
 
         //pitchObject.rotation.x = Math.max( - PI_2, Math.min( PI_2, pitchObject.rotation.x ) );
-    };
+    }.bind(this);
 
     var onKeyDown = function ( event ) {
 
-    	console.log("keyDown");
+    	
         switch ( event.keyCode ) {
 
             case 38: // up
             case 87: // w
                 this.moveForward = true;
-                this.testString = "FFUUUKE YOO";
-              
                 break;
 
             case 37: // left
@@ -132,8 +130,8 @@ function Input()
             //     canJump = false;
             //     break;
         }
-         console.log("foward = " + this.moveForward);
-    };
+         //console.log("foward = " + this.moveForward);
+    }.bind(this);
 
     var onKeyUp = function ( event ) {
 
@@ -161,8 +159,7 @@ function Input()
                 break;
  			
         }
-        console.log("foward = " + this.moveForward);
-    };
+    }.bind(this);
 
     document.addEventListener( 'mousemove', onMouseMove, false );
     document.addEventListener( 'keydown', onKeyDown, false );

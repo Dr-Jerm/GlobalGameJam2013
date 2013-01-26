@@ -124,6 +124,9 @@ function Game()
   	this.camera.position.x = this.player.pos.x;
   	this.camera.position.y = this.player.pos.y + this.player.eyeHeight;
   	this.camera.position.z = this.player.pos.z;
+    //this.camera.set(0,0,0); 
+    //this.camera.rotation = this.player.camRot;
+    //console.log(this.camera.rotation.x + " " + this.camera.rotation.y + " " + this.camera.rotation.z);
   }
 
   var PulseSwitch = function()
