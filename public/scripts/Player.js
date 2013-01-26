@@ -5,13 +5,13 @@ function Player(game)
 	this.speed = new THREE.Vector3(); 
 	this.accel = new THREE.Vector3();
 	this.MoveRot = 0; 
-	this.runAccel = 0.1;
-	this.friction = 0.02; 
+	this.runAccel = 0.05;
+	this.friction = 1; 
 
-	this.maxSpeed = 5.0 //temp value
+	this.maxSpeed = 10 //temp value
 	this.camRot = new THREE.Vector3();
-
-
+	this.camRot.set(0,0,0); 
+	this.lookSpeed = 1.0;
 
 	var rayDir = new THREE.Vector3( 0, -1, 0 );
 	this.ray = new THREE.Raycaster(this.pos, rayDir);
@@ -34,53 +34,49 @@ function Player(game)
 	{
 		//FIX THIS!!??? why is theirs fast??? -> http://alteredqualia.com/three/examples/webgl_geometry_triangulate_quads.html
 		//if(game.clock.getElapsedTime % 3 === 0)
-			this.UpdateRay();
+		this.UpdateRay();
 		this.UpdateInput(); 
 		this.Move();
 	}
 
 	this.UpdateInput = function()
 	{
-		//console.log("player UPDATE");
-		
-		//console.log("game.inputControls.moveForward = " + game.inputControls.moveForward);
-		//console.log(game.testString);
-		
 		if(game.inputControls.moveForward)
 		{
-			this.MoveRot = 0;
-			console.log("player moveForward");
+			this.MoveRot = 3*(Math.PI/2); 
+			//this.MoveRot = 0;
 		}
-		else if(game.inputControls.moveForward && game.inputControls.moveLeft)
-		{
-			this.MoveRot = Math.PI / 4; 
-		}
+		// else if(game.inputControls.moveForward && game.inputControls.moveLeft)
+		// {
+		// 	this.MoveRot = 3*(Math.PI / 4); 
+		// }
 		else if(game.inputControls.moveLeft)
-		{
-			this.MoveRot = Math.PI / 2; 
-		}
-		else if(game.inputControls.moveLeft && game.inputControls.moveBackwards)
-		{
-			this.MoveRot = 3*(Math.PI / 4); 
-		}
-		else if(game.inputControls.moveBackwards)
 		{
 			this.MoveRot = Math.PI; 
 		}
-		else if(game.inputControls.moveBackwards && game.inputControls.moveRight)
+		// else if(game.inputControls.moveLeft && game.inputControls.moveBackwards)
+		// {
+		// 	this.MoveRot = 5*(Math.PI / 4); 
+		// }
+		else if(game.inputControls.moveBackward)
 		{
-			this.MoveRot = 5*(Math.PI/4); 
+			console.log("backward");
+			this.MoveRot = 5*(Math.PI/2); 
 		}
+		// else if(game.inputControls.moveBackward && game.inputControls.moveRight)
+		// {
+		// 	this.MoveRot = 5*(Math.PI/4); 
+		// }
 		else if(game.inputControls.moveRight)
 		{
-			this.MoveRot = 3*(Math.PI/2); 
+			this.MoveRot = 0; 
 		}
-		else if(game.inputControls.moveForwards && game.inputControls.moveRight)
-		{
-			this.MoveRot = 7*(Math.PI/4); 
-		}
+		// else if(game.inputControls.moveForward && game.inputControls.moveRight)
+		// {
+		// 	this.MoveRot = 7*(Math.PI/4); 
+		// }
 
-		if(game.inputControls.moveForward || game.inputControls.moveLeft || game.inputControls.moveRight || game.inputControls.moveBackwards)
+		if(game.inputControls.moveForward || game.inputControls.moveLeft || game.inputControls.moveRight || game.inputControls.moveBackward)
 		{
 			this.isRunning = true; 
 		}
@@ -88,6 +84,10 @@ function Player(game)
 		{
 			this.isRunning = false; 
 		}
+
+
+		this.camRot.setX(this.camRot.X+game.inputControls.movementX*this.lookSpeed);
+		this.camRot.setY(this.camRot.Y+game.inputControls.movementY*this.lookSpeed);
 
 
 	}
@@ -98,8 +98,8 @@ function Player(game)
 		
 		if(this.isRunning && this.speed.length() < this.maxSpeed)//accelerate for run
 		{
-			this.accel.setZ(Math.Sin(this.MoveRot));
-			this.accel.setX(Math.Cos(this.MoveRot));
+			this.accel.setZ(Math.sin(this.MoveRot));
+			this.accel.setX(Math.cos(this.MoveRot));
 		}
 		else
 		{

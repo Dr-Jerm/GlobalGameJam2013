@@ -81,27 +81,22 @@ function Game()
 
 		this.scene.add(this.light);
 
-
-
-        // Test geo to get stuff onscreen.
-        var loader = new THREE.JSONLoader();
-
-         loader.load( '../art_assets/tree1.mdl.js', function( geometry, materials){
-         	var texture = THREE.ImageUtils.loadTexture("../art_assets/tree1.jpg");
-         	var material = new THREE.MeshBasicMaterial( { map: texture} );
-			var mesh = new THREE.Mesh( geometry, material );
-			mesh.scale.set(.2,.2,.2);
-			mesh.position.y = 30;
-			this.scene.add(mesh);
-
-         }.bind(this) );
-
+    var loader = new THREE.JSONLoader();
+    loader.load( "art_assets/tree1.mdl.js", function( geometry, material){
+        var texture = THREE.ImageUtils.loadTexture("art_assets/tree1.jpg");
+        var material = new THREE.MeshBasicMaterial( {map: texture} );
+        var mesh = new THREE.Mesh( geometry, material );
+        mesh.scale.set(.1,.1,.1);
+        mesh.position.x = 0;
+        mesh.position.y = 0;
+        mesh.position.z = 0;
+        game.scene.add(mesh);
+      });
        
-        var geometry2 = new THREE.CubeGeometry( 200, 200, 200 );
-      	var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
-      	var mesh = new THREE.Mesh( geometry2, material );
-      	this.scene.add( mesh );
-
+    var geometry2 = new THREE.CubeGeometry( 200, 200, 200 );
+   	var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
+   	var mesh = new THREE.Mesh( geometry2, material );
+   	this.scene.add( mesh );
   }
 
 
@@ -124,6 +119,9 @@ function Game()
   	this.camera.position.x = this.player.pos.x;
   	this.camera.position.y = this.player.pos.y + this.player.eyeHeight;
   	this.camera.position.z = this.player.pos.z;
+    //this.camera.set(0,0,0); 
+    //this.camera.rotation = this.player.camRot;
+    //console.log(this.camera.rotation.x + " " + this.camera.rotation.y + " " + this.camera.rotation.z);
   }
 
   var PulseSwitch = function()

@@ -1,4 +1,4 @@
-function Shadow( _point, _rot)
+function Shadow( game, _point)
 {
 
 	//--------Movement-----------
