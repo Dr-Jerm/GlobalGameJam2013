@@ -1,32 +1,36 @@
 function ShadowSpawner(game)
 {
 
-	this.SpawnBias = 500; 
-
-
-
-	this.UpdateSpawner = function()
+	this.SpawnBias = 10; 
+	
+	this.Update = function()
 	{
 
-		if(Math.random()*1000 < SpawnBias)
+		if(Math.random()*1000 < this.SpawnBias)
 		{
 			this.SpawnShadow();
 		}
+		//this.SpawnShadow();
+		//this.SpawnShadow();
 
 	}
 
 
-
-
-	this.SpawnShadow = function();
+	this.SpawnShadow = function()
 	{
-		var pos = new TREE.Vector3();
-		var pos.Set(Math.random()*100, 0, Math.random()*100); 
-		game.shadowList[game.shadowList.length] = new Shadow(game, pos)
+		var pos = new THREE.Vector3();
+		pos.set( (Math.random()*7000-4500) , (0), (Math.random()*7000-4500));
+		var shadow = new Shadow(game, pos);
+		shadow.UpdateRay();
+		game.shadowList[game.shadowList.length] = shadow;
+		console.log("SpawnShadow!! at " + pos.x + " " + pos.z );
 		
-		console.log.("Spawned Shadow at " + pos.x + " " + pos.y );
+	
 	}
 	
+	
+
+
+
+
 }
-
-

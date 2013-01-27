@@ -1,11 +1,14 @@
 function Shadow( game, _pos)
 {
 
+	
 	//--------Movement-----------
 	this.pos = _pos; 
-	this.rot = _rot;  
-
+	//this.pos.set(500,500,500);
+	this.rot = new THREE.Vector3();
 	//--------Stats---------------
+	this.height = 100; 
+
 	this.health = 100;
 	this.healthMax = 100;
 
@@ -16,36 +19,47 @@ function Shadow( game, _pos)
 	this.ray.rayDir = rayDir;
 
 
-	var geometry = new THREE.CubeGeometry( 200, 200, 200 );
-   	var material = new THREE.MeshBasicMaterial( { color: 0x050505, wireframe: false} );
+	var geometry = new THREE.CubeGeometry( 50, 100, 50 );
+   	var material = new THREE.MeshBasicMaterial( { color: 0x000000} );
    	var mesh = new THREE.Mesh( geometry, material );
+   	console.log(game.testString);
+   	console.log(game.scene);
    	game.scene.add( mesh );
-
-
+	
+   	mesh.position = this.pos;
 
 	this.Update = function()
 	{
-		//FIX THIS!!??? why is theirs fast??? -> http://alteredqualia.com/three/examples/webgl_geometry_triangulate_quads.html
+		//FIX THIS!!??? why is theirs fast??? -> http://alteredqualia.com/three/examples/webgl_geometry_triangulate_quads.html 
+		//Because they are mocking you. just like git. 
 		//if(game.clock.getElapsedTime % 3 === 0)
-		this.UpdateRay();
-		this.UpdateAI(); 
-		this.Move();
+		//this.UpdateRay();
+		//this.UpdateAI(); 
+		//this.Move();
+
 
 	}
 
 	this.UpdateRay = function()
 	{
+		//console.log("Shadow Ray");
 		this.ray.ray.origin = this.pos;
 
-		this.ray.ray.origin.y = game.camera.position.y +100;
+		this.ray.ray.origin.y = game.camera.position.y+500000;
 
 		var intersects = this.ray.intersectObject( game.ground );
 
 		if ( intersects.length > 0 ) 
 		{
 
-			this.pos.y = intersects[ 0 ].point.y;
+			this.pos.y = intersects[ 0 ].point.y + (this.height/2);
 		}
+	}
+
+	this.Move = function()
+	{
+
+
 	}
 
 	this.UpdateAI = function()

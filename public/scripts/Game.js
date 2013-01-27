@@ -4,16 +4,14 @@ function Game()
   this.testString = "Here I am";
   this.inputControls = new Input();  
 
-  this.assets = new Assets();
-
   this.player = new Player(this); 
   this.shadowList = new Array();
   this.treeList = new Array();
-  //this.ShadowSpawner = new ShadowSpawner();
+  this.ShadowSpawner = new ShadowSpawner(this);
 
 
 
-
+  this.scene;
 
 
   //TIME
@@ -122,10 +120,12 @@ function Game()
   	this.delta = this.clock.getDelta();
   	//this.input.Update();
     //PulseSwitch();
-    //this.ShadowSpawner();
+    this.ShadowSpawner.Update();
+    this.ShadowUpdate();
     this.player.Update();
     this.CameraUpdate();
     this.Render();
+    this.ShadowUpdate();
 
   }
 
@@ -177,10 +177,22 @@ function Game()
 
   }
 
-  this.setPulse = function(width, height)
+
+
+  this.setPulse = function()
   {
 
   }
+
+  this.ShadowUpdate = function()
+  {
+    for (var s in this.shadowList)
+      {
+        this.shadowList[s].Update(); 
+      }
+
+  }
+
 
   this.generateHeight = function( width, height ) {
 
