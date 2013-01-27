@@ -1,7 +1,7 @@
 function WorldGen(game)
 {
 
-	var TreeNum = 1600
+	var TreeNum = 1600;
 
 	this.Generate = function()
 	{
@@ -46,9 +46,6 @@ function WorldGen(game)
 
 	this.GenerateDetails = function()
 	{
-
-
 	}
-
 
 }
