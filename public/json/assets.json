@@ -6,17 +6,17 @@
 	},
 	{
 		"name" : "tree2mdl",
-		"url" : "../art_assets/forestRealm/Tree2/tree2mdl.js",
+		"url" : "art_assets/forestRealm/Tree2/tree2mdl.js",
 		"type" : "model"
 	},
 	{
 		"name" : "tree3", 
-		"url" : "../art_assets/forestRealm/Tree3/tree3.jpg",
+		"url" : "art_assets/forestRealm/Tree3/tree3.jpg",
 		"type" : "image"
 	},
 	{
 		"name" : "tree3mdl",
-		"url" : "../art_assets/forestRealm/Tree3/tree3mdl.js",
+		"url" : "art_assets/forestRealm/Tree3/tree3mdl.js",
 		"type" : "model"
 	},
 ]
