@@ -1,0 +1,17 @@
+# MTL written from /Users/RKnudsen/Desktop/murderdeathkill3.obj
+newmtl mask
+Kd 0.8 0.8 0.8
+Ns 256
+d 1
+illum 1
+Ka 0 0 0
+Ks 0 0 0
+map_Kd /Users/RKnudsen/Desktop/mask_001.JPG
+newmtl murderkiller
+Kd 0.8 0.8 0.8
+Ns 256
+d 1
+illum 1
+Ka 0 0 0
+Ks 0 0 0
+map_Kd /Users/RKnudsen/Desktop/murderkill.png

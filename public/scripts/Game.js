@@ -9,6 +9,9 @@ function Game()
   this.player = new Player(this); 
   this.shadowList = new Array();
   this.treeList = new Array();
+  //this.ShadowSpawner = new ShadowSpawner();
+
+
 
 
 
@@ -119,6 +122,7 @@ function Game()
   	this.delta = this.clock.getDelta();
   	//this.input.Update();
     //PulseSwitch();
+    //this.ShadowSpawner();
     this.player.Update();
     this.CameraUpdate();
     this.Render();
