@@ -129,7 +129,7 @@ function Game()
 //TEST FUNCTION FOR 
   $(document).keypress( function(event){
   	if (event.keyCode == 32)
-  		self.SwitchWorld();
+  		self.SetPulse();
   });
 
   this.counter = 0;
@@ -206,9 +206,10 @@ function Game()
 
 
 
-  this.setPulse = function()
+  this.SetPulse = function()
   {
-
+      self.SwitchWorld();
+      this.ShadowUpdate();
   }
 
   this.ShadowUpdate = function()
