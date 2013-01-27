@@ -102,9 +102,9 @@ function Game()
    
   }
 
-  this.SwitchWorld = function(milSec){w
+  this.SwitchWorld = function(milSec){
 		this.treeList[i].swapWorld();
-	}
+	
 	for(var i in this.shadowList){
 		this.shadowList[i].swapWorld();
 	}
