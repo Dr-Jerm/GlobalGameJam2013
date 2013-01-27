@@ -45,10 +45,8 @@ Menu.prototype = {
 		var loaded = firstLoad();
 
 		if( loaded ) {
-			$('.button').animate({
-				marginLeft: -9000
-			}, 1500 , function() {
-				$('.menu').fadeOut(3000);
+			$('.button').slideUp( 0 , function() {
+				$('.menu').slideUp(300);
 			});
 			
 		}
