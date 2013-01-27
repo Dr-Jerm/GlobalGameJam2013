@@ -46,7 +46,7 @@ function Shadow( game, _pos)
 
 		this.ray.ray.origin.y = game.camera.position.y+500000;
 
-		var intersects = this.ray.intersectObject( game.ground );
+		var intersects = this.ray.intersectObject( game.ground.mesh );
 
 		if ( intersects.length > 0 ) 
 		{
@@ -65,6 +65,10 @@ function Shadow( game, _pos)
 	{
 
 
+	}
+
+	this.swapWorld = function(){
+		
 	}
 	
 }
