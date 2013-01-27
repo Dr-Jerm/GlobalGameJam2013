@@ -22,7 +22,7 @@ function Tree(game, _x, _z, _rot)
 
 		this.ray.ray.origin.y = game.camera.position.y;
 
-		var intersects = this.ray.intersectObject( game.ground );
+		var intersects = this.ray.intersectObject( game.ground.mesh );
 
 		if ( intersects.length > 0 ) {
 			this.pos.y = intersects[ 0 ].point.y;
@@ -34,4 +34,8 @@ function Tree(game, _x, _z, _rot)
 		game.scene.add(mesh);
 
     } );
+
+    this.swapWorld = function(){
+    	
+    }
 }
