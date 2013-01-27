@@ -104,12 +104,13 @@ function Game()
         game.scene.add(mesh);
       });
     
-  this.itemspawner = new ItemSpawner();
        
     var geometry2 = new THREE.CubeGeometry( 200, 200, 200 );
    	var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
    	var mesh = new THREE.Mesh( geometry2, material );
    	this.scene.add( mesh );
+    
+  this.itemspawner = new ItemSpawner();
   }
 
 

@@ -26,8 +26,25 @@ ItemSpawner.prototype = {
 			var material = new THREE.MeshBasicMaterial( {map: texture} );
 			var mesh = new THREE.Mesh( geometry, material );
 			mesh.scale.set(10,10,10);
+			
+			var rayDir = new THREE.Vector3( 0, -1, 0 );
+			this.ray = new THREE.Raycaster(mesh.position, rayDir);
+			this.ray.rayDir = rayDir;
 
   			mesh.position = this.place_rand();
+  			mesh.position.y = -1;
+			while( mesh.position.y == -1) {
+				this.ray.ray.origin = mesh.position;
+
+				this.ray.ray.origin.y = game.camera.position.y +100;
+
+				var intersects = this.ray.intersectObject( game.ground );
+
+				if( intersects.length > 0 ) {
+					mesh.position.y = intersects[0].point.y;
+				}
+			}
+
         	game.scene.add(mesh);
 		}
 	},
