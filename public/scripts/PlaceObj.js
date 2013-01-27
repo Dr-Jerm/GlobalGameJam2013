@@ -1,12 +1,13 @@
 
-var ItemSpawner = function() {
-	this.constructor() return this;
+var ItemSpawner = function(_t) {
+	this.constructor(_t);
+ 	return this;
 }
 ItemSpawner.prototype = {
 
-	popul: 300,
+	popul: 1000,
 	range: 0,
-	items: 1,
+	items: 2,
 	constructor: function(_t) {
 		switch(_t) {
 			case "tree":break;
@@ -15,27 +16,25 @@ ItemSpawner.prototype = {
 			case "grass":break;
 			default:
 				_t = "tree";
-			break
+			break;
 		}
 		var type = _t;
-		for(var i=0; i < popul; i++) {
-			var inx = (Math.floor((Math.random()*items)+1));
+		for(var i=0; i < this.popul; i++) {
+			var inx = 2;// (Math.floor((Math.random()*this.items)+1));
 			var texture = mojo.assets[type+inx];
 			var geometry = mojo.assets[type+inx+"mdl"];
 			var material = new THREE.MeshBasicMaterial( {map: texture} );
 			var mesh = new THREE.Mesh( geometry, material );
-			mesh.scale.set(.1,.1,.1);
-  			mesh.position.x = 0;
-        	mesh.position.y = 0;
-        	mesh.position.z = 0;
+			mesh.scale.set(6,6,6);
+  			mesh.position = this.place_rand();
         	game.scene.add(mesh);
 		}
 	},
 	place_rand : function() {
 		var pos = new THREE.Vector3();
-		pos.x = (Math.random()*7000)-7000);
-		pos.y = (Math.random()*200)-10);
-		pos.z = (Math.random()*7000)-7000);
+		pos.x = ((Math.random()*7000)-3500);
+		pos.y = ((Math.random()*170)+70);
+		pos.z = ((Math.random()*7000)-3500);
 		return pos;
 	}
 }

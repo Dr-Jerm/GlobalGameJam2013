@@ -94,7 +94,7 @@ function Game()
 
     var loader = new THREE.JSONLoader();
     loader.load( "art_assets/tree1.mdl.js", function( geometry, material){
-        var texture = mojo.assets["tree-1"];
+        var texture = mojo.assets["tree1"];
         var material = new THREE.MeshBasicMaterial( {map: texture} );
         var mesh = new THREE.Mesh( geometry, material );
         mesh.scale.set(.1,.1,.1);
@@ -103,6 +103,8 @@ function Game()
         mesh.position.z = 0;
         game.scene.add(mesh);
       });
+    
+  this.itemspawner = new ItemSpawner();
        
     var geometry2 = new THREE.CubeGeometry( 200, 200, 200 );
    	var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
