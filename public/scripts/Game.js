@@ -8,8 +8,8 @@ function Game()
   this.player = new Player(this); 
   this.shadowList = new Array();
   this.treeList = new Array();
-  this.ShadowSpawner = new ShadowSpawner(this);
-
+  this.shadowSpawner = new ShadowSpawner(this);
+  this.worldGen = new WorldGen(this);
   this.renderer;
   this.renderer2;
 
@@ -85,8 +85,9 @@ function Game()
 
 		this.scene.add(this.light);
 
-    
-		  this.itemspawner = new ItemSpawner();
+    this.worldGen.Generate();
+   
+		  //this.itemspawner = new ItemSpawner();
   }
 
   this.SwitchWorld = function(milSec){
@@ -117,7 +118,8 @@ function Game()
   	this.delta = this.clock.getDelta();
   	//this.input.Update();
     //PulseSwitch();
-    this.ShadowSpawner.Update();
+    //this.worldGen.Update(); 
+    this.shadowSpawner.Update();
     this.ShadowUpdate();
     this.player.Update();
     this.CameraUpdate();
@@ -188,7 +190,6 @@ function Game()
       {
         this.shadowList[s].Update(); 
       }
-
   }
 
 
