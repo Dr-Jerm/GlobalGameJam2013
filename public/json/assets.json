@@ -1,15 +1,5 @@
 [
 	{
-		"name" : "snowman", 
-		"url" : "../art_assets/characterAssets/snowman/snowman.jpg",
-		"type" : "image"
-	},
-	{
-		"name" : "snowmanmdl", 
-		"url" : "../art_assets/characterAssets/snowman/snowmanmdl.js",
-		"type" : "model"
-	},
-	{
 		"name" : "tree2", 
 		"url" : "../art_assets/forestRealm/Tree2/tree2.jpg",
 		"type" : "image"
