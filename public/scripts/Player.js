@@ -30,7 +30,7 @@ function Player(game)
 	this.health = 100;
 	this.healthMax = 100; 
 
-//	this.gun = new gun(); 
+	this.gun = new Gun();
 	
 
 
@@ -43,6 +43,7 @@ function Player(game)
 		this.UpdateInput(); 
 		this.Move();
 		this.letsLook();
+		this.gun.Update();
 	}
 
 	this.UpdateInput = function()
@@ -91,7 +92,6 @@ function Player(game)
 		}
 
 		this.MoveRot -= Math.atan2(this.pos.x - this.camRot.x, this.pos.z - this.camRot.z);
-		
 
 		//this.camTarget.set(Math.sin(this.camRot.x),Math.sin(this.camRot.y)+this.eyeHeight,0);
 		

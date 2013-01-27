@@ -98,5 +98,25 @@
 		"name" : "ash4", 
 		"url" : "../art_assets/foreignRealm/ash4.png",
 		"type" : "image"
+	},
+	{
+		"name" : "lensflare0", 
+		"url" : "../art_assets/lensFlare/lensflare0.png",
+		"type" : "image"
+	},
+	{
+		"name" : "lensflare1", 
+		"url" : "../art_assets/lensFlare/lensflare1.png",
+		"type" : "image"
+	},
+	{
+		"name" : "lensflare2", 
+		"url" : "../art_assets/lensFlare/lensflare2.png",
+		"type" : "image"
+	},
+	{
+		"name" : "lensflare3", 
+		"url" : "../art_assets/lensFlare/lensflare3.png",
+		"type" : "image"
 	}
 ]
