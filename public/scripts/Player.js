@@ -43,6 +43,7 @@ function Player(game)
 		this.UpdateRay();
 		this.UpdateInput(); 
 		this.Move();
+		this.letsLook();
 	}
 
 	this.UpdateInput = function()
@@ -90,6 +91,7 @@ function Player(game)
 			this.isRunning = false; 
 		}
 
+
 		//this.camRot.setX(game.inputControls.mouseMovementX*this.lookSpeed);
 		//this.camRot.setY(game.inputControls.mouseMovementY*this.lookSpeed);
 
@@ -102,6 +104,9 @@ function Player(game)
 		//console.log(">" + this.camTarget.x + " " + this.camTarget.y + " " + this.camTarget.z);
 		//this.camTargetWorld.add(this.pos);
 		//console.log(this.camTarget.x + " " + this.camTarget.y + " " + this.camTarget.z);
+
+		this.camRot.setX(this.camRot.X+game.inputControls.movementX*this.lookSpeed);
+		this.camRot.setY(this.camRot.Y+game.inputControls.movementY*this.lookSpeed);
 
 
 
@@ -130,19 +135,35 @@ function Player(game)
 
 	}
 
-	this.UpdateRay = function(){
+	this.letsLook = function()
+	{
+
+		controls = new THREE.FirstPersonControls( game.camera );
+		/*
+		controls.movementSpeed = this.movementSpeed; // How fast the player can walk around
+		controls.lookSpeed = this.lookSpeed; // How fast the player can loo
+	//--------Mk around with the mouse
+		controls.lookVertical = false; // Don't allow the player to look up or down. This is a temporary fix to keep people from flying
+		controls.noFly = true; // Don't allow hitting R or F to go up or down
+	*/
+	}
+
+
+	this.UpdateRay = function()
+	{
 		this.ray.ray.origin = this.pos;
 
 		this.ray.ray.origin.y = game.camera.position.y +100;
 
 		var intersects = this.ray.intersectObject( game.ground );
 
-		if ( intersects.length > 0 ) {
+		if ( intersects.length > 0 ) 
+		{
 
 			this.pos.y = intersects[ 0 ].point.y;
 
 
-				}
+		}
 	}
 
 
