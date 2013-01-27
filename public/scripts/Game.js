@@ -4,8 +4,6 @@ function Game()
   this.testString = "Here I am";
   this.inputControls = new Input();  
 
-  this.assets = new Assets();
-
   this.player = new Player(this); 
   this.shadowList = new Array();
   this.treeList = new Array();
