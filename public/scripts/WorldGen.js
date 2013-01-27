@@ -35,7 +35,7 @@ function WorldGen(game)
 			pos.setY(400);
 			tree = new Tree(game, pos);
 			tree.UpdateRay();
-			tree.setMesh(mesh);
+			tree.SetMesh(mesh);
 
 			game.treeList[game.treeList.length] = tree;
 			console.log("Spawn Tree at " + pos.x + " " + pos.z + " " + tree.pos.x + " " + tree.pos.y + " " + tree.pos.z)

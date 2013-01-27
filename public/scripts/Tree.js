@@ -5,8 +5,8 @@ function Tree(game, _pos)
 	this.pos = _pos; 
 	//this.pos.set(500,500,500);
 	this.rot = new THREE.Vector3();
-	//--------Stats---------------
-	this.height = 100; 
+	this.rot.set(Math.random()*0.05,(Math.random()*Math.PI*2), Math.random()*0.05);
+
 
 	
 	var rayDir = new THREE.Vector3( 0, -1, 0 );
@@ -30,14 +30,16 @@ function Tree(game, _pos)
 		if ( intersects.length > 0 ) 
 		{
 
-			this.pos.y = intersects[ 0 ].point.y + (this.height/2);
+			this.pos.y = intersects[ 0 ].point.y - 30;
 		}
 	}
 
 	this.SetMesh = function(_mesh)
 	{
 		mesh = _mesh; 
+		mesh.scale.set(10+Math.random(),10+Math.random()*2,10)+Math.random();
 		mesh.position = this.pos;
+		mesh.rotation = this.rot;
 		game.scene.add( mesh );
 	}
 	/*

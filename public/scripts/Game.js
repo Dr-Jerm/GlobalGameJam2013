@@ -14,7 +14,8 @@ function Game()
   this.renderer2;
 
   this.scene;
-
+  var fog1;
+  var fog2;
 
   //TIME
   this.clock = new THREE.Clock();
@@ -36,8 +37,9 @@ function Game()
   //WORLD INFO:
   var worldWidth = 56, worldDepth = 56;
 	this.ground;
+	this.snow;
 	this.sunLight;
-	this.skyColor = 0xefd1b5;
+	this.skyColor = 0x686d7f;
 
 	this.worldState = 1;
 
@@ -72,8 +74,8 @@ function Game()
   		console.log(worldWidth + worldDepth);
   		this.ground = new Ground(7000, worldWidth, worldDepth);
 
-  		this.scene.fog = new THREE.FogExp2( this.skyColor, 0.0025 );
-
+  		this.scene.fog = fog1 = new THREE.FogExp2( this.skyColor, 0.0025 );
+  		fog2 = new THREE.FogExp2( 0x9b5a3a, 0.0025 );
  
 		this.scene.add(this.ground.mesh);
 
@@ -84,6 +86,10 @@ function Game()
 		this.light.rotation.x = Math.PI/2;
 
 		this.scene.add(this.light);
+		
+
+		// SNOW & paricles
+		this.snow = new Snow(this.scene);
 
     this.worldGen.Generate();
    
@@ -91,16 +97,30 @@ function Game()
   }
 
   this.SwitchWorld = function(milSec){
-  		for(var i in this.treeList){
-  			this.treeList[i].swapWorld();
-  		}
-  		for(var i in this.shadowList){
-  			this.shadowList[i].swapWorld();
-  		}
+	for(var i in this.treeList){
+		this.treeList[i].swapWorld();
+	}
+	for(var i in this.shadowList){
+		this.shadowList[i].swapWorld();
+	}
 
-  		this.ground.swapWorld();
+	this.ground.swapWorld();
+
+	if(this.worldState == 1){
+		this.skyColor = 0x9b5a3a;
+		this.scene.fog = fog2;
+		this.worldState = 2;
+	}
+	else{
+		this.skyColor = 0x686d7f;
+		this.scene.fog = fog1;
+		this.worldState = 1;
+	}
+	
   }
 
+
+//TEST FUNCTION FOR 
   $(document).keypress( function(event){
   	if (event.keyCode == 32)
   		self.SwitchWorld();
@@ -109,7 +129,7 @@ function Game()
   this.counter = 0;
 
   this.Render = function(){
-
+  	this.renderer.setClearColorHex( this.skyColor, 1.0 );
   	this.renderer.render(this.scene,this.camera);
   }
 
@@ -125,6 +145,7 @@ function Game()
     this.CameraUpdate();
     this.Render();
     this.ShadowUpdate();
+    this.snow.update();
 
   }
 
