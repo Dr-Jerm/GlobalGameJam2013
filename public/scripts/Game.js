@@ -96,7 +96,7 @@ function Game()
 
     var loader = new THREE.JSONLoader();
     loader.load( "art_assets/tree1.mdl.js", function( geometry, material){
-        var texture = THREE.ImageUtils.loadTexture("art_assets/tree1.jpg");
+        var texture = mojo.assets["tree-1"];
         var material = new THREE.MeshBasicMaterial( {map: texture} );
         var mesh = new THREE.Mesh( geometry, material );
         mesh.scale.set(.1,.1,.1);
