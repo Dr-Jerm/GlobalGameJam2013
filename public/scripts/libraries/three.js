@@ -247,7 +247,6 @@ THREE.Color = function ( value ) {
  */
 
 
-};
 
 THREE.Color.prototype = {
 
