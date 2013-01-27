@@ -9,7 +9,8 @@ function Player(game)
 	this.friction = 0.5; 
 	this.maxSpeed = 3 //temp value
 
-
+	var Yray = 0; 
+	var oldYray = 0; 
 	this.camRot = new THREE.Vector3();
 	this.camRot.set(0,0,0); 
 	this.lookSpeed = .001;
@@ -23,7 +24,7 @@ function Player(game)
 	this.ray = new THREE.Raycaster(this.pos, rayDir);
 	this.ray.rayDir = rayDir;
 	
-	//--------Stats---------------
+	//--------Stats---------------w
 	this.isRunning = false; 
 	
 	this.eyeHeight = 5; 
@@ -116,22 +117,25 @@ function Player(game)
 
 	this.Move = function()
 	{
-
-		
 		if(this.isRunning && this.speed.length() < this.maxSpeed)//accelerate for run
 		{
 			this.accel.setZ(Math.sin(this.MoveRot)*this.runAccel);
 			this.accel.setX(Math.cos(this.MoveRot)*this.runAccel);
+			this.speed.add(this.accel);
 		}
-		else
+		else if(this.speed.length() >= this.friction)
 		{
 			this.accel.copy(this.speed);//de-accell from friction 
 			this.accel.normalize(); 
 			this.accel.negate(); 
 			this.accel.multiplyScalar(this.friction);
+			this.speed.add(this.accel);
 		}
-
-		this.speed.add(this.accel);
+		else
+		{
+			this.speed.set(0,0,0);
+		}
+		
 		this.pos.add(this.speed);
 
 
@@ -155,17 +159,20 @@ function Player(game)
 	{
 		this.ray.ray.origin = this.pos;
 
+
 		this.ray.ray.origin.y = game.camera.position.y +100;
 
 		var intersects = this.ray.intersectObject( game.ground.mesh );
 
 		if ( intersects.length > 0 ) 
 		{
-
-			this.pos.y = intersects[ 0 ].point.y;
-
-
+			Yray = intersects[ 0 ].point.y;
+			//console.log("Yray " + Yray + " oldYray " + Yray);
+			this.pos.y =  (oldYray + Yray)/2;
+			//this.pos.y = intersects[ 0 ].point.y;
 		}
+		oldYray = Yray;
+
 	}
 
 

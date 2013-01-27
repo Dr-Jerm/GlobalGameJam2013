@@ -85,18 +85,10 @@ function Input(game)
 	this.reload = false; 
 
 	var onMouseMove = function ( event ) {
-
-        //if ( scope.enabled === false ) return;
-
-        this.mouseMovementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
-        this.mouseMovementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
-
-       	console.log(game.player.camRot.x + " " +  game.player.camRot.y + " - " + this.mouseMovementX + this.mouseMovementY);
-       //console.log( "mouse " + movementX + " " + movementY);
-        //yawObject.rotation.y -= movementX * 0.002;
-        //pitchObject.rotation.x -= movementY * 0.002;
-
-        //pitchObject.rotation.x = Math.max( - PI_2, Math.min( PI_2, pitchObject.rotation.x ) );
+       this.mouseMovementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
+       this.mouseMovementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
+       //console.log(game.player.camRot.x + " " +  game.player.camRot.y + " - " + this.mouseMovementX + this.mouseMovementY);
+    
     }.bind(this);
 
     var onKeyDown = function ( event ) {

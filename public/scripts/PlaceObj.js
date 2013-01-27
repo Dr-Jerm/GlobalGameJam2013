@@ -31,9 +31,9 @@ ItemSpawner.prototype = {
 			this.ray = new THREE.Raycaster(mesh.position, rayDir);
 			this.ray.rayDir = rayDir;
 			
-			mesh.rotation.x = (Math.random()*.04);
+			mesh.rotation.x = (Math.random()*.054);
 			mesh.rotation.y = Math.random();
-			mesh.rotation.z = (Math.random()*.04);
+			mesh.rotation.z = (Math.random()*.054);
 
   			mesh.position = this.place_rand();
   			mesh.position.y = -1;
@@ -45,7 +45,7 @@ ItemSpawner.prototype = {
 				var intersects = this.ray.intersectObject( game.ground );
 
 				if( intersects.length > 0 ) {
-					mesh.position.y = intersects[0].point.y -.3;
+					mesh.position.y = intersects[0].point.y -.5;
 				}
 			}
 
