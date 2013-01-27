@@ -9,6 +9,7 @@ function Game()
   this.shadowList = new Array();
   this.treeList = new Array();
   this.heart;
+  //this.sounds = new Sounds(this);
   this.shadowSpawner = new ShadowSpawner(this);
   this.worldGen = new WorldGen(this);
   this.renderer;
@@ -26,6 +27,9 @@ function Game()
   this.pulseIntensity = 0; 
   this.pulseIntensityDecay = 1; 
   this.pulseIntensityMax = 35;
+
+  this.opacc = 1; 
+
 
 
   // this.wasPulse = false; 
@@ -103,7 +107,7 @@ function Game()
 
 
     this.worldGen.Generate();
-   
+    //sounds.start_beat(100);
 		  //this.itemspawner = new ItemSpawner();
   }
 
@@ -180,12 +184,25 @@ function Game()
   {
     if(this.isPulse)
     {
+      this.opacc += .001;
+      if(this.opacc > 1)
+      {
+        this.opacc = 1;
+      }
+
       this.pulseIntensity -= this.pulseIntensityDecay; 
-      
       if(this.pulseIntensity < 0)
       {
         this.pulseIntensity = 0;
         self.SwitchWorld();
+      }
+    }
+    else
+    {
+      this.opacc -= .001;
+      if(this.opacc < 0)
+      {
+        this.opacc = 0;
       }
     }
   
