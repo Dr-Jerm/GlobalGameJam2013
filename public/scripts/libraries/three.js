@@ -240,6 +240,15 @@ THREE.Color = function ( value ) {
 
 };
 
+/**
+ * @author mrdoob / http://mrdoob.com/
+ * @author alteredq / http://alteredqualia.com/
+ * @author paulirish / http://paulirish.com/
+ */
+
+
+};
+
 THREE.Color.prototype = {
 
 	constructor: THREE.Color,
@@ -36298,3 +36307,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 	this.handleResize();
 
 };
+
+
+
+

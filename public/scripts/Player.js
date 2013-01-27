@@ -86,7 +86,7 @@ function Player(game)
 			this.isRunning = false; 
 		}
 
-
+Input
 		this.camRot.setX(this.camRot.X+game.inputControls.movementX*this.lookSpeed);
 		this.camRot.setY(this.camRot.Y+game.inputControls.movementY*this.lookSpeed);
 
@@ -119,10 +119,14 @@ function Player(game)
 	this.letsLook = function()
 	{
 
-		controls = new THREE.TrackballControls( camera );
-		controls.target.set( 0, 0, 0 );
-
-		console.log( + " ");
+		controls = new THREE.FirstPersonControls( game.camera );
+		/*
+		controls.movementSpeed = this.movementSpeed; // How fast the player can walk around
+		controls.lookSpeed = this.lookSpeed; // How fast the player can loo
+	//--------Mk around with the mouse
+		controls.lookVertical = false; // Don't allow the player to look up or down. This is a temporary fix to keep people from flying
+		controls.noFly = true; // Don't allow hitting R or F to go up or down
+	*/
 	}
 
 
