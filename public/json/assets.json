@@ -30,6 +30,16 @@
 		"type" : "image"
 	},
 	{
+		"name" : "heartmdl", 
+		"url" : "../art_assets/heart/heart.mdl.js",
+		"type" : "model"
+	},
+	{
+		"name" : "heart", 
+		"url" : "../art_assets/heart/HeartTexture.png",
+		"type" : "image"
+	},
+	{
 		"name" : "tree2", 
 		"url" : "../art_assets/forestRealm/Tree2/tree2.jpg",
 		"type" : "image"
