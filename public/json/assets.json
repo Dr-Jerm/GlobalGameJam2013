@@ -19,4 +19,44 @@
 		"url" : "../art_assets/forestRealm/Tree3/tree3mdl.js",
 		"type" : "model"
 	},
+	{
+		"name" : "snow1", 
+		"url" : "../art_assets/forestRealm/snow1.png",
+		"type" : "image"
+	},
+	{
+		"name" : "snow2", 
+		"url" : "../art_assets/forestRealm/snow2.png",
+		"type" : "image"
+	},
+	{
+		"name" : "snow3", 
+		"url" : "../art_assets/forestRealm/snow3.png",
+		"type" : "image"
+	},
+	{
+		"name" : "snow4", 
+		"url" : "../art_assets/forestRealm/snow4.png",
+		"type" : "image"
+	},
+	{
+		"name" : "ash1", 
+		"url" : "../art_assets/foreignRealm/ash1.png",
+		"type" : "image"
+	},
+	{
+		"name" : "ash2", 
+		"url" : "../art_assets/foreignRealm/ash2.png",
+		"type" : "image"
+	},
+	{
+		"name" : "ash3", 
+		"url" : "../art_assets/foreignRealm/ash3.png",
+		"type" : "image"
+	},
+	{
+		"name" : "ash4", 
+		"url" : "../art_assets/foreignRealm/ash4.png",
+		"type" : "image"
+	}
 ]

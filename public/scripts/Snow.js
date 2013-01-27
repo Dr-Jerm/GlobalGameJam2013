@@ -1,10 +1,13 @@
-Snow = function(scene){
+var Snow = function(scene){
 	this.scene = scene;
 
 	this.particles = [];
 	this.geometry = new THREE.Geometry();
 	this.materials = [];
 	this.color;
+
+	this.snowSprites = [];
+	this.ashSprites = [];
 	
 	for (var i = 0; i < 6000; i ++ ) {
 		var vertex = new THREE.Vector3();
@@ -15,16 +18,26 @@ Snow = function(scene){
 		this.geometry.vertices.push( vertex );
 	}
 
-	this.parameters = [ [ [1.0, 1.0, 1.0], 5 ], [ [0.95, 1, 1], 4 ], [ [0.90, 1, 1], 3 ], [ [0.85, 1, 1], 2 ], [ [0.80, 1, 1], 1 ] ];
+	this.parameters = [ [ [1.0, 1.0, 1.0], 5 ], [ [0.95, 1, 1], 4 ], [ [0.90, 1, 1], 3 ], [ [0.85, 1, 1], 2 ] ];
+
+	for(var i = 1; i < 5; i++){
+		var txt = "snow"
+		var sprite = mojo.assets[txt+i];
+		this.snowSprites.push(sprite);  
+
+		txt = "ash"
+		sprite = mojo.assets[txt+i];
+		this.ashSprites.push(sprite);  		
+	    }
 
 	for (var i = 0; i < this.parameters.length; i ++ ) {
 
 		var size  = this.parameters[i][1] * 2;
 		this.color = this.parameters[i][0];
-		
+
 		this.materials[i] = new THREE.ParticleBasicMaterial( 
 				{ size: size, 
-					//map: THREE.ImageUtils.loadTexture( 'images/particle.png' ), 
+					map: this.snowSprites[i], 
 					color: 0xE1E1FF,
 					transparent: true,
 					depthWrite: false
