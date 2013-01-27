@@ -40,7 +40,7 @@ function Game()
 	this.sunLight;
 	this.skyColor = new THREE.Color( 0x686d7f);
 	this.doomColor = new THREE.Color(0x9b5a3a);
-	this.currColor = this.skyColor.getHex;
+	this.currColor = this.skyColor.getHex();
 
 	this.worldState = 1;
 
@@ -99,12 +99,27 @@ function Game()
 
 
     this.worldGen.Generate();
-    //makeWav();
+    
     sounds.start_beat(this.heartRateBPM );
-		  //this.itemspawner = new ItemSpawner();
+
   }
 
   this.updateColors = function(){
+  	var c1R = this.skyColor.r;
+  	var c1G = this.skyColor.g;
+  	var c1B = this.skyColor.b;
+
+  	var c2R = this.doomColor.r;
+  	var c2G = this.doomColor.g;
+  	var c2B = this.doomColor.b;
+
+  	var nR = -this.opacc*(c1R-c2R) + c1R;
+  	var nG = -this.opacc*(c1G-c2G) + c1G;
+  	var nB = -this.opacc*(c1B-c2B) + c1B;
+
+  	var nC = new THREE.Color(0xffffff);
+  	nC.setRGB(nR, nG, nB);
+  	this.currColor = nC.getHex();
 
 
   }
@@ -114,29 +129,29 @@ function Game()
 		
     this.isPulse = !this.isPulse;
 
-    for(var i in this.shadowList)
-    {
-      this.treeList[i].swapWorld();
-    }
+    // for(var i in this.shadowList)
+    // {
+    //   this.treeList[i].swapWorld();
+    // }
   	for(var i in this.shadowList)
     {
   		this.shadowList[i].swapWorld();
   	}
 
-	this.ground.swapWorld();
+	// this.ground.swapWorld();
 
-  	if(this.worldState == 1)
-    {
-  		this.skyColor = 0x9b5a3a;
-  		this.scene.fog = fog2;
-  		this.worldState = 2;
-  	}
-  	else
-    {
-  		this.skyColor = 0x686d7f;
-  		this.scene.fog = fog1;
-  		this.worldState = 1;
-  	}
+  	// if(this.worldState == 1)
+   //  {
+  	// 	this.currColor = this.doomColor.getHex();
+  	// 	this.scene.fog = fog2;
+  	// 	this.worldState = 2;
+  	// }
+  	// else
+   //  {
+  	// 	this.currColor = this.skyColor.getHex();
+  	// 	this.scene.fog = fog1;
+  	// 	this.worldState = 1;
+  	// }
 	
 }
 
@@ -150,7 +165,9 @@ function Game()
   this.counter = 0;
 
   this.Render = function(){
-  	this.renderer.setClearColorHex( this.skyColor, 1.0 );
+  	this.renderer.setClearColorHex( this.currColor, 1.0 );
+  	this.scene.fog = new THREE.FogExp2( this.currColor, 0.0025 );
+ // 	console.log(this.currColor)
   	this.renderer.render(this.scene,this.camera);
   }
 
@@ -166,10 +183,17 @@ function Game()
     this.CameraUpdate();
     this.Render();
     this.snow.update();
+    this.updateColors();
+    this.ground.updateColors();
 
     for (var s in this.shadowList)
       {
         this.shadowList[s].drawUpdate(); 
+      }
+
+      for (var i in this.treeList)
+      {
+        this.treeList[i].updateColors(); 
       }
 
   }
@@ -235,6 +259,10 @@ function Game()
     {
       this.speedCounter = 0 
       this.heartRateBPM -= 50; 
+      if(this.heartRateBPM < 300)
+      {
+        this.heartRateBPM = 300; 
+      }
       sounds.start_beat(this.heartRateBPM);
     }
     console.log( "spC >" + this.speedCounter + "BPM >" + self.heartRateBPM +" length"+ self.pulseLength +" decay"+self.pulseLengthDecay+" max"+ self.pulseLengthMax + " oRate"+ self.opaccRate);
