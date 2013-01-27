@@ -1,0 +1,9 @@
+# MTL written from /Library/WebServer/Documents/webgl/GlobalGameJam2013/art_assets/forested-land/Tree3/tree_003.obj
+newmtl tree
+Kd 0.8 0.8 0.8
+Ns 256
+d 1
+illum 1
+Ka 0 0 0
+Ks 0 0 0
+map_Kd /Users/RKnudsen/Desktop/AliGScenesAndImagesForRyansBitchAss/Tree.jpg
