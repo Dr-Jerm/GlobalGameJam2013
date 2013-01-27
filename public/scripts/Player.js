@@ -37,6 +37,7 @@ function Player(game)
 		this.UpdateRay();
 		this.UpdateInput(); 
 		this.Move();
+		this.letsLook();
 	}
 
 	this.UpdateInput = function()
@@ -115,19 +116,31 @@ function Player(game)
 
 	}
 
-	this.UpdateRay = function(){
+	this.letsLook = function()
+	{
+
+		controls = new THREE.TrackballControls( camera );
+		controls.target.set( 0, 0, 0 );
+
+		console.log( + " ");
+	}
+
+
+	this.UpdateRay = function()
+	{
 		this.ray.ray.origin = this.pos;
 
 		this.ray.ray.origin.y = game.camera.position.y +100;
 
 		var intersects = this.ray.intersectObject( game.ground );
 
-		if ( intersects.length > 0 ) {
+		if ( intersects.length > 0 ) 
+		{
 
 			this.pos.y = intersects[ 0 ].point.y;
 
 
-				}
+		}
 	}
 
 
