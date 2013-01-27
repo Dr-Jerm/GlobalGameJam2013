@@ -97,27 +97,33 @@ function Game()
 		  //this.itemspawner = new ItemSpawner();
   }
 
-  this.SwitchWorld = function(milSec){w
-		this.treeList[i].swapWorld();
-	}
-	for(var i in this.shadowList){
-		this.shadowList[i].swapWorld();
-	}
+  this.SwitchWorld = function(milSec)
+  {
+		for(var i in this.shadowList)
+    {
+      this.treeList[i].swapWorld();
+    }
+  	for(var i in this.shadowList)
+    {
+  		this.shadowList[i].swapWorld();
+  	}
 
 	this.ground.swapWorld();
 
-	if(this.worldState == 1){
-		this.skyColor = 0x9b5a3a;
-		this.scene.fog = fog2;
-		this.worldState = 2;
-	}
-	else{
-		this.skyColor = 0x686d7f;
-		this.scene.fog = fog1;
-		this.worldState = 1;
-	}
+  	if(this.worldState == 1)
+    {
+  		this.skyColor = 0x9b5a3a;
+  		this.scene.fog = fog2;
+  		this.worldState = 2;
+  	}
+  	else
+    {
+  		this.skyColor = 0x686d7f;
+  		this.scene.fog = fog1;
+  		this.worldState = 1;
+  	}
 	
-  }
+}
 
 
 //TEST FUNCTION FOR 
