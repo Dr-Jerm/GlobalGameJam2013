@@ -1,7 +1,7 @@
 [
 	{
 		"name" : "fadeBodymdl", 
-		"url" : "../art_assets/characterAssets/fade/characterFadeBodymdl.js",
+		"url" : "../art_assets/characterAssets/fade/fadebodymdl.js",
 		"type" : "model"
 	},
 	{

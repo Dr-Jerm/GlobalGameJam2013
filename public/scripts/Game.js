@@ -112,7 +112,7 @@ function Game()
 
 	this.ground.swapWorld();
 
-	if(this.worldState == 1){ds
+	if(this.worldState == 1){
 		this.skyColor = 0x9b5a3a;
 		this.scene.fog = fog2;
 		this.worldState = 2;

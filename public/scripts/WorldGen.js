@@ -31,7 +31,7 @@ function WorldGen(game)
 		{
 
 			var idx = Math.floor(1+ ((Math.random()-0.01)*3));
-			var idx = 2;
+			//var idx = 2;
 			var texture = mojo.assets["tree"+idx];
 			var geometry = mojo.assets["tree"+idx+"mdl"];
 			var material = new THREE.MeshBasicMaterial( {map: texture} );
@@ -47,7 +47,7 @@ function WorldGen(game)
 			tree.SetMesh(mesh);
 
 			game.treeList[game.treeList.length] = tree;
-			
+
 			//console.log("Spawn Tree at " + pos.x + " " + pos.z + " " + tree.pos.x + " " + tree.pos.y + " " + tree.pos.z)
 		}
 
