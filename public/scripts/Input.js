@@ -80,14 +80,23 @@ function Input(game)
 
 	this.mouseMovementX = 0;
 	this.mouseMovementY = 0;
+	this.oldMouseMovementX = 0;
+	this.oldMouseMovementY = 0;
+	this.lockedFrames = 0;
 
 	this.shoot = false;
 	this.reload = false; 
 
+	function mouseoutFunction(event) {
+  	event = event || window.event;
+  	var sender = event.srcElement || event.target;
+	}	
+
 	var onMouseMove = function ( event ) {
-       this.mouseMovementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
-       this.mouseMovementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
-       //console.log(game.player.camRot.x + " " +  game.player.camRot.y + " - " + this.mouseMovementX + this.mouseMovementY);
+  		this.mouseMovementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
+    	this.mouseMovementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
+
+       //console.log(" cX" + game.player.camRot.x + " cY" +  game.player.camRot.y + " cZ" +  game.player.camRot.z);
     
     }.bind(this);
 
@@ -115,15 +124,8 @@ function Input(game)
             case 68: // d
                 this.moveRight = true;
                 break;
-
-            // case 32: // space
-            //     if ( canJump === true ){
-            //         velocity.y = jumpVelocity;
-            //     }
-            //     canJump = false;
-            //     break;
         }
-         //console.log("foward = " + this.moveForward);
+  
     }.bind(this);
 
     var onKeyUp = function ( event ) {
@@ -158,6 +160,24 @@ function Input(game)
     document.addEventListener( 'keydown', onKeyDown, false );
     document.addEventListener( 'keyup', onKeyUp, false );
 
+
+    this.Update = function(){	
+    	
+    	if(this.oldMouseMovementX == this.mouseMovementX && this.oldMmouseMovementY == this.mouseMovementY && !(this.mouseMovementY == 0 && this.mouseMovementX == 0))
+    	{
+    		this.lockedFrames++;
+    	}
+    	if(this.lockedFrames > 15)
+    	{
+    		this.lockedFrames = 15; 
+    		this.mouseMovementX = 0;
+    		this.mouseMovementY = 0; 
+    	}
+
+
+    	this.oldMouseMovementX = this.mouseMovementX;
+    	this.oldMmouseMovementY = this.mouseMovementY;
+	}
 	/*
 
 
@@ -244,8 +264,8 @@ Read more: RISE AGAINST - HISTORIA CALAMITATUM LYRICS
 
 	}
 
-	this.Update = function(){
-
-	}
+	
 	*/
+
+
 }
