@@ -16,8 +16,8 @@
 	},
 	{
 		"name" : "fadeMask1", 
-		"url" : "../art_assets/characterAssets/fade/mask1.jpg",
-		"type" : "texture"
+		"url" : "../art_assets/characterAssets/fade/mask1.png",
+		"type" : "texture1"
 	},
 	{
 		"name" : "tree2", 

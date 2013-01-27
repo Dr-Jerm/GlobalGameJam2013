@@ -20,6 +20,7 @@ function Shadow( game, _pos)
 
 
 	var geometry = mojo.assets["fadeBodymdl"];
+//	geometry = new THREE.SphereGeometry( 50, 10, 10);
    	var texture = mojo.assets["fadeBody"];
    	var material = new  THREE.MeshLambertMaterial( {map: texture, transparent : true});
    	var mesh = new THREE.Mesh( geometry, material );
@@ -28,6 +29,7 @@ function Shadow( game, _pos)
    	this.group.add( mesh );
 
    	geometry = mojo.assets["fadeMask1mdl"];
+//   	geometry = new THREE.SphereGeometry( 50, 10, 10);
    	texture = mojo.assets["fadeMask1"];
    	material = new  THREE.MeshLambertMaterial( {map: texture});
    	mesh = new THREE.Mesh( geometry, material );
