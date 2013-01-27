@@ -123,9 +123,9 @@ function Game()
   	var c2G = this.doomColor.g;
   	var c2B = this.doomColor.b;
 
-  	var nR = this.opacc*(c2R-c1R) + c2R;
-  	var nG = this.opacc*(c2G-c1G) + c2G;
-  	var nB = this.opacc*(c2B-c1B) + c2B;
+  	var nR = -this.opacc*(c1R-c2R) + c1R;
+  	var nG = -this.opacc*(c1G-c2G) + c1G;
+  	var nB = -this.opacc*(c1B-c2B) + c1B;
 
   	var nC = new THREE.Color(0xffffff);
   	nC.setRGB(nR, nG, nB);
@@ -139,16 +139,16 @@ function Game()
 		
     this.isPulse = !this.isPulse;
 
-    for(var i in this.shadowList)
-    {
-      this.treeList[i].swapWorld();
-    }
+    // for(var i in this.shadowList)
+    // {
+    //   this.treeList[i].swapWorld();
+    // }
   	for(var i in this.shadowList)
     {
   		this.shadowList[i].swapWorld();
   	}
 
-	this.ground.swapWorld();
+	// this.ground.swapWorld();
 
   	// if(this.worldState == 1)
    //  {
@@ -176,7 +176,8 @@ function Game()
 
   this.Render = function(){
   	this.renderer.setClearColorHex( this.currColor, 1.0 );
-  	console.log(this.currColor)
+  	this.scene.fog = new THREE.FogExp2( this.currColor, 0.0025 );
+ // 	console.log(this.currColor)
   	this.renderer.render(this.scene,this.camera);
   }
 
@@ -193,10 +194,16 @@ function Game()
     this.Render();
     this.snow.update();
     this.updateColors();
+    this.ground.updateColors();
 
     for (var s in this.shadowList)
       {
         this.shadowList[s].drawUpdate(); 
+      }
+
+      for (var i in this.treeList)
+      {
+        this.treeList[i].updateColors(); 
       }
 
   }

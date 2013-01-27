@@ -30,21 +30,21 @@ function WorldGen(game)
 		for(i=0; i < TreeNum; i++)
 		{
 
-			var idx = Math.floor(1+ ((Math.random()-0.01)*3));
-			//var idx = 2;
-			var texture = mojo.assets["tree"+idx];
-			var geometry = mojo.assets["tree"+idx+"mdl"];
-			var material = new THREE.MeshBasicMaterial( {map: texture} );
+			// var idx = Math.floor(1+ ((Math.random()-0.01)*3));
+			// //var idx = 2;
+			// var texture = mojo.assets["tree"+idx];
+			// var geometry = mojo.assets["tree"+idx+"mdl"];
+			// var material = new THREE.MeshBasicMaterial( {map: texture, trasparent: true} );
 
-			mesh = new THREE.Mesh( geometry, material );
-			pos = new THREE.Vector3();
-			pos.set( (Math.random()*7000-3500) , (0), (Math.random()*7000-3500));
+			// mesh = new THREE.Mesh( geometry, material );
+			// pos = new THREE.Vector3();
+			// pos.set( (Math.random()*7000-3500) , (0), (Math.random()*7000-3500));
 
 
-			pos.setY(400);
+			// pos.setY(400);
 			tree = new Tree(game, pos);
 			tree.UpdateRay();
-			tree.SetMesh(mesh);
+//			tree.SetMesh(mesh);
 
 			game.treeList[game.treeList.length] = tree;
 

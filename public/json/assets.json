@@ -118,5 +118,35 @@
 		"name" : "lensflare3", 
 		"url" : "../art_assets/lensFlare/lensflare3.png",
 		"type" : "image"
+	},
+	{
+		"name" : "column1mdl", 
+		"url" : "../art_assets/foreignRealm/column1.mdl.js",
+		"type" : "model"
+	},
+	{
+		"name" : "column2mdl", 
+		"url" : "../art_assets/foreignRealm/column2.mdl.js",
+		"type" : "model"
+	},
+	{
+		"name" : "column3mdl", 
+		"url" : "../art_assets/foreignRealm/column3.mdl.js",
+		"type" : "model"
+	},
+	{
+		"name" : "column4mdl", 
+		"url" : "../art_assets/foreignRealm/column4.mdl.js",
+		"type" : "model"
+	},
+	{
+		"name" : "column5mdl", 
+		"url" : "../art_assets/foreignRealm/column5.mdl.js",
+		"type" : "model"
+	},
+	{
+		"name" : "column", 
+		"url" : "../art_assets/foreignRealm/new-column-texture.png",
+		"type" : "image"
 	}
 ]

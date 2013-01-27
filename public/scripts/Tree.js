@@ -14,9 +14,38 @@ function Tree(game, _pos)
 	this.ray.rayDir = rayDir;
    	
    	var mesh = null;
+   	var mesh2 = null;
 
+   	var idx = Math.floor(2+ ((Math.random()-0.01)*2));
+			//var idx = 2;
+	var texture = mojo.assets["tree"+idx];
+	var texture2 = mojo.assets["column"];
+	var geometry = mojo.assets["tree"+idx+"mdl"];
+	var geometry2 = mojo.assets["column"+idx+"mdl"];
+	this.material = new THREE.MeshBasicMaterial( {map: texture, transparent : true} );
+	this.material2 = new THREE.MeshBasicMaterial( {map: texture2, transparent : true, depthWrite: false} );
+	this.material2.opacity = 0.0;
+	this.material.opacity = 0.0;
+
+	mesh = new THREE.Mesh( geometry, this.material );
+	mesh2 = new THREE.Mesh( geometry2, this.material2 );
+	this.pos = new THREE.Vector3();
+	this.pos.set( (Math.random()*7000-3500) , (0), (Math.random()*7000-3500));
+
+
+	this.pos.setY(400);
    	
-   	
+
+	mesh.scale.set(10+Math.random(),10+Math.random()*2,10)+Math.random();
+	mesh2.scale = mesh.scale;
+
+	mesh.position = this.pos;
+	mesh2.position = this.pos;
+	mesh.rotation = this.rot;
+	mesh2.rotation = this.rot;
+	game.scene.add( mesh );
+	game.scene.add( mesh2 );
+
 
    	this.UpdateRay = function()
 	{
@@ -43,42 +72,21 @@ function Tree(game, _pos)
 		mesh.rotation = this.rot;
 		game.scene.add( mesh );
 	}
-	/*
-	this.pos = (_x, 0, _z);
-	this.rot = _rot;
-	var index = Math.floor((Math.random()*game.assets.tree_limit)+1);
-	var obj = "../art_assets/tree"+index+".mdl.js";
-	var tex = "../art_assets/tree"+index+".jpg";
 
-	var loader = new THREE.JSONLoader();
+	this.updateColors = function(){
+		this.material.opacity = 1-game.opacc;
+		this.material2.opacity = game.opacc;
+	}
 
-    loader.load( obj, function( geometry, materials){
-        var texture = THREE.ImageUtils.loadTexture(tex);
-        var material = new THREE.MeshBasicMaterial( { map: texture} );
-		var mesh = new THREE.Mesh( geometry, material );
-		mesh.scale.set(1,1,1);
-
-		var rayDir = new THREE.Vector3( 0, -1, 0 );
-		this.ray = new THREE.Raycaster(this.pos, rayDir);
-		this.ray.rayDir = rayDir;
-		this.ray.ray.origin = this.pos;
-
-		this.ray.ray.origin.y = game.camera.position.y;
-
-		var intersects = this.ray.intersectObject( game.ground.mesh );
-
-		if ( intersects.length > 0 ) {
-			this.pos.y = intersects[ 0 ].point.y;
-		}
-
-		mesh.position.x = this.pos.x;
-		mesh.position.y = this.pos.y;
-		mesh.position.z = this.pos.z;
-		game.scene.add(mesh);
-
-    } );
-	*/
-    this.swapWorld = function(){
+  //   this.swapWorld = function(){
+		// if(game.worldState == 1){
+		// 	this.material.opacity = 0.0;
+		// 	this.material2.opacity = 0.0;
+		// }
+		// else{
+		// 	this.material.opacity = 1.0;
+		// 	this.material2.opacity = 1.0;
+		// }
     	
-    }
+    // }
 }
