@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Jeremy Bernstein</title>
+        <title>An Incoplete Game</title>
         <LINK href="style.css" rel="stylesheet" type="text/css">
         <script src="scripts/libraries/Detector.js"></script>
         <script src="scripts/libraries/stats.min.js"></script>
@@ -11,14 +11,6 @@
         <script src="scripts/libraries/jquery.min.js"></script>
         <script src="scripts/libraries/ImprovedNoise.js"></script>
         <script src="scripts/libraries/PointerLockControls.js"></script>
-        <script src="scripts/Menu.js"></script>
-        <script src="scripts/Game.js"></script>
-        <script src="scripts/Init.js"></script>
-        <script src="scripts/Input.js"></script>
-        <script src="scripts/Player.js"></script>
-        <script src="scripts/Shadow.js"></script>
-        <script src="scripts/Tree.js"></script>
-        <script src="scripts/Assets.js"></script>
         
         <script src="/socket.io/socket.io.js"></script>
 </head>
@@ -30,18 +22,22 @@
         <div class="button start">Start Game</div>
 </div>
 
-
+<script src="scripts/Menu.js"></script>
 <script type="text/javascript">
+        var mojo;
         (function ($) {
                 var menu = new Menu();
-                var mojo = new AssetMojo();
-
-                // Tests
-                var texture = mojo.register("tree-1", "../art_assets/tree1.jpg", "image");
-                var newtexture = mojo.register("tree-2", "../art_assets/tree1.jpg", "image");
-
+                mojo = new AssetMojo();
+                
         })(jQuery);
 </script>
+<script src="scripts/Game.js"></script>
+<script src="scripts/Init.js"></script>
+<script src="scripts/Input.js"></script>
+<script src="scripts/Player.js"></script>
+<script src="scripts/Shadow.js"></script>
+<script src="scripts/Tree.js"></script>
+<script src="scripts/Assets.js"></script>
 
 </body>
 
