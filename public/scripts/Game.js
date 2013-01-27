@@ -114,7 +114,7 @@ function Game()
 
     for(var i in this.shadowList)
     {
-      //this.treeList[i].swapWorld();
+      this.treeList[i].swapWorld();
     }
   	for(var i in this.shadowList)
     {
@@ -159,7 +159,7 @@ function Game()
 
     this.UpdatePulse();
 
-    this.ShadowUpdate();
+    //this.ShadowUpdate();
     this.player.Update();
     this.CameraUpdate();
     this.Render();
@@ -202,7 +202,7 @@ function Game()
     self.SwitchWorld();
     this.pulseIntensity = this.pulseIntensityMax; 
     this.shadowSpawner.Update();
-    //this.ShadowUpdate();
+    this.ShadowUpdate();
   }
 
   this.ShadowUpdate = function()

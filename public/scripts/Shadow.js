@@ -13,8 +13,10 @@ function Shadow( game, _pos)
 	this.healthMax = 100;
 
 	this.speed = new THREE.Vector3(); 
-	this.maxSpeed = 3 //temp value
+	this.maxSpeed = 30 //temp value
 	this.rotY = 0; 
+
+	this.targetDistence = 0;
 
 	//---MAGIC-3D--SHIT----------------
 	this.group = new THREE.Object3D();
@@ -87,6 +89,7 @@ function Shadow( game, _pos)
 		
 		this.speed.set(this.maxSpeed*Math.sin(this.rotY), 0 , this.maxSpeed*Math.cos(this.rotY));
 		
+		
 
 	}
 
@@ -94,7 +97,10 @@ function Shadow( game, _pos)
 	{
 		this.pos.add(this.speed);
 		this.UpdateRay();
+		this.targetDistence = this.pos.length(game.player.pos);
 		this.group.position = this.pos;
+		
+		this.group.rotation.y = this.rotY - Math.PI/2 + (Math.random()-0.5)*(this.targetDistence/2000);     
 
 	}
 
