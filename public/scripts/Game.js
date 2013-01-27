@@ -49,7 +49,9 @@ function Game()
 	this.ground;
 	this.snow;
 	this.sunLight;
-	this.skyColor = 0x686d7f;
+	this.skyColor = new THREE.Color( 0x686d7f);
+	this.doomColor = new THREE.Color(0x9b5a3a);
+	this.currColor = this.skyColor.getHex;
 
 	this.worldState = 1;
 
@@ -59,7 +61,7 @@ function Game()
   }
 
   this.setupThree = function(){
-    this.renderer = new THREE.WebGLRenderer( { antialias: true, clearColor: this.skyColor } );
+    this.renderer = new THREE.WebGLRenderer( { antialias: true, clearColor: this.currColor } );
       this.renderer.setSize( window.innerWidth, window.innerHeight );
       document.body.appendChild( this.renderer.domElement );
 
@@ -85,8 +87,8 @@ function Game()
   		console.log(worldWidth + worldDepth);
   		this.ground = new Ground(7000, worldWidth, worldDepth);
 
-  		this.scene.fog = fog1 = new THREE.FogExp2( this.skyColor, 0.0025 );
-  		fog2 = new THREE.FogExp2( 0x9b5a3a, 0.0025 );
+  		this.scene.fog = fog1 = new THREE.FogExp2( this.currColor, 0.0025 );
+  		fog2 = new THREE.FogExp2( this.doomColor.getHex(), 0.0025 );
  
 		this.scene.add(this.ground.mesh);
 
@@ -103,12 +105,19 @@ function Game()
 		this.snow = new Snow(this.scene);
 
 		// Amb light
-
+//		var ambLight = new THREE.AmbientLight( 0xffffff );
+//		this.scene.add(ambLight);
 
 
     this.worldGen.Generate();
-    //sounds.start_beat(100);
+    //makeWav();
+    sounds.start_beat(800);
 		  //this.itemspawner = new ItemSpawner();
+  }
+
+  this.updateColors = function(){
+
+
   }
 
   this.SwitchWorld = function(milSec)
@@ -169,6 +178,11 @@ function Game()
     this.Render();
     this.snow.update();
 
+    for (var s in this.shadowList)
+      {
+        this.shadowList[s].drawUpdate(); 
+      }
+
   }
 
   this.CameraUpdate = function(){
@@ -184,7 +198,7 @@ function Game()
   {
     if(this.isPulse)
     {
-      this.opacc += .001;
+      this.opacc += .1;
       if(this.opacc > 1)
       {
         this.opacc = 1;
@@ -199,7 +213,7 @@ function Game()
     }
     else
     {
-      this.opacc -= .001;
+      this.opacc -= .1;
       if(this.opacc < 0)
       {
         this.opacc = 0;

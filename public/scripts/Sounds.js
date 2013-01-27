@@ -10,8 +10,8 @@ var hb = 'art_assets/sound/heartbeat.wav';
 
 function Sounds(game)
 {
-	"lastTimeout":false,
-	"audioArray": [
+	var lastTimeout = false;
+	var audioArray [
 		makeWav(hb),
 		makeWav(hb, 0.5),
 		false,
@@ -28,45 +28,70 @@ function Sounds(game)
 		makeWav(hb, 0.5),
 		false,
 		false,
-	],
-	"channels":16,
-	"firstCall":true,
-	"define_sound_array":function(soundFile) 
-	{
-		this.audioArray = [];
-		for (i=0; i<this.channels; i++){
-			var audioElement = document.createElement('audio');
-			audioElement.src=soundFile;
-			this.audioArray[i] = audioElement;
-		}
-	},
-	"start_beat": function (interval)
-	{
-		this.soundIndex = 0;
-		clearTimeout(sounds.currentTimeout);
-		//Need immediate sample when changing tempo, but not on first call.
-		if (!this.firstCall) { setTimeout(sounds.perform, 0); }
-		else { this.firstCall = false; }
-		this.currentTimeout = setInterval( sounds.perform, interval);
-	},
-	//perform actually PLAYS the audio.
-	"perform":function() {
-				if(sounds.audioArray[sounds.soundIndex]) {
-					sounds.audioArray[sounds.soundIndex].play();
-					//call eric's function.  I hope it's async. ^_^
-					sounds.functionToCall();
-				}
-				//if we haven't reached the last element:
-				if(sounds.soundIndex < (sounds.audioArray.length - 1))
-				{	//move on to next
-					sounds.soundIndex++;
-				} else {
-					//otherwise start over
-					sounds.soundIndex = 0;  
-				}
-			},
-	"functionToCall":function() { console.log("you called me.");}
+	];
+
+	var channels = 16;
+ 	var firstCall true;
+ 	"define_sound_array":function(soundFile) 
+
 }
+// 	"lastTimeout":false,
+// 	"audioArray": [
+// 		makeWav(hb),
+// 		makeWav(hb, 0.5),
+// 		false,
+// 		false,
+// 		makeWav(hb),
+// 		makeWav(hb, 0.5),
+// 		false,
+// 		false,
+// 		makeWav(hb),
+// 		makeWav(hb, 0.5),
+// 		false,
+// 		false,
+// 		makeWav(hb),
+// 		makeWav(hb, 0.5),
+// 		false,
+// 		false,
+// 	],
+// 	"channels":16,
+// 	"firstCall":true,
+// 	"define_sound_array":function(soundFile) 
+// 	{
+// 		this.audioArray = [];
+// 		for (i=0; i<this.channels; i++){
+// 			var audioElement = document.createElement('audio');
+// 			audioElement.src=soundFile;
+// 			this.audioArray[i] = audioElement;
+// 		}
+// 	},
+// 	"start_beat": function (interval)
+// 	{
+// 		this.soundIndex = 0;
+// 		clearTimeout(sounds.currentTimeout);
+// 		//Need immediate sample when changing tempo, but not on first call.
+// 		if (!this.firstCall) { setTimeout(sounds.perform, 0); }
+// 		else { this.firstCall = false; }
+// 		this.currentTimeout = setInterval( sounds.perform, interval);
+// 	},
+// 	//perform actually PLAYS the audio.
+// 	"perform":function() {
+// 				if(sounds.audioArray[sounds.soundIndex]) {
+// 					sounds.audioArray[sounds.soundIndex].play();
+// 					//call eric's function.  I hope it's async. ^_^
+// 					sounds.functionToCall();
+// 				}
+// 				//if we haven't reached the last element:
+// 				if(sounds.soundIndex < (sounds.audioArray.length - 1))
+// 				{	//move on to next
+// 					sounds.soundIndex++;
+// 				} else {
+// 					//otherwise start over
+// 					sounds.soundIndex = 0;  
+// 				}
+// 			},
+// 	"functionToCall":function() { console.log("you called me.");}
+// }
 
 /*
 To install, just include the js file and "heartbeat.wav" in the top level folder of the working area.

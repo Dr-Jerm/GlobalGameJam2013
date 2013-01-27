@@ -13,9 +13,6 @@ Heart.prototype = {
 		var randX = (Math.random()-0.5)*distance;
 		var randZ = (Math.random()-0.5)*distance;
 
-		randX = 10;
-		randZ = 10;
-
 		this.pos.x = randX;
 		this.pos.z = randZ;
 
@@ -32,7 +29,7 @@ Heart.prototype = {
 		if ( intersects.length > 0 ) 
 		{
 
-			this.pos.y = intersects[ 0 ].point.y + 30;
+			this.pos.y = intersects[ 0 ].point.y + 15;
 		}
 
 	   	var geometry = mojo.assets["heartmdl"];
@@ -59,7 +56,7 @@ Heart.prototype = {
 
 		var light = new THREE.PointLight( 0xffffff, 1.5, 4500 );
 		light.position.set( x, y+10, z );
-		game.scene.add( light );
+		//game.scene.add( light );
 
 		light.color.setHSV( h, s, v );
 

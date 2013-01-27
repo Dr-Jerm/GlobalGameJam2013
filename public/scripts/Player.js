@@ -43,7 +43,7 @@ function Player(game)
 		this.UpdateInput(); 
 		this.Move();
 		this.letsLook();
-		this.gun.Update();
+//		this.gun.Update();
 	}
 
 	this.UpdateInput = function()
