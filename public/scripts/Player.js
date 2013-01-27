@@ -8,14 +8,16 @@ function Player(game)
 	this.runAccel = 0.05;
 	this.friction = 1; 
 	this.maxSpeed = 10 //temp value
-	
-	this.quat = new THREE.Quaternion();
+
+
 	this.camRot = new THREE.Vector3();
 	this.camRot.set(0,0,0); 
-	this.lookSpeed = .001;
+	this.lookSpeed = .01;
 
 	this.camTarget = new THREE.Vector3(); 
 	this.camTarget.set(0,0,0);
+	this.camTargetWorld = new THREE.Vector3(); 
+	this.camTargetWorld.set(100,100,100);
 
 	var rayDir = new THREE.Vector3( 0, -1, 0 );
 	this.ray = new THREE.Raycaster(this.pos, rayDir);
@@ -88,14 +90,17 @@ function Player(game)
 			this.isRunning = false; 
 		}
 
+		//this.camRot.setX(game.inputControls.mouseMovementX*this.lookSpeed);
+		//this.camRot.setY(game.inputControls.mouseMovementY*this.lookSpeed);
 
 
-		this.camRot.setX(this.camRot.x+game.inputControls.mouseMovementX*this.lookSpeed);
-		this.camRot.setY(this.camRot.y+game.inputControls.mouseMovementY*this.lookSpeed);
-		this.camTarget.set(Math.cos(this.camRot.x),Math.sin(this.camRot.y)+this.eyeHeight,0);
-		console.log(">" + this.camRot.x + " " + this.camRot.y + " " + this.camRot.z + " mx" + game.inputControls.mouseMovementX + " my" + game.inputControls.mouseMovementY);
-		//console.log(">" + this.camTarget.x + " " + this.camTarget.y + " " + this.sssssssawcamTarget.z);
-		this.camTarget.add(this.pos);
+
+		//this.camTarget.set(Math.sin(this.camRot.x),Math.sin(this.camRot.y)+this.eyeHeight,0);
+		
+		//this.camTarget.set(this.camTarget.x + game.inputControls.mouseMovementX*this.lookSpeed, this.camTarget.y + game.inputControls.mouseMovementX*this.lookSpeed, this.camTarget.z); 
+		//console.log(">" + this.camRot.x + " " + this.camRot.y + " " + this.camRot.z + " mx" + game.inputControls.mouseMovementX + " my" + game.inputControls.mouseMovementY);
+		//console.log(">" + this.camTarget.x + " " + this.camTarget.y + " " + this.camTarget.z);
+		//this.camTargetWorld.add(this.pos);
 		//console.log(this.camTarget.x + " " + this.camTarget.y + " " + this.camTarget.z);
 
 
