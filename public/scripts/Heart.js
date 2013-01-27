@@ -29,7 +29,7 @@ Heart.prototype = {
 		if ( intersects.length > 0 ) 
 		{
 
-			this.pos.y = intersects[ 0 ].point.y + 30;
+			this.pos.y = intersects[ 0 ].point.y + 15;
 		}
 
 	   	var geometry = mojo.assets["heartmdl"];
