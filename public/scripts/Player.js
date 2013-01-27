@@ -155,7 +155,7 @@ function Player(game)
 
 		this.ray.ray.origin.y = game.camera.position.y +100;
 
-		var intersects = this.ray.intersectObject( game.ground );
+		var intersects = this.ray.intersectObject( game.ground.mesh );
 
 		if ( intersects.length > 0 ) 
 		{
