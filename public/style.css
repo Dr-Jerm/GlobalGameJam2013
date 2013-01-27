@@ -47,3 +47,16 @@ body {
 .menu .button:active {
 	background-color: #FFF;
 }
+
+.creditscrate {
+	color: #000;
+	font-size:1em;
+	font-family: tahoma;
+	line-height: 1.4em;
+	margin-left:auto;
+	margin-right:auto;
+	min-height: 300px;
+	width:240px;
+	background: rgb(236,236,231);
+	overflow: hidden;
+}

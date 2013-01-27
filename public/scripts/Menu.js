@@ -3,6 +3,7 @@
  *
  */
 var Menu = function() { this.constructor(); return this; };
+
 Menu.prototype = {
 	skip: false,
 	constructor: function() {
@@ -33,6 +34,13 @@ Menu.prototype = {
 		
 		$('.button.start').click(function () {
 			self.complete();
+		});
+		$('.button.credits').click(function () {
+			//document.getElementById('creditscrate').style.display = 'block';
+			$('.creditscrate').fadeIn(600);
+		});
+		$('.button.credits.close').click(function (){
+			$('.creditscrate').fadeOut(300);
 		});
 	},
 	// Load assets
