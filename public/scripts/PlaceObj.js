@@ -45,7 +45,7 @@ ItemSpawner.prototype = {
 				var intersects = this.ray.intersectObject( game.ground );
 
 				if( intersects.length > 0 ) {
-					mesh.position.y = intersects[0].point.y;
+					mesh.position.y = intersects[0].point.y -.3;
 				}
 			}
 
