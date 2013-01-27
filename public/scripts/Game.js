@@ -8,6 +8,7 @@ function Game()
   this.player = new Player(this); 
   this.shadowList = new Array();
   this.treeList = new Array();
+  this.heart;
   this.shadowSpawner = new ShadowSpawner(this);
   this.worldGen = new WorldGen(this);
   this.renderer;
@@ -96,6 +97,10 @@ function Game()
 
 		// SNOW & paricles
 		this.snow = new Snow(this.scene);
+
+		// Amb light
+
+
 
     this.worldGen.Generate();
    
