@@ -1,5 +1,35 @@
 [
 	{
+		"name" : "fadeBodymdl", 
+		"url" : "../art_assets/characterAssets/fade/fadebodymdl.js",
+		"type" : "model"
+	},
+	{
+		"name" : "fadeBody", 
+		"url" : "../art_assets/characterAssets/fade/fade_skin.png",
+		"type" : "image"
+	},
+	{
+		"name" : "fadeMask1mdl", 
+		"url" : "../art_assets/characterAssets/fade/fademaskmdl.js",
+		"type" : "model"
+	},
+	{
+		"name" : "fadeMask1", 
+		"url" : "../art_assets/characterAssets/fade/mask2.png",
+		"type" : "image"
+	},
+		{
+		"name" : "fadeMask2", 
+		"url" : "../art_assets/characterAssets/fade/mask3.png",
+		"type" : "image"
+	},
+		{
+		"name" : "fadeMask3", 
+		"url" : "../art_assets/characterAssets/fade/mask1.png",
+		"type" : "image"
+	},
+	{
 		"name" : "tree2", 
 		"url" : "../art_assets/forestRealm/Tree2/tree2.jpg",
 		"type" : "image"

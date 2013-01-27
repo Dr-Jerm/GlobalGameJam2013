@@ -38,6 +38,7 @@ function Tree(game, _pos)
 	{
 		mesh = _mesh; 
 		mesh.scale.set(10+Math.random(),10+Math.random()*2,10)+Math.random();
+
 		mesh.position = this.pos;
 		mesh.rotation = this.rot;
 		game.scene.add( mesh );

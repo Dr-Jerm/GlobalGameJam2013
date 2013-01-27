@@ -1,6 +1,8 @@
+var game;
+var socket;
+var stats;
 
-
-function firstLoad(){
+firstLoad = function(){
 
 	if(!Detector.webgl){
         alert('This game requires a modern browser/graphics card with WebGL enabled.\n'+
@@ -9,23 +11,22 @@ function firstLoad(){
 
     socket = io.connect("http:localhost:8080")
 
-	this.game = new Game();
-	this.game.init();
-	this.stats = new Stats();
-	this.stats.domElement.style.position = 'absolute';
-	this.stats.domElement.style.top = '0px';
+	game = new Game();
+	game.init();
+	stats = new Stats();
+	stats.domElement.style.position = 'absolute';
+	stats.domElement.style.top = '0px';
 	document.body.appendChild( stats.domElement );
 
-	this.tick = function(game){
-		requestAnimationFrame(tick);
-		this.game.Update();
-		stats.update();
-	}
-
-
-	this.tick(game);
+	tick();
 
 	return true;
 }
 
 
+tick = function(){
+	requestAnimationFrame(tick);
+
+	game.Update();
+	stats.update();
+}
