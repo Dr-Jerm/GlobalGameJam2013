@@ -22,7 +22,12 @@ function Game()
   this.clock = new THREE.Clock();
   this.delta = 0; 
 
-  // this.isPulse = false; 
+  this.isPulse = false;
+  this.pulseIntensity = 0; 
+  this.pulseIntensityDecay = 1; 
+  this.pulseIntensityMax = 35;
+
+
   // this.wasPulse = false; 
 
   // this.pulseloopTime = 0;
@@ -104,9 +109,12 @@ function Game()
 
   this.SwitchWorld = function(milSec)
   {
-		for(var i in this.shadowList)
+		
+    this.isPulse = !this.isPulse;
+
+    for(var i in this.shadowList)
     {
-      this.treeList[i].swapWorld();
+      //this.treeList[i].swapWorld();
     }
   	for(var i in this.shadowList)
     {
@@ -134,7 +142,7 @@ function Game()
 //TEST FUNCTION FOR 
   $(document).keypress( function(event){
   	if (event.keyCode == 32)
-  		self.SwitchWorld();
+  		self.SetPulse();
   });
 
   this.counter = 0;
@@ -148,14 +156,13 @@ function Game()
   {
   	this.delta = this.clock.getDelta();
   	this.inputControls.Update();
-    //PulseSwitch();
-    //this.worldGen.Update(); 
-    this.shadowSpawner.Update();
+
+    this.UpdatePulse();
+
     this.ShadowUpdate();
     this.player.Update();
     this.CameraUpdate();
     this.Render();
-    this.ShadowUpdate();
     this.snow.update();
 
   }
@@ -169,51 +176,33 @@ function Game()
     
   }
 
-  this.PulseSwitch = function()
+  this.UpdatePulse = function()
   {
-    console.log(this.clock.getDelta());
-    // this.wasPulse = this.isPulse; 
-
-    // this.pulseLoopTime += this.delta; 
-    // if(this.pulseLoopTime > this.pulseloopTotalTime) this.pulseLoopTime = 0; 
-
-    // if(this.isPulse) this.pulseTime += this.delta; 
-    // if(this.pulsetime> this.pulselength)
-    // { 
-    //   this.pulsetime = 0;
-    //   this.isPulse = false; 
-    // }
-    // if((this.pulseLoopTime > this.wubtime || this.pulseLoopTime > this.dubtime) && !this.isPulse)
-    // {
-    //   this.isPulse = true; 
-    //   console.log("THUMP");
-    // }
-
-
-
-
-    // //<   switch logic here  >
-
-    
-    // if(this.isPulse && !this.wasPulse)// begin pulse  for
-    // {
-    //   for (var s in this.shadowList)
-    //   {
-    //     this.shadowList[s].Move(); 
-    //   }
-    // }
-    // if(!this.isPulse && this.wasPulse)// end pulse  
-    // {
-     
-    // }
-
+    if(this.isPulse)
+    {
+      this.pulseIntensity -= this.pulseIntensityDecay; 
+      
+      if(this.pulseIntensity < 0)
+      {
+        this.pulseIntensity = 0;
+        self.SwitchWorld();
+      }
+    }
+  
   }
 
 
 
-  this.setPulse = function()
+  this.SetPulse = function()
   {
-
+    if(this.isPulse)//if already in pulse switch it off to start next
+    {
+        self.SwitchWorld();
+    }
+    self.SwitchWorld();
+    this.pulseIntensity = this.pulseIntensityMax; 
+    this.shadowSpawner.Update();
+    //this.ShadowUpdate();
   }
 
   this.ShadowUpdate = function()
