@@ -1,22 +1,31 @@
 body {
-	background-color: rgb(184, 51, 51);
-        margin: 0px;
-        overflow: hidden;
+	background-color: rgb(47, 52, 59);
+    margin: 0px;
+    overflow: hidden;
+    
+
+
 }
 
 .menu {
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: none;
-	background-color: rgba(170, 241, 18, 0.8);
-	padding: 1.0em;
+	/*position: absolute;*/
+	height: 150px;
+	width: 400px;
+	margin-top: 70px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	background-color: rgba(166, 56, 0, 0.8);
+	padding: 1em 1em 0em 1em ;
 	text-align: center;
+	border-bottom: 1px solid;
+	border-color:rgb(255,255,255);
 }
 
 .menu h1 {
-	font-size: 4em;
-	text-shadow: 0 0 5px rgb(106, 221, 77);
+	font-size: 3em;
+	color: rgb(236,236,231);
+	/*text-shadow: 0 0 5px rgb(106, 221, 77);*/
 	font-family: Helvetica;
 }
 
