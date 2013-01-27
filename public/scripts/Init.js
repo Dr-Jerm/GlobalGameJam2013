@@ -23,6 +23,20 @@ firstLoad = function(){
 	return true;
 }
 
+// EVENT HANDLERS
+
+function onWindowResize( event ) {
+
+	SCREEN_WIDTH = window.innerWidth;
+	SCREEN_HEIGHT = window.innerHeight;
+
+	renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+
+	game.camera.aspect = SCREEN_WIDTH/ SCREEN_HEIGHT;
+	game.camera.updateProjectionMatrix();
+
+}
+
 
 tick = function(){
 	requestAnimationFrame(tick);
