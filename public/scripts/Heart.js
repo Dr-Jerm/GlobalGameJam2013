@@ -56,7 +56,7 @@ Heart.prototype = {
 
 		var light = new THREE.PointLight( 0xffffff, 1.5, 4500 );
 		light.position.set( x, y+10, z );
-		game.scene.add( light );
+		//game.scene.add( light );
 
 		light.color.setHSV( h, s, v );
 

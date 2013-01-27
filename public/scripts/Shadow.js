@@ -35,12 +35,12 @@ function Shadow( game, _pos)
 
    	this.group.add( mesh );
 
-   	geometry = mojo.assets["fadeMask1mdl"];
+   	var geometry = mojo.assets["fadeMask1mdl"];
 //   	geometry = new THREE.SphereGeometry( 50, 10, 10);
 	var idx = Math.floor(1+ Math.random()*3);
-   	texture = mojo.assets["fadeMask"+idx];
-   	this.material2 = new  THREE.MeshBasicMaterial( {map: texture});
-   	mesh = new THREE.Mesh( geometry, this.material2 );
+   	var texture = mojo.assets["fadeMask"+idx];
+   	this.material2 = new  THREE.MeshBasicMaterial( {map: texture, transparent : true});
+   	var mesh = new THREE.Mesh( geometry, this.material2 );
 	mesh.scale.set(12,12,12);
 	mesh.position.y = 30;
 	mesh.position.x = 6;
@@ -64,8 +64,7 @@ function Shadow( game, _pos)
 		this.UpdateAI(); 
 		this.Move();
 
-		this.material1.opacity = game.opacc;
-		this.material1.opacity = game.opacc;
+		
 
 	}
 
@@ -107,17 +106,20 @@ function Shadow( game, _pos)
 
 	}
 
-
+	this.drawUpdate = function(){
+		this.material1.opacity = game.opacc;
+		this.material2.opacity = game.opacc;
+	}
 
 	this.swapWorld = function(){
-		if(game.worldState == 1){
-			this.material1.opacity = 0.0;
-			this.material2.opacity = 0.0;
-		}
-		else{
-			this.material1.opacity = 1.0;
-			this.material2.opacity = 1.0;
-		}
+		// if(game.worldState == 1){
+		// 	this.material1.opacity = 0.0;
+		// 	this.material2.opacity = 0.0;
+		// }
+		// else{
+		// 	this.material1.opacity = 1.0;
+		// 	this.material2.opacity = 1.0;
+		// }
 	}
 	
 }
