@@ -81,6 +81,17 @@ function Game()
 
 		this.scene.add(this.light);
 
+    var loader = new THREE.JSONLoader();
+    loader.load( "art_assets/tree1.mdl.js", function( geometry, material){
+        var texture = THREE.ImageUtils.loadTexture("art_assets/tree1.jpg");
+        var material = new THREE.MeshBasicMaterial( {map: texture} );
+        var mesh = new THREE.Mesh( geometry, material );
+        mesh.scale.set(.1,.1,.1);
+        mesh.position.x = 0;
+        mesh.position.y = 0;
+        mesh.position.z = 0;
+        game.scene.add(mesh);
+      });
        
     var geometry2 = new THREE.CubeGeometry( 200, 200, 200 );
    	var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
