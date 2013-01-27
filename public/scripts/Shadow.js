@@ -21,7 +21,7 @@ function Shadow( game, _pos)
 
 	var geometry = mojo.assets["fadeBodymdl"];
    	var texture = mojo.assets["fadeBody"];
-   	var material = new  THREE.MeshLambertMaterial( {map: texture});
+   	var material = new  THREE.MeshLambertMaterial( {map: texture, transparent : true});
    	var mesh = new THREE.Mesh( geometry, material );
    	mesh.scale.set(12,12,12);
 

@@ -7,7 +7,7 @@
 	{
 		"name" : "fadeBody", 
 		"url" : "../art_assets/characterAssets/fade/fade_skin.png",
-		"type" : "texture"
+		"type" : "image"
 	},
 	{
 		"name" : "fadeMask1mdl", 

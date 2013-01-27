@@ -88,8 +88,8 @@ function Game()
 		this.scene.add(this.light);
 
 		//AMBIENT LIGHT
-//		var ambLight = new THREE.AmbientLight( 0x333333);
-//		this.scene.add(ambLight);
+		var ambLight = new THREE.AmbientLight( 0x333333);
+		this.scene.add(ambLight);
 		
 
 		// SNOW & paricles
