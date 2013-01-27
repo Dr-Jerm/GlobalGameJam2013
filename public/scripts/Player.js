@@ -90,7 +90,7 @@ function Player(game)
 			this.isRunning = false; 
 		}
 
-		//this.MoveRot -= (Math.PI + game.camera.rotation.y);
+		this.MoveRot -= Math.atan2(this.pos.x - this.camRot.x, this.pos.z - this.camRot.z);
 		
 
 		//this.camTarget.set(Math.sin(this.camRot.x),Math.sin(this.camRot.y)+this.eyeHeight,0);
