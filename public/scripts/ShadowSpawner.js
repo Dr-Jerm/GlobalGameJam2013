@@ -1,7 +1,7 @@
 function ShadowSpawner(game)
 {
 
-	this.SpawnBias = 10; 
+	this.SpawnBias = 500; 
 	
 	this.Update = function()
 	{
