@@ -1,11 +1,11 @@
 [
 	{
-		"name" : "tree-1", 
+		"name" : "tree1", 
 		"url" : "../art_assets/tree1.jpg",
 		"type" : "image"
 	},
 	{
-		"name" : "tree-model",
+		"name" : "tree1mdl",
 		"url" : "../art_assets/tree1.mdl.js",
 		"type" : "model"
 	}
