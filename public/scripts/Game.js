@@ -191,10 +191,11 @@ function Game()
         this.shadowList[s].drawUpdate(); 
       }
 
-      for (var i in this.treeList)
-      {
-        this.treeList[i].updateColors(); 
-      }
+      this.worldGen.updateColors();
+      // for (var i in this.treeList)
+      // {
+      //   this.treeList[i].updateColors(); 
+      // }
 
   }
 
