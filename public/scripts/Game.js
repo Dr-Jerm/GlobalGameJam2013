@@ -3,17 +3,17 @@ function Game()
 
 	var self = this;
   this.testString = "Here I am";
-  this.inputControls = new Input();  
+  this.inputControls = new Input(this);  
 
   this.player = new Player(this); 
   this.shadowList = new Array();
   this.treeList = new Array();
-  //this.ShadowSpawner = new ShadowSpawner();
-
+  this.ShadowSpawner = new ShadowSpawner(this);
 
   this.renderer;
   this.renderer2;
 
+  this.scene;
 
 
   //TIME
@@ -55,6 +55,7 @@ function Game()
       this.camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 5000 );
         this.camera.position.z = 400;
         this.camera.position.y = 200;
+        this.camera.rotation.copy(this.player.camRot);
   
 
         this.projector = new THREE.Projector();
@@ -84,22 +85,15 @@ function Game()
 
 		this.scene.add(this.light);
 
-    var loader = new THREE.JSONLoader();
-    loader.load( "art_assets/tree1.mdl.js", function( geometry, material){
-        var texture = mojo.assets["tree1"];
-        var material = new THREE.MeshBasicMaterial( {map: texture} );
-        var mesh = new THREE.Mesh( geometry, material );
-        mesh.scale.set(.1,.1,.1);
-        mesh.position.x = 0;
-        mesh.position.y = 0;
-        mesh.position.z = 0;
-        game.scene.add(mesh);
       });
+    
        
     var geometry2 = new THREE.CubeGeometry( 200, 200, 200 );
    	var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
    	var mesh = new THREE.Mesh( geometry2, material );
    	this.scene.add( mesh );
+    
+  this.itemspawner = new ItemSpawner();
   }
 
   this.SwitchWorld = function(milSec){
@@ -130,10 +124,12 @@ function Game()
   	this.delta = this.clock.getDelta();
   	//this.input.Update();
     //PulseSwitch();
-    //this.ShadowSpawner();
+    this.ShadowSpawner.Update();
+    this.ShadowUpdate();
     this.player.Update();
     this.CameraUpdate();
     this.Render();
+    this.ShadowUpdate();
 
   }
 
@@ -141,7 +137,8 @@ function Game()
   	this.camera.position.x = this.player.pos.x;
   	this.camera.position.y = this.player.pos.y + this.player.eyeHeight;
   	this.camera.position.z = this.player.pos.z;
-    this.camera.lookAt(this.player.camTargetWorld);
+    this.camera.rotation.copy(this.player.camRot);
+    //this.camera.lookAt(this.player.camTargetWorld);
     
   }
 
@@ -185,14 +182,21 @@ function Game()
 
   }
 
-  this.setPulse = function(width, height)
+
+
+  this.setPulse = function()
   {
 
   }
 
+  this.ShadowUpdate = function()
+  {
+    for (var s in this.shadowList)
+      {
+        this.shadowList[s].Update(); 
+      }
 
-
-
+  }
 
 
   

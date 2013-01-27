@@ -6,7 +6,17 @@
 	},
 	{
 		"name" : "tree1mdl",
-		"url" : "../art_assets/tree1.mdl.js",
+		"url" : "../art_assets/tree1mdl.js",
+		"type" : "model"
+	},
+	{
+		"name" : "tree2", 
+		"url" : "../art_assets/tree2.jpg",
+		"type" : "image"
+	},
+	{
+		"name" : "tree2mdl",
+		"url" : "../art_assets/tree2mdl.js",
 		"type" : "model"
 	}
 ]
