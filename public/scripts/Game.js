@@ -57,7 +57,8 @@ function Game()
       this.camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 5000 );
         this.camera.position.z = 400;
         this.camera.position.y = 200;
-        this.camera.rotation.copy(this.player.camRot);
+        //this.camera.rotation.copy(this.player.camRot);
+
   
 
         this.projector = new THREE.Projector();
@@ -136,7 +137,7 @@ function Game()
   this.Update = function()
   {
   	this.delta = this.clock.getDelta();
-  	//this.input.Update();
+  	this.inputControls.Update();
     //PulseSwitch();
     //this.worldGen.Update(); 
     this.shadowSpawner.Update();
@@ -154,7 +155,7 @@ function Game()
   	this.camera.position.y = this.player.pos.y + this.player.eyeHeight;
   	this.camera.position.z = this.player.pos.z;
     this.camera.rotation.copy(this.player.camRot);
-    //this.camera.lookAt(this.player.camTargetWorld);
+    //this.camera.lookAt(this.player.camRot);
     
   }
 
