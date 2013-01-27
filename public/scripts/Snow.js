@@ -9,11 +9,11 @@ var Snow = function(scene){
 	this.snowSprites = [];
 	this.ashSprites = [];
 	
-	for (var i = 0; i < 6000; i ++ ) {
+	for (var i = 0; i < 10000; i ++ ) {
 		var vertex = new THREE.Vector3();
-		vertex.x = Math.random() * 2000 - 1000;
-		vertex.y = Math.random() * 2000 - 1000;
-		vertex.z = Math.random() * 2000 - 1000;
+		vertex.x = (Math.random()-0.5) * 7000;
+		vertex.y = (Math.random()-0.5) * 7000;
+		vertex.z = (Math.random()-0.5) * 7000;
 
 		this.geometry.vertices.push( vertex );
 	}
@@ -35,9 +35,11 @@ var Snow = function(scene){
 		var size  = this.parameters[i][1] * 2;
 		this.color = this.parameters[i][0];
 
+		var sprite = this.snowSprites[i];
+
 		this.materials[i] = new THREE.ParticleBasicMaterial( 
 				{ size: size, 
-					map: this.snowSprites[i], 
+					map: sprite, 
 					color: 0xE1E1FF,
 					transparent: true,
 					depthWrite: false
@@ -64,5 +66,9 @@ var Snow = function(scene){
 				object.rotation.y = time * ( i < 4 ? i + 1 : - ( i + 1 ) );
 			}
 		}
+	}
+
+	this.swichWorld(){
+		
 	}
 }
