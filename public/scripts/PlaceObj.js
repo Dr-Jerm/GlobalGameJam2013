@@ -7,7 +7,7 @@ ItemSpawner.prototype = {
 
 	popul: 1600,
 	range: 0,
-	items: 3,
+	items: 1,
 	constructor: function(_t) {
 		switch(_t) {
 			case "tree":break;
@@ -20,7 +20,7 @@ ItemSpawner.prototype = {
 		}
 		var type = _t;
 		for(var i=0; i < this.popul; i++) {
-			var inx = (Math.floor((Math.random()*this.items)+1));
+			var inx = 2;//(Math.floor((Math.random()*this.items)+1));
 			var texture = mojo.assets[type+inx];
 			var geometry = mojo.assets[type+inx+"mdl"];
 			var material = new THREE.MeshBasicMaterial( {map: texture} );
