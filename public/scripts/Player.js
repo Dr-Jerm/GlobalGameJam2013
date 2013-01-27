@@ -138,7 +138,7 @@ function Player(game)
 	this.letsLook = function()
 	{
 
-		controls = new THREE.FirstPersonControls( game.camera );
+		//controls = new THREE.FirstPersonControls( game.camera );
 		/*
 		controls.movementSpeed = this.movementSpeed; // How fast the player can walk around
 		controls.lookSpeed = this.lookSpeed; // How fast the player can loo
