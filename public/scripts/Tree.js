@@ -36,8 +36,8 @@ function Tree(game, _pos)
 	this.pos.setY(400);
    	
 
-	mesh.scale.set(10+Math.random(),10+Math.random()*2,10)+Math.random();
-	mesh2.scale = mesh.scale;
+	mesh.scale.set(20+Math.random(),20+Math.random()*2,20)+Math.random();
+	mesh2.scale.set(10+Math.random(),10+Math.random()*2,10)+Math.random();
 
 	mesh.position = this.pos;
 	mesh2.position = this.pos;

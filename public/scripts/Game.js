@@ -1,6 +1,8 @@
 function Game()
 {
 
+  this.YOULOSEBITCH = false; 
+
 	var self = this;
   this.testString = "Here I am";
   this.inputControls = new Input(this);  
@@ -99,7 +101,7 @@ function Game()
 
 
     this.worldGen.Generate();
-    
+
     sounds.start_beat(this.heartRateBPM );
 
   }
@@ -173,20 +175,23 @@ function Game()
 
   this.Update = function()
   {
-  	this.delta = this.clock.getDelta();
-  	this.inputControls.Update();
+  	
+    if (!this.YOULOSEBITCH)
+    {
+      this.delta = this.clock.getDelta();
+  	   this.inputControls.Update();
 
-    this.UpdatePulse();
+      this.UpdatePulse();
 
-    //this.ShadowUpdate();
-    this.player.Update();
-    this.CameraUpdate();
-    this.Render();
-    this.snow.update();
-    this.updateColors();
-    this.ground.updateColors();
+      //this.ShadowUpdate();
+      this.player.Update();
+      this.CameraUpdate();
+      this.Render();
+      this.snow.update();
+      this.updateColors();
+      this.ground.updateColors();
 
-    for (var s in this.shadowList)
+      for (var s in this.shadowList)
       {
         this.shadowList[s].drawUpdate(); 
       }
@@ -195,6 +200,7 @@ function Game()
       {
         this.treeList[i].updateColors(); 
       }
+    }
 
   }
 
@@ -255,16 +261,18 @@ function Game()
     
 
     this.speedCounter += this.speedCurve; 
-    if(this.speedCounter > 5)
+    if(this.speedCounter > 20)
     {
       this.speedCounter = 0 
       this.heartRateBPM -= 50; 
-      if(this.heartRateBPM < 300)
-      {
-        this.heartRateBPM = 300; 
-      }
       sounds.start_beat(this.heartRateBPM);
     }
+
+    if(this.heartRateBPM < 300)
+    {
+      this.heartRateBPM = 300; 
+    }
+
     console.log( "spC >" + this.speedCounter + "BPM >" + self.heartRateBPM +" length"+ self.pulseLength +" decay"+self.pulseLengthDecay+" max"+ self.pulseLengthMax + " oRate"+ self.opaccRate);
     
  

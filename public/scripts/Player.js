@@ -42,6 +42,8 @@ function Player(game)
 		this.UpdateRay();
 		this.UpdateInput(); 
 		this.Move();
+		this.CheckDeath();
+		this.CheckHeart(); 
 		this.letsLook();
 //		this.gun.Update();
 	}
@@ -130,6 +132,22 @@ function Player(game)
 		}
 		
 		this.pos.add(this.speed);
+	}
+
+	this.CheckDeath = function()
+	{
+		for (var s in this.shadowList)
+      	{
+        	if(this.pos.length(game.shadowList[s].pos) < 40)
+        	{
+        		game.YOULOSEBITCH = true; 
+        	}
+        }
+	}
+
+
+	this.CheckHeart = function()
+	{
 
 
 	}

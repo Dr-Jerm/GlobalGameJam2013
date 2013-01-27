@@ -13,7 +13,7 @@ function Shadow( game, _pos)
 	this.healthMax = 100;
 
 	this.speed = new THREE.Vector3(); 
-	this.maxSpeed = 30 //temp value
+	this.maxSpeed = (game.heartRateBPM/100) + 20; //temp value
 	this.rotY = 0; 
 
 	this.targetDistence = 0;
@@ -91,12 +91,16 @@ function Shadow( game, _pos)
 		
 		this.speed.set(this.maxSpeed*Math.sin(this.rotY), 0 , this.maxSpeed*Math.cos(this.rotY));
 		
+
 		
 
 	}
 
 	this.Move = function()
 	{
+		
+		this.maxSpeed = (game.heartRateBPM/100) + 20;
+
 		this.pos.add(this.speed);
 		this.UpdateRay();
 		this.targetDistence = this.pos.length(game.player.pos);
