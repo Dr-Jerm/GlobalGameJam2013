@@ -23,7 +23,7 @@
 	"colorDiffuse" : [0.8, 0.8, 0.8],
 	"colorSpecular" : [0.0, 0.0, 0.0],
 	"illumination" : 1,
-	"mapDiffuse" : "Tree.jpg",
+	"mapDiffuse" : "tree3.jpg",
 	"specularCoef" : 256.0,
 	"transparency" : 1.0
 	}],
