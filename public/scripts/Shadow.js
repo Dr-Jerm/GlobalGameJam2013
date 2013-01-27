@@ -22,8 +22,7 @@ function Shadow( game, _pos)
 	var geometry = new THREE.CubeGeometry( 50, 100, 50 );
    	var material = new THREE.MeshBasicMaterial( { color: 0x000000} );
    	var mesh = new THREE.Mesh( geometry, material );
-   	console.log(game.testString);
-   	console.log(game.scene);
+
    	game.scene.add( mesh );
 	
    	mesh.position = this.pos;

@@ -5,14 +5,14 @@ function Player(game)
 	this.speed = new THREE.Vector3(); 
 	this.accel = new THREE.Vector3();
 	this.MoveRot = 0; 
-	this.runAccel = 0.05;
-	this.friction = 1; 
-	this.maxSpeed = 10 //temp value
+	this.runAccel = 0.3;
+	this.friction = 0.5; 
+	this.maxSpeed = 3 //temp value
 
 
 	this.camRot = new THREE.Vector3();
 	this.camRot.set(0,0,0); 
-	this.lookSpeed = .01;
+	this.lookSpeed = .001;
 
 	this.camTarget = new THREE.Vector3(); 
 	this.camTarget.set(0,0,0);
@@ -26,7 +26,7 @@ function Player(game)
 	//--------Stats---------------
 	this.isRunning = false; 
 	
-	this.eyeHeight = 20; 
+	this.eyeHeight = 5; 
 
 	this.health = 100;
 	this.healthMax = 100; 
@@ -92,8 +92,10 @@ function Player(game)
 		}
 
 
-		//this.camRot.setX(game.inputControls.mouseMovementX*this.lookSpeed);
-		//this.camRot.setY(game.inputControls.mouseMovementY*this.lookSpeed);
+		this.camRot.setY(this.camRot.y - game.inputControls.mouseMovementX*this.lookSpeed);
+		this.MoveRot -= this.camRot.y;
+
+		//this.camRot.setX(this.camRot.x - game.inputControls.mouseMovementY*this.lookSpeed);
 
 
 
@@ -105,8 +107,8 @@ function Player(game)
 		//this.camTargetWorld.add(this.pos);
 		//console.log(this.camTarget.x + " " + this.camTarget.y + " " + this.camTarget.z);
 
-		this.camRot.setX(this.camRot.X+game.inputControls.movementX*this.lookSpeed);
-		this.camRot.setY(this.camRot.Y+game.inputControls.movementY*this.lookSpeed);
+		//this.camRot.setX(this.camRot.X+game.inputControls.movementX*this.lookSpeed);
+		//this.camRot.setY(this.camRot.Y+game.inputControls.movementY*this.lookSpeed);
 
 
 
@@ -118,8 +120,8 @@ function Player(game)
 		
 		if(this.isRunning && this.speed.length() < this.maxSpeed)//accelerate for run
 		{
-			this.accel.setZ(Math.sin(this.MoveRot));
-			this.accel.setX(Math.cos(this.MoveRot));
+			this.accel.setZ(Math.sin(this.MoveRot)*this.runAccel);
+			this.accel.setX(Math.cos(this.MoveRot)*this.runAccel);
 		}
 		else
 		{

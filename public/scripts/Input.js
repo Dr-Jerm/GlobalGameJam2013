@@ -1,4 +1,4 @@
-function Input()
+function Input(game)
 {
 	
 	this.controlsEnabled = false; 
@@ -91,6 +91,7 @@ function Input()
         this.mouseMovementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
         this.mouseMovementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
 
+       	console.log(game.player.camRot.x + " " +  game.player.camRot.y + " - " + this.mouseMovementX + this.mouseMovementY);
        //console.log( "mouse " + movementX + " " + movementY);
         //yawObject.rotation.y -= movementX * 0.002;
         //pitchObject.rotation.x -= movementY * 0.002;
