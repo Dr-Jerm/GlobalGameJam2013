@@ -154,8 +154,8 @@ function Game()
   	this.camera.position.x = this.player.pos.x;
   	this.camera.position.y = this.player.pos.y + this.player.eyeHeight;
   	this.camera.position.z = this.player.pos.z;
-    this.camera.rotation.copy(this.player.camRot);
-    //this.camera.lookAt(this.player.camRot);
+    //this.camera.rotation.copy(this.player.camRot);
+    this.camera.lookAt(this.player.camRot);
     
   }
 

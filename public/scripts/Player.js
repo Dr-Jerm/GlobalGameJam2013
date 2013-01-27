@@ -13,12 +13,10 @@ function Player(game)
 	var oldYray = 0; 
 	this.camRot = new THREE.Vector3();
 	this.camRot.set(0,0,0); 
+	this.camTheta = 0; 
+	this.camPhi= 0
 	this.lookSpeed = .001;
 
-	this.camTarget = new THREE.Vector3(); 
-	this.camTarget.set(0,0,0);
-	this.camTargetWorld = new THREE.Vector3(); 
-	this.camTargetWorld.set(100,100,100);
 
 	var rayDir = new THREE.Vector3( 0, -1, 0 );
 	this.ray = new THREE.Raycaster(this.pos, rayDir);
@@ -27,7 +25,7 @@ function Player(game)
 	//--------Stats---------------w
 	this.isRunning = false; 
 	
-	this.eyeHeight = 5; 
+	this.eyeHeight = 20; 
 
 	this.health = 100;
 	this.healthMax = 100; 
@@ -92,13 +90,8 @@ function Player(game)
 			this.isRunning = false; 
 		}
 
-
-		this.camRot.setY(this.camRot.y - game.inputControls.mouseMovementX*this.lookSpeed);
-		this.MoveRot -= this.camRot.y;
-
-		//this.camRot.setX(this.camRot.x - game.inputControls.mouseMovementY*this.lookSpeed);
-
-
+		//this.MoveRot -= (Math.PI + game.camera.rotation.y);
+		
 
 		//this.camTarget.set(Math.sin(this.camRot.x),Math.sin(this.camRot.y)+this.eyeHeight,0);
 		
@@ -143,6 +136,25 @@ function Player(game)
 
 	this.letsLook = function()
 	{
+
+		this.camTheta = this.camTheta + game.inputControls.mouseMovementX*this.lookSpeed; 
+		this.camPhi = this.camPhi + game.inputControls.mouseMovementY*this.lookSpeed;
+
+		//this.camRot.setY(this.camRot.y - game.inputControls.mouseMovementX*this.lookSpeed);
+	
+		//this.camRot.setX(this.camRot.x - game.inputControls.mouseMovementY*this.lookSpeed);
+		this.camRot.x = this.pos.x + 100 * Math.sin( this.camPhi ) * Math.cos( this.camTheta );
+		this.camRot.y = this.pos.y + this.eyeHeight+ 100 * Math.cos( this.camPhi );
+		this.camRot.z = this.pos.z + 100 * Math.sin( this.camPhi) * Math.sin( this.camTheta );
+
+
+		// targetPosition.x = position.x + 100 * Math.sin( this.phi ) * Math.cos( this.theta );
+		// targetPosition.y = position.y + 100 * Math.cos( this.phi );
+		// targetPosition.z = position.z + 100 * Math.sin( this.phi ) * Math.sin( this.theta );
+
+
+		//this.MoveRot -= game.camera.rotation.y;
+		//console.log(this.MoveRot+" " +game.camera.rotation.y );
 
 		//controls = new THREE.FirstPersonControls( game.camera );
 		/*
