@@ -1,8 +1,8 @@
 function ShadowSpawner(game)
 {
 
-	this.SpawnBias = 300; 
-	this.MaxShadows = 300; 
+	this.SpawnBias = 100; 
+	this.MaxShadows = 100; 
 	
 	this.Update = function()
 	{

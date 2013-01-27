@@ -23,7 +23,8 @@ function Game()
   this.clock = new THREE.Clock();
   this.delta = 0; 
 
-
+  this.speedCounter = 0; 
+  this.speedCurve = 1; 
   this.heartRateBPM = 1000; 
   this.isPulse = false;
   this.pulseLength = 0; 
@@ -31,20 +32,6 @@ function Game()
   this.pulseLengthMax = 0;
   this.opacc = 1;
   this.opaccRate = 0;  
-
-
-
-  // this.wasPulse = false; 
-
-  // this.pulseloopTime = 0;
-  // this.pulseloopTotalTime = 1000; 
-  
-  // this.pulselength = 100;
-  // this.pulseLength = 0; 
-  // this.pulseLengthMax = 100; 
-  // this.pulseTime = 0;
-  // this.wubtime = 600;
-  // this.dubtime = 750;
 
   //WORLD INFO:
   var worldWidth = 56, worldDepth = 56;
@@ -113,7 +100,7 @@ function Game()
 
     this.worldGen.Generate();
     //makeWav();
-    sounds.start_beat(this.heartRateBPM);
+    sounds.start_beat(this.heartRateBPM );
 		  //this.itemspawner = new ItemSpawner();
   }
 
@@ -154,15 +141,11 @@ function Game()
 }
 
 
-//TEST FUNCTION FOR 
-  $(document).keypress( function(event){
-  	if (event.keyCode == 32)
-    {
-      self.heartRateBPM = self.heartRateBPM - 10;
-      console.log( "BPM " + self.heartRateBPM +" length"+ self.pulseLength +" decay"+self.pulseLengthDecay+" max"+ self.pulseLengthMax + " oRate"+ self.opaccRate);
-      sounds.start_beat(self.heartRateBPM);
-    }
-  });
+// //TEST FUNCTION FOR 
+//   $(document).keypress( function(event){
+//   	if (event.keyCode == 32)
+//   		//self.SetPulse();
+//   });
 
   this.counter = 0;
 
@@ -203,11 +186,7 @@ function Game()
   this.UpdatePulse = function()
   {
     
-   // this.heartRateBPM = 1000; 
-    this.opaccRate = 50/this.heartRateBPM;  
-    this.pulseIntensityMax = this.heartRateBPM/32;
-    this.pulseLengthDecay = 1000/this.heartRateBPM; 
-
+   
     if(this.isPulse)
     {
       this.opacc += this.opaccRate;
@@ -216,8 +195,7 @@ function Game()
         this.opacc = 1;
       }
 
-      this.pulseLength -= this.pulseLengthDecay
-  ; 
+      this.pulseLength -= this.pulseLengthDecay; 
       if(this.pulseLength < 0)
       {
         this.pulseLength = 0;
@@ -247,9 +225,26 @@ function Game()
         self.SwitchWorld();
     }
     self.SwitchWorld();
-    this.pulseLength = this.pulseIntensityMax; 
+    this.pulseLength = this.pulseLengthMax; 
     this.shadowSpawner.Update();
     this.ShadowUpdate();
+    
+
+    this.speedCounter += this.speedCurve; 
+    if(this.speedCounter > 5)
+    {
+      this.speedCounter = 0 
+      this.heartRateBPM -= 50; 
+      sounds.start_beat(this.heartRateBPM);
+    }
+    console.log( "spC >" + this.speedCounter + "BPM >" + self.heartRateBPM +" length"+ self.pulseLength +" decay"+self.pulseLengthDecay+" max"+ self.pulseLengthMax + " oRate"+ self.opaccRate);
+    
+ 
+
+    this.opaccRate = 50/this.heartRateBPM;  
+    this.pulseLengthMax = this.heartRateBPM/50;
+    this.pulseLengthDecay = 1000/this.heartRateBPM; 
+
   }
 
   this.ShadowUpdate = function()
