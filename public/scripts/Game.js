@@ -74,7 +74,7 @@ function Game()
   		console.log(worldWidth + worldDepth);
   		this.ground = new Ground(7000, worldWidth, worldDepth);
 
-  		this.scene.fog = fog1 = new THREE.FogExp2( this.skyColor, 0.0025 );
+  		//this.scene.fog = fog1 = new THREE.FogExp2( this.skyColor, 0.0025 );
   		fog2 = new THREE.FogExp2( 0x9b5a3a, 0.0025 );
  
 		this.scene.add(this.ground.mesh);
@@ -86,13 +86,20 @@ function Game()
 		this.light.rotation.x = Math.PI/2;
 
 		this.scene.add(this.light);
+
+		//AMBIENT LIGHT
+		var ambLight = new THREE.AmbientLight( 0x333333);
+		this.scene.add(ambLight);
 		
 
 		// SNOW & paricles
 		this.snow = new Snow(this.scene);
 
     
-		  this.itemspawner = new ItemSpawner();
+//		this.itemspawner = new ItemSpawner();
+
+
+		var testFade = new Shadow(this,new THREE.Vector3( 50, 50, 50 ));
   }
 
   this.SwitchWorld = function(milSec){
@@ -105,7 +112,7 @@ function Game()
 
 	this.ground.swapWorld();
 
-	if(this.worldState == 1){
+	if(this.worldState == 1){ds
 		this.skyColor = 0x9b5a3a;
 		this.scene.fog = fog2;
 		this.worldState = 2;

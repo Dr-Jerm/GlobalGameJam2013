@@ -7,25 +7,41 @@ function Shadow( game, _pos)
 	//this.pos.set(500,500,500);
 	this.rot = new THREE.Vector3();
 	//--------Stats---------------
-	this.height = 100; 
+	this.height = -10; 
 
 	this.health = 100;
 	this.healthMax = 100;
 
-
+	this.group = new THREE.Object3D();
 
 	var rayDir = new THREE.Vector3( 0, -1, 0 );
 	this.ray = new THREE.Raycaster(this.pos, rayDir);
 	this.ray.rayDir = rayDir;
 
 
-	var geometry = new THREE.CubeGeometry( 50, 100, 50 );
-   	var material = new THREE.MeshBasicMaterial( { color: 0x000000} );
+	var geometry = mojo.assets["fadeBodymdl"];
+   	var texture = mojo.assets["fadeBody"];
+   	var material = new  THREE.MeshLambertMaterial( {map: texture});
    	var mesh = new THREE.Mesh( geometry, material );
+   	mesh.scale.set(12,12,12);
 
-   	game.scene.add( mesh );
+   	this.group.add( mesh );
+
+   	geometry = mojo.assets["fadeMask1mdl"];
+   	texture = mojo.assets["fadeMask1"];
+   	material = new  THREE.MeshLambertMaterial( {map: texture});
+   	mesh = new THREE.Mesh( geometry, material );
+	mesh.scale.set(12,12,12);
+	mesh.position.y = 30;
+	mesh.position.x = 6;
+
+
+	this.group.add(mesh);
+
+
+   	game.scene.add(this.group);
 	
-   	mesh.position = this.pos;
+   	this.group.position = this.pos;
 
 	this.Update = function()
 	{
@@ -68,7 +84,7 @@ function Shadow( game, _pos)
 	}
 
 	this.swapWorld = function(){
-		
+
 	}
 	
 }
