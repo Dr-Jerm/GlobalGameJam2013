@@ -68,7 +68,7 @@ var Snow = function(scene){
 		}
 	}
 
-	this.swichWorld(){
+	this.swichWorld = function(){
 		
 	}
 }
