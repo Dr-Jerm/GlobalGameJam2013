@@ -110,7 +110,8 @@ function Game()
 
 
     this.worldGen.Generate();
-    //sounds.start_beat(100);
+    //makeWav();
+    sounds.start_beat(800);
 		  //this.itemspawner = new ItemSpawner();
   }
 
