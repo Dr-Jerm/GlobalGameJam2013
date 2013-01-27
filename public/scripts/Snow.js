@@ -68,7 +68,9 @@ var Snow = function(scene){
 		}
 	}
 
-	this.swichWorld = function(){
-		
+	this.swapWorld = function(){
+		for(var i in this.materials){
+			this.materials[i].map = this.ashSprites[i];
+		}
 	}
 }

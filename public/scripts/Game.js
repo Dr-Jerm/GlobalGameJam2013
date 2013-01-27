@@ -75,8 +75,8 @@ function Game()
   		console.log(worldWidth + worldDepth);
   		this.ground = new Ground(7000, worldWidth, worldDepth);
 
-  		//this.scene.fog = fog1 = new THREE.FogExp2( this.skyColor, 0.0025 );
-  		fog2 = new THREE.FogExp2( 0x9b5a3a, 0.0025 );
+  		this.scene.fog = fog1 = new THREE.FogExp2( this.skyColor, 0.0025 );
+  		fog2 = new THREE.FogExp2( 0x692323, 0.0025 );
  
 		this.scene.add(this.ground.mesh);
 
@@ -111,9 +111,10 @@ function Game()
 	}
 
 	this.ground.swapWorld();
+	this.snow.swapWorld();
 
 	if(this.worldState == 1){
-		this.skyColor = 0x9b5a3a;
+		this.skyColor = 0x692323;
 		this.scene.fog = fog2;
 		this.worldState = 2;
 	}
@@ -121,6 +122,7 @@ function Game()
 		this.skyColor = 0x686d7f;
 		this.scene.fog = fog1;
 		this.worldState = 1;
+
 	}
 	
   }
@@ -135,7 +137,7 @@ function Game()
   this.counter = 0;
 
   this.Render = function(){
-  	this.renderer.setClearColorHex( this.skyColor, 1.0 );
+  	this.renderer.setClearColorHex( this.skyColor, 1.0 ); 
   	this.renderer.render(this.scene,this.camera);
   }
 
