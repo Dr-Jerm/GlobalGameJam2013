@@ -2,10 +2,7 @@ function Game()
 {
 
   this.testString = "Here I am";
-  this.inputControls = new Input(); 
-
-  this.isPulse = false; 
-  this.wasPulse = false; 
+  this.inputControls = new Input();  
 
   this.assets = new Assets();
 
@@ -18,7 +15,20 @@ function Game()
 
   //TIME
   this.clock = new THREE.Clock();
-  this.delta = this.clock;
+  this.delta = 0; 
+
+  // this.isPulse = false; 
+  // this.wasPulse = false; 
+
+  // this.pulseloopTime = 0;
+  // this.pulseloopTotalTime = 1000; 
+  
+  // this.pulselength = 100;
+  // this.pulseIntensity = 0; 
+  // this.pulseIntensityMax = 100; 
+  // this.pulseTime = 0;
+  // this.wubtime = 600;
+  // this.dubtime = 750;
 
   //WORLD INFO:
   var worldWidth = 56, worldDepth = 56;
@@ -108,7 +118,7 @@ function Game()
   {
   	this.delta = this.clock.getDelta();
   	//this.input.Update();
-    PulseSwitch();
+    //PulseSwitch();
     this.player.Update();
     this.CameraUpdate();
     this.Render();
@@ -119,28 +129,52 @@ function Game()
   	this.camera.position.x = this.player.pos.x;
   	this.camera.position.y = this.player.pos.y + this.player.eyeHeight;
   	this.camera.position.z = this.player.pos.z;
-    //this.camera.set(0,0,0); 
-    //this.camera.rotation = this.player.camRot;
-    //console.log(this.camera.rotation.x + " " + this.camera.rotation.y + " " + this.camera.rotation.z);
+    this.camera.lookAt(this.player.camTargetWorld);
+    
   }
 
-  var PulseSwitch = function()
+  this.PulseSwitch = function()
   {
+    console.log(this.clock.getDelta());
+    // this.wasPulse = this.isPulse; 
 
-    //<   switch logic here  >
+    // this.pulseLoopTime += this.delta; 
+    // if(this.pulseLoopTime > this.pulseloopTotalTime) this.pulseLoopTime = 0; 
+
+    // if(this.isPulse) this.pulseTime += this.delta; 
+    // if(this.pulsetime> this.pulselength)
+    // { 
+    //   this.pulsetime = 0;
+    //   this.isPulse = false; 
+    // }
+    // if((this.pulseLoopTime > this.wubtime || this.pulseLoopTime > this.dubtime) && !this.isPulse)
+    // {
+    //   this.isPulse = true; 
+    //   console.log("THUMP");
+    // }
+
+
+
+
+    // //<   switch logic here  >
 
     
-    if(this.isPulse && !this.wasPulse)// begin pulse  for
-    {
-      for (var s in this.shadowList)
-      {
-        this.shadowList[s].Move(); 
-      }
-    }
-    if(!this.isPulse && this.wasPulse)// end pulse  
-    {
+    // if(this.isPulse && !this.wasPulse)// begin pulse  for
+    // {
+    //   for (var s in this.shadowList)
+    //   {
+    //     this.shadowList[s].Move(); 
+    //   }
+    // }
+    // if(!this.isPulse && this.wasPulse)// end pulse  
+    // {
      
-    }
+    // }
+
+  }
+
+  this.setPulse = function(width, height)
+  {
 
   }
 

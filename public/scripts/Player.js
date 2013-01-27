@@ -7,11 +7,17 @@ function Player(game)
 	this.MoveRot = 0; 
 	this.runAccel = 0.05;
 	this.friction = 1; 
-
 	this.maxSpeed = 10 //temp value
+
+
 	this.camRot = new THREE.Vector3();
 	this.camRot.set(0,0,0); 
-	this.lookSpeed = 1.0;
+	this.lookSpeed = .01;
+
+	this.camTarget = new THREE.Vector3(); 
+	this.camTarget.set(0,0,0);
+	this.camTargetWorld = new THREE.Vector3(); 
+	this.camTargetWorld.set(100,100,100);
 
 	var rayDir = new THREE.Vector3( 0, -1, 0 );
 	this.ray = new THREE.Raycaster(this.pos, rayDir);
@@ -61,7 +67,6 @@ function Player(game)
 		// }
 		else if(game.inputControls.moveBackward)
 		{
-			console.log("backward");
 			this.MoveRot = 5*(Math.PI/2); 
 		}
 		// else if(game.inputControls.moveBackward && game.inputControls.moveRight)
@@ -86,9 +91,23 @@ function Player(game)
 			this.isRunning = false; 
 		}
 
-Input
+
+		//this.camRot.setX(game.inputControls.mouseMovementX*this.lookSpeed);
+		//this.camRot.setY(game.inputControls.mouseMovementY*this.lookSpeed);
+
+
+
+		//this.camTarget.set(Math.sin(this.camRot.x),Math.sin(this.camRot.y)+this.eyeHeight,0);
+		
+		//this.camTarget.set(this.camTarget.x + game.inputControls.mouseMovementX*this.lookSpeed, this.camTarget.y + game.inputControls.mouseMovementX*this.lookSpeed, this.camTarget.z); 
+		//console.log(">" + this.camRot.x + " " + this.camRot.y + " " + this.camRot.z + " mx" + game.inputControls.mouseMovementX + " my" + game.inputControls.mouseMovementY);
+		//console.log(">" + this.camTarget.x + " " + this.camTarget.y + " " + this.camTarget.z);
+		//this.camTargetWorld.add(this.pos);
+		//console.log(this.camTarget.x + " " + this.camTarget.y + " " + this.camTarget.z);
+
 		this.camRot.setX(this.camRot.X+game.inputControls.movementX*this.lookSpeed);
 		this.camRot.setY(this.camRot.Y+game.inputControls.movementY*this.lookSpeed);
+
 
 
 	}
