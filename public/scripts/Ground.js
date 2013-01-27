@@ -23,7 +23,7 @@ Ground.prototype = {
 			geometry.vertices[ i ].y = data[ i ] *5;
 
 		}
-		this.mat1 = new THREE.MeshLambertMaterial( { color: 0xffffff} );
+		this.mat1 = new THREE.MeshLambertMaterial( { color: 0xffffff, wireframe: true} );
 		this.mat2 = new THREE.MeshLambertMaterial( { color: 0x483d28} );
 		geometry.computeFaceNormals();
 		this.mesh =  new THREE.Mesh( geometry, this.mat1 );

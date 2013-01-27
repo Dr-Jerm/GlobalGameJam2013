@@ -1,7 +1,7 @@
 function WorldGen(game)
 {
 
-	var TreeNum = 1600;
+	var TreeNum = 160;//0;
 
 	this.Generate = function()
 	{
@@ -50,6 +50,9 @@ function WorldGen(game)
 
 			//console.log("Spawn Tree at " + pos.x + " " + pos.z + " " + tree.pos.x + " " + tree.pos.y + " " + tree.pos.z)
 		}
+
+		console.log('planting Heart');
+		game.heart = new Heart(7000);
 
 	}
 
