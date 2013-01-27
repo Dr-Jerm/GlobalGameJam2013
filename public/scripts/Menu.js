@@ -1,30 +1,27 @@
-
-Menu = function () {
-
-	if(this.skip) {
-		this.complete();	
-	}
-	else {
-		this.menu();
-	}
-
-	return this;
-};
-
+/**
+ *
+ *
+ */
+var Menu = function() { this.constructor(); return this; };
 Menu.prototype = {
-	skip: true,
+	skip: false,
+	constructor: function() {
+		if(this.skip) {
+			this.complete();	
+		}
+		else {
+			this.menu();
+		}
 
-	constructor: Menu,
+		return this;
+	},
 	// Initiate loading bar
 	load: function() {
 		console.log("Loading...");
 
 	},
-
 	// Add Menu
 	menu: function() {
-		console.log("Rendering Menu...");
-
 		// Fade-in all components
 		$('.menu').fadeIn('slow');
 		//Set up buttons
@@ -33,7 +30,7 @@ Menu.prototype = {
 	// Add context menu buttons
 	buttons: function() {
 		var self = this;
-		console.log("Adding Buttons...");
+		
 		$('.button.start').click(function () {
 			self.complete();
 		});
@@ -58,24 +55,39 @@ Menu.prototype = {
 	}
 };
 
-AssetMojo = function () {
-	return this;
-};
-
+/**
+ *
+ *
+ */
+var AssetMojo = function() { this.constructor(); return this; };
 AssetMojo.prototype = {
-	loader: null,
-
-	constructor: function() {
-		this.loader = new THREE.ImageLoader();
-
-		this.loader.addEventListener('load', function ( event ) {
-			console.log(event);
-		});
-	},
 
 	assets: {},
 
+	size: 0,
+
+	loaded: 0,
+
+	constructor: function() {
+		var self = this;
+
+		//Intialize loading
+		self.loader();
+
+		$.getJSON("json/assets.json", function(data) {
+			if(self.size == 0) self.size = data.length; 
+			
+			$.each(data, function() {
+				$this = $(this);
+				self.register($this[0].name, $this[0].url, $this[0].type);
+			});
+		});
+
+		return this;
+	},
+
 	register: function(name, asset, type) {
+		console.log(">>>>>>>>>>>>> Registering Asset: " + name);
 
 		if(type == "image") {
 			asset = this.registerImage(name, asset);
@@ -85,16 +97,31 @@ AssetMojo.prototype = {
 	},
 
 	registerImage: function (name, asset) {
-		console.log("Registering... " + asset);
+		self = this;
 
-		var texture = THREE.ImageUtils.loadTexture(asset);
+		var texture = THREE.ImageUtils.loadTexture(asset, null, function( event ) {
+			if(event instanceof THREE.Texture) {
+				self.assets[name] = event;
+				
+				self.loaded += 1;
+				
+				if(self.loaded == self.size) {
+					$(document).trigger("loaded");
+				}
 
-		if(texture) {
-			this.assets[name] = texture;
-			return texture;
-		}
-		else {
-			return null;
-		}
+				return event;
+			}
+			else {
+				return null;
+			}
+		});
+
+		return texture;
+	},
+
+	loader: function() {
+		$(document).bind("loaded", function () {
+			console.log("All assets loaded.");
+		});
 	}
 };
