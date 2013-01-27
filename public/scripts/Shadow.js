@@ -30,7 +30,8 @@ function Shadow( game, _pos)
 
    	geometry = mojo.assets["fadeMask1mdl"];
 //   	geometry = new THREE.SphereGeometry( 50, 10, 10);
-   	texture = mojo.assets["fadeMask1"];
+	var idx = Math.floor(1+ Math.random()*3);
+   	texture = mojo.assets["fadeMask"+idx];
    	material = new  THREE.MeshLambertMaterial( {map: texture});
    	mesh = new THREE.Mesh( geometry, material );
 	mesh.scale.set(12,12,12);

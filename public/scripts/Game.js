@@ -97,7 +97,7 @@ function Game()
 		this.snow = new Snow(this.scene);
 
 
-		var testFade = new Shadow(this,new THREE.Vector3( 50, 50, 50 ));
+		
     this.worldGen.Generate();
    
   }

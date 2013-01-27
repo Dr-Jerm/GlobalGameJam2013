@@ -11,13 +11,13 @@
 	},
 	{
 		"name" : "fadeMask1mdl", 
-		"url" : "../art_assets/characterAssets/fade/characterFadeMaskmdl.js",
+		"url" : "../art_assets/characterAssets/fade/fademaskmdl.js",
 		"type" : "model"
 	},
 	{
 		"name" : "fadeMask1", 
 		"url" : "../art_assets/characterAssets/fade/mask1.png",
-		"type" : "texture"
+		"type" : "image"
 	},
 	{
 		"name" : "tree2", 
