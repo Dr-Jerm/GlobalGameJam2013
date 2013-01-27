@@ -1,7 +1,7 @@
 function WorldGen(game)
 {
 
-	var TreeNum = 160;//0;
+	var TreeNum = 1600;
 
 	this.Generate = function()
 	{
