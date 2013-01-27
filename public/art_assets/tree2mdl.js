@@ -3,7 +3,7 @@
     "metadata" :
     {
         "formatVersion" : 3.1,
-        "sourceFile"    : "tree_002.obj",
+        "sourceFile"    : "tree2mdl.obj",
         "generatedBy"   : "OBJConverter",
         "vertices"      : 140,
         "faces"         : 276,
@@ -23,7 +23,7 @@
 	"colorDiffuse" : [0.8, 0.8, 0.8],
 	"colorSpecular" : [0.0, 0.0, 0.0],
 	"illumination" : 2,
-	"mapDiffuse" : "tree_002_dif.JPG",
+	"mapDiffuse" : "tree2.jpg",
 	"specularCoef" : 256.0,
 	"transparency" : 1.0
 	}],

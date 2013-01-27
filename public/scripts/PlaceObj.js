@@ -5,7 +5,7 @@ var ItemSpawner = function(_t) {
 }
 ItemSpawner.prototype = {
 
-	popul: 1000,
+	popul: 1600,
 	range: 0,
 	items: 2,
 	constructor: function(_t) {
@@ -25,7 +25,8 @@ ItemSpawner.prototype = {
 			var geometry = mojo.assets[type+inx+"mdl"];
 			var material = new THREE.MeshBasicMaterial( {map: texture} );
 			var mesh = new THREE.Mesh( geometry, material );
-			mesh.scale.set(6,6,6);
+			mesh.scale.set(10,10,10);
+
   			mesh.position = this.place_rand();
         	game.scene.add(mesh);
 		}

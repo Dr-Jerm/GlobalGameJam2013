@@ -93,7 +93,7 @@ function Game()
 		this.scene.add(this.light);
 
     var loader = new THREE.JSONLoader();
-    loader.load( "art_assets/tree1.mdl.js", function( geometry, material){
+    loader.load( "art_assets/tree1mdl.js", function( geometry, material){
         var texture = mojo.assets["tree1"];
         var material = new THREE.MeshBasicMaterial( {map: texture} );
         var mesh = new THREE.Mesh( geometry, material );
