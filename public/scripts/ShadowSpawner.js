@@ -19,7 +19,7 @@ function ShadowSpawner(game)
 	this.SpawnShadow = function()
 	{
 		var pos = new THREE.Vector3();
-		pos.set( (Math.random()*7000-4500) , (0), (Math.random()*7000-4500));
+		pos.set( (Math.random()*7000-3500) , (0), (Math.random()*7000-3500));
 		var shadow = new Shadow(game, pos);
 		shadow.UpdateRay();
 		game.shadowList[game.shadowList.length] = shadow;

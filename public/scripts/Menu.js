@@ -92,6 +92,9 @@ AssetMojo.prototype = {
 		if(type == "image") {
 			asset = this.registerImage(name, asset);
 		}
+		else if(type == "model") {
+			asset = this.registerModel(name, asset);
+		}
 
 		return asset;
 	},
@@ -102,13 +105,7 @@ AssetMojo.prototype = {
 		var texture = THREE.ImageUtils.loadTexture(asset, null, function( event ) {
 			if(event instanceof THREE.Texture) {
 				self.assets[name] = event;
-				
-				self.loaded += 1;
-				
-				if(self.loaded == self.size) {
-					$(document).trigger("loaded");
-				}
-
+				self.loads();
 				return event;
 			}
 			else {
@@ -119,7 +116,34 @@ AssetMojo.prototype = {
 		return texture;
 	},
 
+	registerModel: function(name, asset) {
+		self = this;
+		var loader = new THREE.JSONLoader();
+
+		var geometry = loader.load(asset, function( geometry ) {
+			if(geometry instanceof THREE.Geometry) {
+				self.assets[name] = geometry;
+				self.loads();
+				return geometry;
+			}
+			else {
+				return null;
+			}
+		});
+
+		return geometry;
+	},
+
+	loads: function() {
+		this.loaded += 1;
+		
+		if(this.loaded == this.size) {
+			$(document).trigger("loaded");
+		}
+	},
+
 	loader: function() {
+		var self = this;
 		$(document).bind("loaded", function () {
 			console.log("All assets loaded.");
 		});

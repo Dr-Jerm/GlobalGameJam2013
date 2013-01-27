@@ -1,0 +1,9 @@
+# MTL written from /Library/WebServer/Documents/webgl/GlobalGameJam2013/art_assets/character-assets/fade-assets/murderdeathkill4.obj
+newmtl murderkiller
+Kd 0.8 0.8 0.8
+Ns 256
+d 1
+illum 1
+Ka 0 0 0
+Ks 0 0 0
+map_Kd /Library/Application Support/Luxology/Content/Assets/Images/AssetSharing/Materials/9b UV/Checkerboard9b.png
