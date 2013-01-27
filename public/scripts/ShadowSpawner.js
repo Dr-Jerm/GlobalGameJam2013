@@ -1,17 +1,18 @@
 function ShadowSpawner(game)
 {
 
-	this.SpawnBias = 500; 
+	this.SpawnBias = 300; 
+	this.MaxShadows = 300; 
 	
 	this.Update = function()
 	{
 
-		if(Math.random()*1000 < this.SpawnBias)
+		if(Math.random()*1000 < this.SpawnBias && game.shadowList.length < this.MaxShadows)
 		{
-			//this.SpawnShadow();
+			this.SpawnShadow();
 		}
-		// 
-		this.SpawnShadow();
+
+
 
 	}
 

@@ -7,7 +7,7 @@ function Player(game)
 	this.MoveRot = 0; 
 	this.runAccel = 0.3;
 	this.friction = 0.5; 
-	this.maxSpeed = 3 //temp value
+	this.maxSpeed = 1.5 //temp value
 
 	var Yray = 0; 
 	var oldYray = 0; 
