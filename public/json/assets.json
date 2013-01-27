@@ -16,6 +16,16 @@
 	},
 	{
 		"name" : "fadeMask1", 
+		"url" : "../art_assets/characterAssets/fade/mask2.png",
+		"type" : "image"
+	},
+		{
+		"name" : "fadeMask2", 
+		"url" : "../art_assets/characterAssets/fade/mask3.png",
+		"type" : "image"
+	},
+		{
+		"name" : "fadeMask3", 
 		"url" : "../art_assets/characterAssets/fade/mask1.png",
 		"type" : "image"
 	},
