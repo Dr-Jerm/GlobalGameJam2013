@@ -23,7 +23,7 @@ sounds = {
 		makeWav(hb, 0.5),
 		false,
 		false,
-		makeWav(hb),
+		makeWav(hb), 
 		makeWav(hb, 0.5),
 		false,
 		false,
@@ -53,7 +53,7 @@ sounds = {
 				if(sounds.audioArray[sounds.soundIndex]) {
 					sounds.audioArray[sounds.soundIndex].play();
 					//call eric's function.  I hope it's async. ^_^
-					sounds.functionToCall();
+					//sounds.functionToCall();
 					game.SetPulse();
 				}
 				//if we haven't reached the last element:
