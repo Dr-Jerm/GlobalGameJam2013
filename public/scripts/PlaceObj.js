@@ -7,7 +7,7 @@ ItemSpawner.prototype = {
 
 	popul: 1600,
 	range: 0,
-	items: 2,
+	items: 3,
 	constructor: function(_t) {
 		switch(_t) {
 			case "tree":break;
@@ -20,7 +20,7 @@ ItemSpawner.prototype = {
 		}
 		var type = _t;
 		for(var i=0; i < this.popul; i++) {
-			var inx = 2;// (Math.floor((Math.random()*this.items)+1));
+			var inx = (Math.floor((Math.random()*this.items)+1));
 			var texture = mojo.assets[type+inx];
 			var geometry = mojo.assets[type+inx+"mdl"];
 			var material = new THREE.MeshBasicMaterial( {map: texture} );
@@ -30,6 +30,10 @@ ItemSpawner.prototype = {
 			var rayDir = new THREE.Vector3( 0, -1, 0 );
 			this.ray = new THREE.Raycaster(mesh.position, rayDir);
 			this.ray.rayDir = rayDir;
+			
+			mesh.rotation.x = (Math.random()*.04);
+			mesh.rotation.y = Math.random();
+			mesh.rotation.z = (Math.random()*.04);
 
   			mesh.position = this.place_rand();
   			mesh.position.y = -1;
