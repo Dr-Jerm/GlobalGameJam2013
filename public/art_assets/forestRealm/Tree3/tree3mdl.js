@@ -3,7 +3,7 @@
     "metadata" :
     {
         "formatVersion" : 3.1,
-        "sourceFile"    : "tree_003.obj",
+        "sourceFile"    : "tree3mdl.obj",
         "generatedBy"   : "OBJConverter",
         "vertices"      : 865,
         "faces"         : 929,
@@ -18,7 +18,7 @@
     "materials": [	{
 	"DbgColor" : 15658734,
 	"DbgIndex" : 0,
-	"DbgName" : "tree",
+	"DbgName" : "Default",
 	"colorAmbient" : [0.0, 0.0, 0.0],
 	"colorDiffuse" : [0.8, 0.8, 0.8],
 	"colorSpecular" : [0.0, 0.0, 0.0],
