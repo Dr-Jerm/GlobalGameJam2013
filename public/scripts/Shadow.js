@@ -37,7 +37,7 @@ function Shadow( game, _pos)
 //   	geometry = new THREE.SphereGeometry( 50, 10, 10);
 	var idx = Math.floor(1+ Math.random()*3);
    	texture = mojo.assets["fadeMask"+idx];
-   	material = new  THREE.MeshLambertMaterial( {map: texture});
+   	material = new  THREE.MeshBasicMaterial( {map: texture});
    	mesh = new THREE.Mesh( geometry, material );
 	mesh.scale.set(12,12,12);
 	mesh.position.y = 30;
@@ -101,7 +101,12 @@ function Shadow( game, _pos)
 
 
 	this.swapWorld = function(){
-
+		if(game.worldState == 1){
+			this.mesh.material.opacity = 0.0;
+		}
+		else{
+			this.mesh.matrial.opacity = 1.0;
+		}
 	}
 	
 }

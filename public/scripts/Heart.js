@@ -13,9 +13,6 @@ Heart.prototype = {
 		var randX = (Math.random()-0.5)*distance;
 		var randZ = (Math.random()-0.5)*distance;
 
-		randX = 10;
-		randZ = 10;
-
 		this.pos.x = randX;
 		this.pos.z = randZ;
 
