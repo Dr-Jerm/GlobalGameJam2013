@@ -1,7 +1,7 @@
 function WorldGen(game)
 {
 
-	var TreeNum = 1600
+	var TreeNum = 1600;
 
 	this.Generate = function()
 	{
@@ -46,9 +46,28 @@ function WorldGen(game)
 
 	this.GenerateDetails = function()
 	{
+		var tex = mojo.assets["snowman"];
+		var geo = mojo.assets["snowmanmdl"];
+		var matrl = new THREE.MeshBasicMaterial( {map: tex} );
+		var mesh = new THREE.Mesh( geo, matrl );
+		mesh.scale.set(10,10,10);
 
-
+		var rayDir = new THREE.Vector3( 0, -1, 0 );
+		this.ray = new THREE.Raycaster(mesh.position, rayDir);
+		this.ray.rayDir = rayDir;
+	
+		mesh.position.x = 1;
+  		mesh.position.y = -1;
+		mesh.position.z = 1;
+		while( mesh.position.y == -1) {
+			this.ray.ray.origin = mesh.position;
+			this.ray.ray.origin.y = game.camera.position.y +100;
+			var intersects = this.ray.intersectObject( game.ground );
+			if( intersects.length > 0 ) {
+				mesh.position.y = intersects[0].point.y -.5;
+			}
+ 		}
+		game.scene.add(mesh);
 	}
-
 
 }
