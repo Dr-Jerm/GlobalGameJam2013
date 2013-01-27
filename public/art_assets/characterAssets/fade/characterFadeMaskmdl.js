@@ -23,6 +23,7 @@
 	"colorDiffuse" : [0.8, 0.8, 0.8],
 	"colorSpecular" : [0.0, 0.0, 0.0],
 	"illumination" : 1,
+	"mapDiffuse" : "mask1.png",
 	"specularCoef" : 256.0,
 	"transparency" : 1.0
 	}],
