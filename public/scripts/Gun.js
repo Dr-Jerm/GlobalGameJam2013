@@ -10,7 +10,7 @@ Gun.prototype = {
 		this.game = _g;
 	},
 	Update: function() {
-		this.position.x = 3-(sin(this.game.player.pos.x))+this.game.player.pos.x;
-		this.position.z = 3-(sin(this.game.player.pos.z))+this.game.player.pos.z;
+		//this.position.x = 3-(sin(this.game.player.pos.x))+this.game.player.pos.x;
+		//his.position.z = 3-(sin(this.game.player.pos.z))+this.game.player.pos.z;
 	}
 }
