@@ -3,6 +3,25 @@ function WorldGen(game)
 
 
 	var TreeNum = 1600;
+
+	this.treeTex1;
+	this.treeTex2;
+	this.colTex1;
+
+	this.treeMaterial1;
+	this.treeMaterial2;
+	this.treeGeo1;
+	this.treeGeo2;
+
+	
+	this.colMaterial1;
+	this.colMaterial2;
+	this.colGeo1;
+	this.colGeo2;
+
+
+
+
 	
 	this.Generate = function()
 	{
@@ -15,13 +34,22 @@ function WorldGen(game)
 	this.GenerateTrees = function()
 	{
 		
-		//var type = _t;
-		//for(var i=0; i < this.popul; i++) {
-			//var inx = 2;//(Math.floor((Math.random()*this.items)+1));
-			var texture = mojo.assets["tree2"];
-			var geometry = mojo.assets["tree2mdl"];
-			var material = new THREE.MeshBasicMaterial( {map: texture} );
+
+			this.treeTex1 = mojo.assets["tree2"];
+			this.treeTex2 = mojo.assets["tree3"];
+			this.colTex = mojo.assets["column"];
 			
+			this.treeMaterial1 = new THREE.MeshBasicMaterial( {map: this.treeTex1, transparent : true} );
+			this.treeMaterial2 = new THREE.MeshBasicMaterial( {map: this.treeTex2, transparent : true} );
+			this.treeGeo1 = mojo.assets["tree2mdl"];
+			this.treeGeo2 = mojo.assets["tree3mdl"];
+			
+			this.colMaterial1 = new THREE.MeshBasicMaterial( {map: this.colTex, transparent : true, depthWrite: false} );
+			this.colMaterial2 = new THREE.MeshBasicMaterial( {map: this.colTex, transparent : true, depthWrite: false} );
+			this.colGeo1 = mojo.assets["column1mdl"];
+			this.colGeo2 = mojo.assets["column2mdl"];
+
+
 		
 
 		console.log("GenerateTrees ");
@@ -55,6 +83,19 @@ function WorldGen(game)
 		console.log('planting Heart');
 		game.heart = new Heart(7000);
 
+	}
+
+	this.updateColors = function(){
+		// this.material.opacity = 1-game.opacc;
+		// this.material2.opacity = game.opacc;
+
+		this.treeMaterial1.opacity = 1-game.opacc;
+		this.treeMaterial2.opacity = 1-game.opacc;
+
+
+	
+		this.colMaterial1.opacity = game.opacc;
+		this.colMaterial2.opacity = game.opacc;
 	}
 
 

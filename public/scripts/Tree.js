@@ -18,17 +18,29 @@ function Tree(game, _pos)
 
    	var idx = Math.floor(2+ ((Math.random()-0.01)*2));
 			//var idx = 2;
-	var texture = mojo.assets["tree"+idx];
-	var texture2 = mojo.assets["column"];
-	var geometry = mojo.assets["tree"+idx+"mdl"];
-	var geometry2 = mojo.assets["column"+idx+"mdl"];
-	this.material = new THREE.MeshBasicMaterial( {map: texture, transparent : true} );
-	this.material2 = new THREE.MeshBasicMaterial( {map: texture2, transparent : true, depthWrite: false} );
+
+			if(idx == 2){
+				this.texure = game.worldGen.treeTex1;
+				this.material = game.worldGen.treeMaterial1;
+				this.geometry = game.worldGen.treeGeo1;
+				this.texure2 = game.worldGen.colTex;
+				this.material2 = game.worldGen.colMaterial1;
+				this.geometry2 = game.worldGen.colGeo1;
+			}
+			else{
+				this.texure = game.worldGen.treeTex2;
+				this.material = game.worldGen.treeMaterial2;
+				this.geometry = game.worldGen.treeGeo2;
+				this.material2 = game.worldGen.colMaterial2;
+				this.geometry2 = game.worldGen.colGeo2;
+				this.texure2 = game.worldGen.colTex;
+
+			}
 	this.material2.opacity = 0.0;
 	this.material.opacity = 0.0;
 
-	mesh = new THREE.Mesh( geometry, this.material );
-	mesh2 = new THREE.Mesh( geometry2, this.material2 );
+	mesh = new THREE.Mesh( this.geometry, this.material );
+	mesh2 = new THREE.Mesh( this.geometry2, this.material2 );
 	this.pos = new THREE.Vector3();
 	this.pos.set( (Math.random()*7000-3500) , (0), (Math.random()*7000-3500));
 

@@ -136,9 +136,9 @@ function Player(game)
 
 	this.CheckDeath = function()
 	{
-		for (var s in this.shadowList)
+		for (var s in game.shadowList)
       	{
-        	if(this.pos.length(game.shadowList[s].pos) < 40)
+        	if(this.pos.length(game.shadowList[s].pos) < 120)
         	{
         		game.YOULOSEBITCH = true; 
         	}

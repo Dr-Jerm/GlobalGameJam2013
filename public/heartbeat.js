@@ -6,7 +6,16 @@ function makeWav(fileName, volume)
 	return audioElement;
 }
 
+
+
 var hb = 'heartbeat.wav';
+var music = 'atmospheric';
+
+function playMusic()
+{
+	var ambMuse = makeWav(music, 1);
+	ambMuse.play();
+}
 
 sounds = {
 	"lastTimeout":false,

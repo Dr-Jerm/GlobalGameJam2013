@@ -196,12 +196,9 @@ function Game()
         this.shadowList[s].drawUpdate(); 
       }
 
-      for (var i in this.treeList)
-      {
-        this.treeList[i].updateColors(); 
-      }
+      this.worldGen.updateColors();
     }
-
+  
   }
 
   this.CameraUpdate = function(){
@@ -266,6 +263,7 @@ function Game()
       this.speedCounter = 0 
       this.heartRateBPM -= 50; 
       sounds.start_beat(this.heartRateBPM);
+      playMusic();
     }
 
     if(this.heartRateBPM < 300)
@@ -273,12 +271,12 @@ function Game()
       this.heartRateBPM = 300; 
     }
 
-    console.log( "spC >" + this.speedCounter + "BPM >" + self.heartRateBPM +" length"+ self.pulseLength +" decay"+self.pulseLengthDecay+" max"+ self.pulseLengthMax + " oRate"+ self.opaccRate);
+    console.log( "spC >" + this.speedCounter + " BPM >" + self.heartRateBPM +" length "+ self.pulseLength +" decay "+self.pulseLengthDecay+" max "+ self.pulseLengthMax + " oRate "+ self.opaccRate);
     
  
 
-    this.opaccRate = 50/this.heartRateBPM;  
-    this.pulseLengthMax = this.heartRateBPM/50;
+    this.opaccRate = 30/this.heartRateBPM;  
+    this.pulseLengthMax = this.heartRateBPM/32;
     this.pulseLengthDecay = 1000/this.heartRateBPM; 
 
   }
