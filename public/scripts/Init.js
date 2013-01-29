@@ -41,6 +41,6 @@ function onWindowResize( event ) {
 tick = function(){
 	requestAnimationFrame(tick);
 
-	game.Update();
+	game.EventUpdate();
 	stats.update();
 }

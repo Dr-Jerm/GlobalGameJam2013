@@ -56,7 +56,12 @@ function Tree(game, _pos)
 	mesh.rotation = this.rot;
 	mesh2.rotation = this.rot;
 	game.scene.add( mesh );
-	game.scene.add( mesh2 );
+	
+	if(game.FadeTrees)
+	{
+		game.scene.add( mesh2 );
+	}
+	
 
 
    	this.UpdateRay = function()

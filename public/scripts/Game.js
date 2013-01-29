@@ -2,6 +2,7 @@ function Game()
 {
 
   this.YOULOSEBITCH = false; 
+  this.FadeTrees = false; 
 
 	var self = this;
   this.testString = "Here I am";
@@ -101,8 +102,8 @@ function Game()
 
 
     this.worldGen.Generate();
-
     sounds.start_beat(this.heartRateBPM );
+
 
   }
 
@@ -111,7 +112,7 @@ function Game()
   	var c1G = this.skyColor.g;
   	var c1B = this.skyColor.b;
 
-  	var c2R = this.doomColor.r;
+  	var c2R = this.doomColor.r;w
   	var c2G = this.doomColor.g;
   	var c2B = this.doomColor.b;
 
@@ -176,8 +177,7 @@ function Game()
   this.Update = function()
   {
   	
-    if (!this.YOULOSEBITCH)
-    {
+    
       this.delta = this.clock.getDelta();
   	   this.inputControls.Update();
 
@@ -197,7 +197,7 @@ function Game()
       }
 
       this.worldGen.updateColors();
-    }
+    
   
   }
 
@@ -258,27 +258,48 @@ function Game()
     
 
     this.speedCounter += this.speedCurve; 
-    if(this.speedCounter > 20)
+    if(this.speedCounter > 15)
     {
       this.speedCounter = 0 
       this.heartRateBPM -= 50; 
       sounds.start_beat(this.heartRateBPM);
-      playMusic();
+      //sounds.playMusic();
     }
 
-    if(this.heartRateBPM < 300)
+    if(this.heartRateBPM < 200)
     {
-      this.heartRateBPM = 300; 
+      this.heartRateBPM = 200; 
     }
 
     console.log( "spC >" + this.speedCounter + " BPM >" + self.heartRateBPM +" length "+ self.pulseLength +" decay "+self.pulseLengthDecay+" max "+ self.pulseLengthMax + " oRate "+ self.opaccRate);
     
  
 
-    this.opaccRate = 30/this.heartRateBPM;  
-    this.pulseLengthMax = this.heartRateBPM/32;
-    this.pulseLengthDecay = 1000/this.heartRateBPM; 
+    //this.opaccRate = 100/this.heartRateBPM;  
+    //this.pulseLengthMax = this.heartRateBPM/50;
+    //this.pulseLengthDecay = 1000/this.heartRateBPM; 
 
+    this.opaccRate = 0.1;
+    this.pulseLengthMax = 10;
+    this.pulseLengthDecay = 1;
+
+  }
+
+  this.GrabHeart = function()
+  {
+    // this.heart.Move(7000);
+    // this.shadowList = new Array();
+    // this.heartRateBPM = 1500; 
+    // sounds.start_beat(this.heartRateBPM);
+    console.log("heartGrabbed");
+    window.location = "http://i1.kym-cdn.com/photos/images/newsfeed/000/330/811/286.png"; 
+
+
+  }
+
+  this.LoseUpdate = function()
+  {
+    window.location = "http://socialeyezer.com/wp-content/uploads/2012/10/Grumpy-Cat-Disappointment-Meme.jpg"; 
   }
 
   this.ShadowUpdate = function()
@@ -289,6 +310,31 @@ function Game()
       }
   }
 
+  this.EventLose = function()
+  {
+      this.YOULOSEBITCH = true; 
+  }
 
+  this.EventUpdate = function()
+  {
+    if (!this.YOULOSEBITCH)
+    {
+      this.Update(); 
+    }
+    else
+    {
+      this.LoseUpdate(); 
+    }
+
+  }
+
+  this.EventPulse = function()
+  {
+    if (!this.YOULOSEBITCH)
+    {
+      this.SetPulse(); 
+    }
+
+  }
   
 }
