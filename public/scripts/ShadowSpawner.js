@@ -13,7 +13,11 @@ function ShadowSpawner(game)
 		}
 		else
 		{
+<<<<<<< HEAD
 			game.shadowList[Math.round(Math.random()*game.shadowList.length)].pos.set(Math.random()*7000-3500) , (0), (Math.random()*7000-3500)
+=======
+			//game.shadowList[Math.round(Math.random()*game.shadowList.length)].pos.set(Math.random()*7000-3500) , (0), (Math.random()*7000-3500);
+>>>>>>> fixed win and lose conditions, balanced speeds,
 		}
 
 
