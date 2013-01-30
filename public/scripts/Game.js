@@ -409,6 +409,7 @@ function Game()
 
     this.worldGen.Generate();
     sounds.start_beat(this.heartRateBPM );
+    sounds.playMusic();
 
 
   }
@@ -418,7 +419,7 @@ function Game()
   	var c1G = this.skyColor.g;
   	var c1B = this.skyColor.b;
 
-  	var c2R = this.doomColor.r;w
+  	var c2R = this.doomColor.r;
   	var c2G = this.doomColor.g;
   	var c2B = this.doomColor.b;
 
@@ -569,7 +570,7 @@ function Game()
       this.speedCounter = 0 
       this.heartRateBPM -= 50; 
       sounds.start_beat(this.heartRateBPM);
-      //sounds.playMusic();
+      sounds.playMusic();
     }
 
     if(this.heartRateBPM < 200)

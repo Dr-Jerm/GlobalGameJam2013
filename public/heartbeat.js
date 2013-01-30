@@ -153,9 +153,9 @@ sounds = {
 					sounds.soundIndex = 0;  
 				}
 			},
-	"functionToCall":function() { console.log("you called me.");}
+	"functionToCall":function() { console.log("you called me.");},
 
-	"playMusic" : function()
+	"playMusic": function()
 	{
 		var ambMuse = makeWav(music, 1);
 		ambMuse.play();
