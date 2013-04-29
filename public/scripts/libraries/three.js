@@ -9235,7 +9235,7 @@ THREE.ImageLoader.prototype = {
 }
 /**
  * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
+ * @author alteredq / 8
  */
 
 THREE.JSONLoader = function ( showStatus ) {
