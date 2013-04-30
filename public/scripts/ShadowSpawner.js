@@ -11,6 +11,10 @@ function ShadowSpawner(game)
 		{
 			this.SpawnShadow();
 		}
+		else
+		{
+			//game.shadowList[Math.round(Math.random()*game.shadowList.length)].pos.set(Math.random()*7000-3500) , (0), (Math.random()*7000-3500);
+		}
 
 
 

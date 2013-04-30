@@ -6,7 +6,12 @@ function makeWav(fileName, volume)
 	return audioElement;
 }
 
+
+
 var hb = 'heartbeat.wav';
+var music = 'atmospheric';
+
+
 
 sounds = {
 	"lastTimeout":false,
@@ -23,7 +28,7 @@ sounds = {
 		makeWav(hb, 0.5),
 		false,
 		false,
-		makeWav(hb),
+		makeWav(hb), 
 		makeWav(hb, 0.5),
 		false,
 		false,
@@ -53,8 +58,8 @@ sounds = {
 				if(sounds.audioArray[sounds.soundIndex]) {
 					sounds.audioArray[sounds.soundIndex].play();
 					//call eric's function.  I hope it's async. ^_^
-					sounds.functionToCall();
-					game.SetPulse();
+					//sounds.functionToCall();
+					game.EventPulse();
 				}
 				//if we haven't reached the last element:
 				if(sounds.soundIndex < (sounds.audioArray.length - 1))
@@ -65,7 +70,13 @@ sounds = {
 					sounds.soundIndex = 0;  
 				}
 			},
-	"functionToCall":function() { console.log("you called me.");}
+	"functionToCall":function() { console.log("you called me.");},
+
+	"playMusic": function()
+	{
+		var ambMuse = makeWav(music, 1);
+		ambMuse.play();
+	}
 }
 
 /*

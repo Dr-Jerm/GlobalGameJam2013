@@ -5,9 +5,9 @@ function Player(game)
 	this.speed = new THREE.Vector3(); 
 	this.accel = new THREE.Vector3();
 	this.MoveRot = 0; 
-	this.runAccel = 0.3;
-	this.friction = 0.5; 
-	this.maxSpeed = 1.5 //temp value
+	this.runAccel = 0.5;
+	this.friction = 1; 
+	this.maxSpeed = 2 //temp value
 
 	var Yray = 0; 
 	var oldYray = 0; 
@@ -42,6 +42,7 @@ function Player(game)
 		this.UpdateRay();
 		this.UpdateInput(); 
 		this.Move();
+		this.CheckHeart(); 
 		this.letsLook();
 //		this.gun.Update();
 	}
@@ -130,8 +131,17 @@ function Player(game)
 		}
 		
 		this.pos.add(this.speed);
+	}
+
+	
 
 
+	this.CheckHeart = function()
+	{
+		if(this.pos.distanceTo(game.heart.pos) < 50)
+		{
+			game.GrabHeart(); 
+		}
 	}
 
 	this.letsLook = function()

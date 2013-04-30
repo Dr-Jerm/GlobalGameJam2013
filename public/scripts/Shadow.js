@@ -13,7 +13,7 @@ function Shadow( game, _pos)
 	this.healthMax = 100;
 
 	this.speed = new THREE.Vector3(); 
-	this.maxSpeed = 30 //temp value
+	this.maxSpeed = 0; 
 	this.rotY = 0; 
 
 	this.targetDistence = 0;
@@ -88,18 +88,42 @@ function Shadow( game, _pos)
 	{
 		//console.log(" sr" +  this.rotY + " sz" + this.pos.x  + " px" + game.player.pos.x + " sz" + this.pos.z + " pz" +game.player.pos.z + " x" + (game.player.pos.x - this.pos.x) + " z" +  (game.player.pos.z - this.pos.z));
 		this.rotY = Math.atan2(game.player.pos.x - this.pos.x, game.player.pos.z- this.pos.z);
-		
+		this.rotY += (Math.random()-0.5)*0.5; 
+
 		this.speed.set(this.maxSpeed*Math.sin(this.rotY), 0 , this.maxSpeed*Math.cos(this.rotY));
+
+
 		
+
 		
 
 	}
 
 	this.Move = function()
 	{
+		
+		
+
 		this.pos.add(this.speed);
 		this.UpdateRay();
-		this.targetDistence = this.pos.length(game.player.pos);
+		this.targetDistence = this.pos.distanceTo(game.player.pos);
+		
+		if(this.targetDistence < 100)
+		{
+			this.maxSpeed = this.targetDistence*.5;
+		}
+		else
+		{
+			this.maxSpeed = 50; 
+		}
+		
+		//console.log("Shadow Dist " + this.targetDistence + " spos " + this.pos + " mypos " + game.player.pos); 
+		if(this.targetDistence < 20)
+		{
+			game.YOULOSEBITCH = true; 
+		}
+
+
 		this.group.position = this.pos;
 		
 		this.group.rotation.y = this.rotY - Math.PI/2 + (Math.random()-0.5)*(this.targetDistence/2000);     
