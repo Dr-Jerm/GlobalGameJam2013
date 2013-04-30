@@ -18,12 +18,12 @@
     "materials": [	{
 	"DbgColor" : 15658734,
 	"DbgIndex" : 0,
-	"DbgName" : "Default",
+	"DbgName" : "lambert2SG",
 	"colorAmbient" : [0.0, 0.0, 0.0],
 	"colorDiffuse" : [0.0, 0.0, 0.0],
 	"colorSpecular" : [0.2, 0.2, 0.2],
 	"illumination" : 2,
-	"mapDiffuse" : "tree3.jpg",
+	"mapDiffuse" : "Tree.jpg",
 	"specularCoef" : 256.0,
 	"transparency" : 1.0
 	}],
